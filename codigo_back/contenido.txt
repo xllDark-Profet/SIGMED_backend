@@ -1,126 +1,167 @@
-{
-    "mensaje": "Peticion exitosa!",
-    "hospitales": [
-        {
-            "id": 1,
-            "nombre": "Hospital Infantil Universitario San Jose",
-            "codigo_registro": "HC123",
-            "latitud": "4.665224548607437",
-            "longitud": "-74.07896502839728",
-            "especialidades": [
-                "Oncologia"
-            ],
-            "listaeps": [
-                "Famisanar"
-            ]
-        },
-        {
-            "id": 2,
-            "nombre": "Hospital de Engativa",
-            "codigo_registro": "HN456",
-            "latitud": "4.711001914622836",
-            "longitud": "-74.1097278695707",
-            "especialidades": [
-                "Neurologia",
-                "Ginecologia"
-            ],
-            "listaeps": [
-                "Famisanar",
-                "Nueva EPS"
-            ]
-        },
-        {
-            "id": 3,
-            "nombre": "Unidad de Servicios de Salud Simon Bolivar",
-            "codigo_registro": "IN789",
-            "latitud": "4.742781005353155",
-            "longitud": "-74.02301609413335",
-            "especialidades": [
-                "Oncologia",
-                "Cardiologia"
-            ],
-            "listaeps": [
-                "Famisanar",
-                "Nueva EPS"
-            ]
-        },
-        {
-            "id": 4,
-            "nombre": "Hospital Universitario Nacional de Colombia",
-            "codigo_registro": "HUNC01",
-            "latitud": "4.648789324522056",
-            "longitud": "-74.09552777693953",
-            "especialidades": [
-                "Pediatria",
-                "Ginecologia"
-            ],
-            "listaeps": [
-                "Famisanar"
-            ]
-        },
-        {
-            "id": 5,
-            "nombre": "Hospital de Kennedy",
-            "codigo_registro": "HK01",
-            "latitud": "4.61657176477835",
-            "longitud": "-74.15332014004682",
-            "especialidades": [
-                "Pediatria",
-                "Neurologia",
-                "Oncologia",
-                "Ginecologia",
-                "Cardiologia"
-            ],
-            "listaeps": [
-                "Famisanar",
-                "Nueva EPS"
-            ]
-        },
-        {
-            "id": 11,
-            "nombre": "Hospital ABC",
-            "codigo_registro": "HK02",
-            "latitud": "123.456",
-            "longitud": "789.012",
-            "especialidades": [
-                "Pediatria",
-                "Neurologia",
-                "Oncologia"
-            ],
-            "listaeps": [
-                "Famisanar",
-                "Nueva EPS"
-            ]
-        }
-    ]
-}
+# Especialidades
+[
+    {
+        "nombre": "Pediatria"
+    },
+    {
+        "nombre": "Neurologia"
+    },
+    {
+        "nombre": "Oncologia"
+    },
+    {
+        "nombre": "Ginecologia"
+    },
+    {
+        "nombre": "Cardiologia"
+    },
+    {
+        "nombre": "Psicologia"
+    }
+]
 
-{
-    "mensaje": "Peticion exitosa!",
-    "especialidades": [
-        {
-            "id": 1,
-            "nombre": "Pediatria"
-        },
-        {
-            "id": 2,
-            "nombre": "Neurologia"
-        },
-        {
-            "id": 3,
-            "nombre": "Oncologia"
-        },
-        {
-            "id": 4,
-            "nombre": "Ginecologia"
-        },
-        {
-            "id": 5,
-            "nombre": "Cardiologia"
-        },
-        {
-            "id": 9,
-            "nombre": "Prueba"
-        }
-    ]
-}
+# EPS
+[
+    {
+        "nombre": "Compensar"
+    },
+    {
+        "nombre": "Famisanar"
+    },
+    {
+        "nombre": "Nueva eps"
+    },
+    {
+        "nombre": "Sura"
+    }
+]
+
+# Hospitales
+[
+    {
+        "nombre": "Hospital Infantil Universitario San Jose",
+        "codigo_registro": "HC123",
+        "latitud": "4.665224548607437",
+        "longitud": "-74.07896502839728",
+        "especialidades": [
+            "Oncologia"
+        ],
+        "listaeps": [
+            "Famisanar"
+        ]
+    },
+    {
+        "nombre": "Hospital de Engativa",
+        "codigo_registro": "HN456",
+        "latitud": "4.711001914622836",
+        "longitud": "-74.1097278695707",
+        "especialidades": [
+            "Neurologia",
+            "Ginecologia"
+        ],
+        "listaeps": [
+            "Famisanar",
+            "Nueva EPS"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Simon Bolivar",
+        "codigo_registro": "IN789",
+        "latitud": "4.742781005353155",
+        "longitud": "-74.02301609413335",
+        "especialidades": [
+            "Oncologia",
+            "Cardiologia"
+        ],
+        "listaeps": [
+            "Famisanar",
+            "Nueva EPS"
+        ]
+    },
+    {
+        "nombre": "Hospital Universitario Nacional de Colombia",
+        "codigo_registro": "HUNC01",
+        "latitud": "4.648789324522056",
+        "longitud": "-74.09552777693953",
+        "especialidades": [
+            "Pediatria",
+            "Ginecologia"
+        ],
+        "listaeps": [
+            "Famisanar"
+        ]
+    },
+    {
+        "nombre": "Hospital de Kennedy",
+        "codigo_registro": "HK01",
+        "latitud": "4.61657176477835",
+        "longitud": "-74.15332014004682",
+        "especialidades": [
+            "Pediatria",
+            "Neurologia",
+            "Oncologia",
+            "Ginecologia",
+            "Cardiologia"
+        ],
+        "listaeps": [
+            "Famisanar",
+            "Nueva EPS"
+        ]
+    },
+    {
+        "nombre": "Hospital ABC",
+        "codigo_registro": "HK02",
+        "latitud": "123.456",
+        "longitud": "789.012",
+        "especialidades": [
+            "Pediatria",
+            "Neurologia",
+            "Oncologia"
+        ],
+        "listaeps": [
+            "Famisanar",
+            "Nueva EPS"
+        ]
+    }
+]
+
+# Usuarios
+[
+    {
+        "tipo_identificacion": "CC",
+        "identificacion": "1010248768",
+        "nombre": "Sebastian",
+        "apellido": "Sandoval",
+        "correo": "sebas@example.com",
+        "telefono": "3043392632",
+        "nombre_usuario": "sebas",
+        "clave": "clave123",
+        "tipo_usuario": "Administrador"
+    },
+    {
+        "tipo_identificacion": "CC",
+        "identificacion": "123",
+        "nombre": "Perfil de",
+        "apellido": "Pruebas",
+        "correo": "pruebas@example.com",
+        "telefono": "0123456789",
+        "nombre_usuario": "prueba",
+        "clave": "clave123",
+        "tipo_usuario": "Moderador",
+        "codigo_registro": "HK02"
+    },
+    {
+        "tipo_identificacion": "CC",
+        "identificacion": "1234",
+        "nombre": "Perfil de",
+        "apellido": "Pruebas 2",
+        "correo": "pruebas2@example.com",
+        "telefono": "123456789",
+        "nombre_usuario": "prueba2",
+        "clave": "clave123",
+        "tipo_usuario": "Usuario",
+        "fecha_nacimiento": "1999-05-15",
+        "tipo_sangre": "B+",
+        "eps": "Famisanar"
+    }
+]
