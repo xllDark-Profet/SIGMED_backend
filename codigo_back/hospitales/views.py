@@ -13,20 +13,19 @@ class HospitalView(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
     
-    def get_hospital_by_id(self, id):
+    def buscar_hospital_por_id(self, id):
         return Hospital.objects.get(id=id)
     
-    def get_hospital_by_latlong(self, latitud, longitud):
+    def buscar_hospital_por_latlong(self, latitud, longitud):
         return Hospital.objects.get(latitud=latitud, longitud=longitud)
     
-    def get_hospital_by_nombre(self, nombre):
+    def buscar_hospital_por_nombre(self, nombre):
         return Hospital.objects.get(nombre=nombre)
     
     def mostrar_hospital(self, hospital):
         return {
             'id': hospital.id,
             'nombre': hospital.nombre,
-            'codigo_registro': hospital.codigo_registro,
             'latitud': hospital.latitud,
             'longitud': hospital.longitud,
             'especialidades': [especialidad.nombre for especialidad in hospital.especialidades.all()],
@@ -49,14 +48,14 @@ class HospitalView(View):
         if especifica:     
             if id:
                 try:
-                    hospital = self.get_hospital_by_id(id)
+                    hospital = self.buscar_hospital_por_id(id)
                     return JsonResponse(self.mostrar_hospital(hospital))
                 except Hospital.DoesNotExist:
                     return JsonResponse({'mensaje': "No se encontro ningun hospital con el ID proporcionado."}, status=404)
             elif latitud:
                 if longitud:
                     try:
-                        hospital = self.get_hospital_by_latlong(latitud, longitud)
+                        hospital = self.buscar_hospital_por_latlong(latitud, longitud)
                         return JsonResponse(self.mostrar_hospital(hospital))
                     except Hospital.DoesNotExist:
                         return JsonResponse({'mensaje': "No se encontro ningun hospital con la latitud y longitud proporcionadas."}, status=404)
@@ -66,7 +65,7 @@ class HospitalView(View):
             elif longitud:
                 if latitud:
                     try:
-                        hospital = self.get_hospital_by_latlong(latitud, longitud)
+                        hospital = self.buscar_hospital_por_latlong(latitud, longitud)
                         return JsonResponse(self.mostrar_hospital(hospital))
                     except Hospital.DoesNotExist:
                         return JsonResponse({'mensaje': "No se encontro ningun hospital con la latitud y longitud proporcionadas."}, status=404)
@@ -75,7 +74,7 @@ class HospitalView(View):
                 
             elif nombre:
                 try:
-                    hospital = self.get_hospital_by_nombre(nombre)
+                    hospital = self.buscar_hospital_por_nombre(nombre)
                     return JsonResponse(self.mostrar_hospital(hospital))
                 except Hospital.DoesNotExist:
                     return JsonResponse({'mensaje': "No se encontro ningun hospital con nombre proporcionado."}, status=404)
@@ -92,7 +91,7 @@ class HospitalView(View):
         if hospitales_con_especialidades:
             return JsonResponse(hospitales_con_especialidades, safe=False, status=200)
         else:
-            return JsonResponse({'mensaje': "No hay hospitales en la base de datos"},status=400)
+            return JsonResponse({'mensaje': "No hay hospitales en la base de datos"})
     
     def post(self, request):
         try:
@@ -108,16 +107,11 @@ class HospitalView(View):
                     datos = {'mensaje': f"El campo '{field}' es requerido."}
                     return JsonResponse(datos, status=400)
             
-            codigo_registro = data['codigo_registro']
             nombre = data['nombre']
             latitud = data['latitud']
             longitud = data['longitud']
             especialidades = data['especialidades']
             listaeps = data['listaeps']
-
-            if Hospital.objects.filter(codigo_registro=codigo_registro).exists():
-                datos = {'mensaje': "Ya existe un hospital con este codigo de registro."}
-                return JsonResponse(datos, status=400)
             
             if Hospital.objects.filter(Q(latitud=latitud) & Q(longitud=longitud)).exists():
                 datos = {'mensaje': "Ya existe un hospital con la misma latitud y longitud."}
@@ -135,7 +129,6 @@ class HospitalView(View):
 
             nuevo_hospital = Hospital.objects.create(
                 nombre=nombre,
-                codigo_registro=codigo_registro,
                 latitud=latitud,
                 longitud=longitud
             )
@@ -149,22 +142,17 @@ class HospitalView(View):
         hospitals_failed = []
 
         for hospital_data in data:
-            required_fields = ['codigo_registro', 'nombre', 'latitud', 'longitud', 'especialidades', 'listaeps']
+            required_fields = ['nombre', 'latitud', 'longitud', 'especialidades', 'listaeps']
             for field in required_fields:
                 if field not in hospital_data:
                     hospitals_failed.append({'mensaje': f"El campo '{field}' es requerido en uno de los hospitales."})
                     break
             else:
-                codigo_registro = hospital_data['codigo_registro']
                 nombre = hospital_data['nombre']
                 latitud = hospital_data['latitud']
                 longitud = hospital_data['longitud']
                 especialidades = hospital_data['especialidades']
                 listaeps = hospital_data['listaeps']
-
-                if Hospital.objects.filter(codigo_registro=codigo_registro).exists():
-                    hospitals_failed.append({'mensaje': f"Ya existe un hospital con el codigo de registro '{codigo_registro}'."})
-                    continue
                 
                 if Hospital.objects.filter(Q(latitud=latitud) & Q(longitud=longitud)).exists():
                     hospitals_failed.append({'mensaje': "Ya existe un hospital con la misma latitud y longitud."})
@@ -182,7 +170,6 @@ class HospitalView(View):
 
                 nuevo_hospital = Hospital.objects.create(
                     nombre=nombre,
-                    codigo_registro=codigo_registro,
                     latitud=latitud,
                     longitud=longitud
                 )
@@ -207,34 +194,22 @@ class HospitalView(View):
             return JsonResponse({'mensaje': 'El cuerpo de la solicitud no es JSON valido'}, status=400)
         id = data.get('id')
         nombre = data.get('nombre')
-        nuevo_nombre = data.get('nombre_nuevo')
-        codigo_registro = data.get('codigo_registro')
         latitud = data.get('latitud')
         longitud = data.get('longitud')
         especialidades = data.get('especialidades')
         listaeps = data.get('listaeps')
         cambios = False
         
-        if nombre:
+        if id:
             try:
-                hospital = self.get_hospital_by_nombre(nombre)
-            except Hospital.DoesNotExist:
-                return JsonResponse({'mensaje': "El hospital no existe con ese nombre."}, status=404)
-        elif id:
-            try:
-                hospital = self.get_hospital_by_id(id)
+                hospital = self.buscar_hospital_por_id(id)
             except Hospital.DoesNotExist:
                 return JsonResponse({'mensaje': "El hospital no existe con ese id."}, status=404)
 
-        if nuevo_nombre and nuevo_nombre != hospital.nombre:
-            if Hospital.objects.filter(nombre=nuevo_nombre).exists():
+        if nombre and nombre != hospital.nombre:
+            if Hospital.objects.filter(nombre=nombre).exists():
                 return JsonResponse({'mensaje': "El nuevo nombre ya esta en uso por otro hospital."}, status=400)
-            hospital.nombre = nuevo_nombre
-            cambios = True
-        if codigo_registro and codigo_registro != hospital.codigo_registro:
-            if Hospital.objects.filter(codigo_registro=codigo_registro).exists():
-                return JsonResponse({'mensaje': "El nuevo codigo de registro ya esta en uso por otro hospital."}, status=400)
-            hospital.codigo_registro = codigo_registro
+            hospital.nombre = nombre
             cambios = True
         if latitud and latitud != hospital.latitud:
             hospital.latitud = latitud
@@ -242,24 +217,39 @@ class HospitalView(View):
         if longitud and longitud != hospital.longitud:
             hospital.longitud = longitud
             cambios = True
-        if especialidades:
-            especialidades_existentes = Especialidad.objects.filter(nombre__in=especialidades)
-            if len(especialidades_existentes) != len(especialidades):
-                return JsonResponse({'mensaje': "Los nombres de las especialidades no coinciden con la base de datos."}, status=400)
-            especialidades_actuales = set(hospital.especialidades.all())
-            especialidades_nuevas = set(especialidades_existentes)
-            if especialidades_actuales != especialidades_nuevas:
-                hospital.especialidades.set(especialidades_existentes)
+        if especialidades is not None:
+            if not especialidades:
+                hospital.especialidades.set([])
                 cambios = True
-        if listaeps:
-            eps_existentes = EPS.objects.filter(nombre__in=listaeps)
-            if len(eps_existentes) != len(listaeps):
-                return JsonResponse({'mensaje': "Los nombres de las eps no coinciden con la base de datos."}, status=400)
-            eps_actuales = set(hospital.listaeps.all())
-            eps_nuevas = set(eps_existentes)
-            if eps_actuales != eps_nuevas:
-                hospital.listaeps.set(eps_nuevas)
+            else:
+                especialidades_existentes = Especialidad.objects.filter(nombre__in=especialidades)
+                if len(especialidades_existentes) != len(especialidades):
+                    return JsonResponse({'mensaje': "Los nombres de las especialidades no coinciden con la base de datos."}, status=400)
+                especialidades_actuales = set(hospital.especialidades.all())
+                especialidades_nuevas = set(especialidades_existentes)
+                if especialidades_actuales != especialidades_nuevas:
+                    hospital.especialidades.set(especialidades_existentes)
+                    cambios = True
+        else:
+            hospital.especialidades.set([])
+            cambios = True
+        if listaeps is not None:
+            if not listaeps:
+                hospital.listaeps.set([])
                 cambios = True
+            else:
+                eps_existentes = EPS.objects.filter(nombre__in=listaeps)
+                if len(eps_existentes) != len(listaeps):
+                    return JsonResponse({'mensaje': "Los nombres de las EPS no coinciden con la base de datos."}, status=400)
+                eps_actuales = set(hospital.listaeps.all())
+                eps_nuevas = set(eps_existentes)
+                if eps_actuales != eps_nuevas:
+                    hospital.listaeps.set(eps_nuevas)
+                    cambios = True
+        else:
+            hospital.listaeps.set([])
+            cambios = True
+
         
         if cambios:
             hospital.save()
@@ -281,7 +271,7 @@ class HospitalView(View):
         
         if id:
             try:
-                hospital = self.get_hospital_by_id(id)
+                hospital = self.buscar_hospital_por_id(id)
                 hospital.delete()
                 return JsonResponse({'mensaje': "Hospital eliminado correctamente."})
             except Hospital.DoesNotExist:
@@ -289,7 +279,7 @@ class HospitalView(View):
         
         if nombre:
             try:
-                hospital = self.get_hospital_by_nombre(nombre)
+                hospital = self.buscar_hospital_por_nombre(nombre)
                 hospital.delete()
                 return JsonResponse({'mensaje': "Hospital eliminado correctamente."})
             except Hospital.DoesNotExist:
@@ -300,10 +290,10 @@ class EpsView(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
     
-    def get_eps_by_id(self, id):
+    def buscar_eps_por_id(self, id):
         return EPS.objects.get(id=id)
     
-    def get_eps_by_nombre(self, nombre):
+    def buscar_eps_por_nombre(self, nombre):
         return EPS.objects.get(nombre=nombre)
 
     def get(self, request):
@@ -319,7 +309,7 @@ class EpsView(View):
             nombre = data.get('nombre')
             if id:
                 try:
-                    eps = self.get_eps_by_id(id)
+                    eps = self.buscar_eps_por_id(id)
                     return JsonResponse({
                         'id': eps.id,
                         'nombre': eps.nombre
@@ -329,7 +319,7 @@ class EpsView(View):
             
             if nombre:
                 try:
-                    eps = self.get_eps_by_nombre(nombre)
+                    eps = self.buscar_eps_por_nombre(nombre)
                     return JsonResponse({
                         'id': eps.id,
                         'nombre': eps.nombre
@@ -353,7 +343,7 @@ class EpsView(View):
         if eps_list:
             return JsonResponse(eps_list, safe=False, status=200)
         else:
-            return JsonResponse({'mensaje': "No se encontraron eps en la base de datos"},status = 400)
+            return JsonResponse({'mensaje': "No se encontraron eps en la base de datos"})
 
     
     def post(self, request):
@@ -390,30 +380,27 @@ class EpsView(View):
             return JsonResponse({'mensaje': 'El cuerpo de la solicitud no es JSON valido'}, status=400)
         id = data.get('id')
         nombre = data.get('nombre')
-        nombre_nuevo = data.get('nombre_nuevo')
         cambios = False
 
         if id:
-            try:
-                eps = self.get_eps_by_id(id)
-            except EPS.DoesNotExist:
-                return JsonResponse({'mensaje': "La eps con ese ID no existe."}, status=404)
-            if nombre_nuevo and nombre_nuevo != eps.nombre:
-                if EPS.objects.filter(nombre=nombre_nuevo).exists():
+            eps = self.buscar_eps_por_id(id)
+            if eps is None:
+                return JsonResponse({'mensaje': "La eps con ese id no existe."}, status=404)
+            if nombre and nombre != eps.nombre:
+                if EPS.objects.filter(nombre=nombre).exists():
                     return JsonResponse({'mensaje': "El nuevo nombre ya esta en uso por otra EPS."}, status=400)
-                eps.nombre = nombre_nuevo
+                eps.nombre = nombre
                 cambios = True
             
         elif nombre:
-            try:
-                eps = self.get_eps_by_nombre(nombre)
-            except EPS.DoesNotExist:
+            eps = self.buscar_eps_por_nombre(nombre)
+            if eps is None:
                 return JsonResponse({'mensaje': "La eps con ese nombre no existe."}, status=404)
             
-            if nombre_nuevo and nombre_nuevo != eps.nombre:
-                if EPS.objects.filter(nombre=nombre_nuevo).exists():
-                    return JsonResponse({'mensaje': "El nuevo nombre ya esta en uso por otra eps."}, status=400)
-                eps.nombre = nombre_nuevo
+            if nombre and nombre != eps.nombre:
+                if EPS.objects.filter(nombre=nombre).exists():
+                    return JsonResponse({'mensaje': "El nombre ya esta en uso por otra eps."}, status=400)
+                eps.nombre = nombre
                 cambios = True
 
         if cambios:
@@ -435,7 +422,7 @@ class EpsView(View):
         
         if id:
             try:
-                eps = self.get_eps_by_id(id)
+                eps = self.buscar_eps_por_id(id)
                 eps.delete()
                 return JsonResponse({'mensaje': "Eps eliminada correctamente."})
             except EPS.DoesNotExist:
@@ -443,7 +430,7 @@ class EpsView(View):
         
         if nombre:
             try:
-                eps = self.get_eps_by_nombre(nombre)
+                eps = self.buscar_eps_por_nombre(nombre)
                 eps.delete()
                 return JsonResponse({'mensaje': "Eps eliminada correctamente."})
             except EPS.DoesNotExist:
@@ -455,10 +442,10 @@ class EspecialidadView(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
     
-    def get_especialidad_by_id(self, id):
+    def buscar_especialidad_por_id(self, id):
         return Especialidad.objects.get(id=id)
     
-    def get_especialidad_by_nombre(self, nombre):
+    def buscar_especialidad_por_nombre(self, nombre):
         return Especialidad.objects.get(nombre=nombre)
 
     def get(self, request):
@@ -473,25 +460,26 @@ class EspecialidadView(View):
             id = data.get('id')
             nombre = data.get('nombre')
             if id:
-                try:
-                    especialidad = self.get_especialidad_by_id(id)
+                especialidad = self.buscar_especialidad_por_id(id)
+                if especialidad:
                     return JsonResponse({
                         'id': especialidad.id,
                         'nombre': especialidad.nombre
                     })
-                except Especialidad.DoesNotExist:
+                else:
                     return JsonResponse({'mensaje': "La especialidad con ese ID no existe en la base de datos"}, status=404)
             
             if nombre:
-                try:
-                    especialidad = self.get_especialidad_by_nombre(nombre)
+                especialidad = self.buscar_especialidad_por_nombre(nombre)
+                if especialidad:
                     return JsonResponse({
                         'id': especialidad.id,
                         'nombre': especialidad.nombre
                     })
-                except Especialidad.DoesNotExist:
+                else:
                     datos = {'mensaje': "Especialidad no encontrada con ese nombre en la base de datos"}
                     return JsonResponse(datos, status=404)
+                
             return JsonResponse({'mensaje': "No hay datos validos de busqueda de especialidad dentro de la peticion"}, status=404)
 
         especialidades = Especialidad.objects.all()
@@ -505,7 +493,7 @@ class EspecialidadView(View):
         if listaesp:
             return JsonResponse(listaesp, safe=False, status=200)
         else:
-            return JsonResponse({'mensaje': "No se encontraron especialidades en la base de datos"},status=400)
+            return JsonResponse({'mensaje': "No se encontraron especialidades en la base de datos"})
     
     def post(self, request):
         try:
@@ -546,7 +534,7 @@ class EspecialidadView(View):
 
         if id:
             try:
-                especialidad = self.get_especialidad_by_id(id)
+                especialidad = self.buscar_especialidad_por_id(id)
             except Especialidad.DoesNotExist:
                 return JsonResponse({'mensaje': "La especialidad con ese ID no existe."}, status=404)
             if nombre_nuevo and nombre_nuevo != especialidad.nombre:
@@ -557,7 +545,7 @@ class EspecialidadView(View):
             
         elif nombre:
             try:
-                especialidad = self.get_especialidad_by_nombre(nombre)
+                especialidad = self.buscar_especialidad_por_nombre(nombre)
             except Especialidad.DoesNotExist:
                 return JsonResponse({'mensaje': "La especialidad con ese nombre no existe."}, status=404)
             
@@ -586,7 +574,7 @@ class EspecialidadView(View):
         
         if id:
             try:
-                especialidad = self.get_especialidad_by_id(id)
+                especialidad = self.buscar_especialidad_por_id(id)
                 especialidad.delete()
                 return JsonResponse({'mensaje': "Especialidad eliminada correctamente."})
             except Especialidad.DoesNotExist:
@@ -594,7 +582,7 @@ class EspecialidadView(View):
         
         if nombre:
             try:
-                especialidad = self.get_especialidad_by_nombre(nombre)
+                especialidad = self.buscar_especialidad_por_nombre(nombre)
                 especialidad.delete()
                 return JsonResponse({'mensaje': "Especialidad eliminada correctamente."})
             except Especialidad.DoesNotExist:

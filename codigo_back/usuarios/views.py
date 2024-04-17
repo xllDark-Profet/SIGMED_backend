@@ -5,15 +5,23 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.views import View
+from django.db import transaction
+from django.contrib.auth.hashers import make_password
 
-from hospitales.models import EPS, Hospital
 from sigmed.constants import TIPOS_USUARIO
+from hospitales.models import EPS, Hospital
 from usuarios.models import Usuario
 
 class UsuarioView(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
+    
+    def buscar_por_id(self, id_usuario):
+        try:
+            return Usuario.objects.get(user__id=id_usuario)
+        except Usuario.DoesNotExist:
+            return None
     
     def buscar_por_username(self, nombre_usuario):
         try:
@@ -63,7 +71,7 @@ class UsuarioView(View):
             'telefono': u.telefono,
             'nombre_usuario': u.user.username,
             'tipo_usuario': u.tipo_usuario,
-            'codigo_registro': u.codigo_registro
+            'hospital': u.hospital.id
         }
     
     def mostrar_usuario(self, u):
@@ -79,7 +87,7 @@ class UsuarioView(View):
             'tipo_usuario': u.tipo_usuario,
             'tipo_sangre': u.tipo_sangre,
             'fecha_nacimiento': u.fecha_nacimiento,
-            'eps': u.eps.nombre
+            'eps': u.eps.id
         }
     
     def get(self, request):
@@ -94,69 +102,54 @@ class UsuarioView(View):
             tipo_identificacion = data.get('tipo_identificacion')
             identificacion = data.get('identificacion')
             username = data.get('username')
+            id = data.get('id')
 
-            if username:
-                try:
-                    usuario = self.buscar_por_username(username)
-                    if not usuario:
-                        return JsonResponse({'mensaje': 'No hay un usuario con ese nombre de usuario'}, status=404)
-                    if usuario.user.is_active:
-                        if usuario.tipo_usuario.lower() == "administrador":
-                            return JsonResponse(self.mostrar_admin(usuario), status=200)
-                        elif usuario.tipo_usuario.lower() == "moderador":
-                            return JsonResponse(self.mostrar_moderador(usuario), status=200)
-                        elif usuario.tipo_usuario.lower() == "administrador":
-                            return JsonResponse(self.mostrar_usuario(usuario), status=200)
-                except Usuario.DoesNotExist:
-                    return JsonResponse({'mensaje': "No se encontro ningun usuario con el username proporcionado."}, status=404)
+            if id:
+                usuario = self.buscar_por_id(id)
+                if not usuario:
+                    return JsonResponse({'mensaje': 'No hay un usuario con ese id en el sistema'}, status=404)
+                if usuario.tipo_usuario.lower() == "administrador":
+                    return JsonResponse(self.mostrar_admin(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "moderador":
+                    return JsonResponse(self.mostrar_moderador(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "administrador":
+                    return JsonResponse(self.mostrar_usuario(usuario), status=200)
             
-            elif tipo_identificacion:
-                if identificacion:
-                    try:
-                        usuario = self.buscar_por_identificacion(tipo_identificacion, identificacion)
-                        if not usuario:
-                            return JsonResponse({'mensaje': 'No hay un usuario con ese tipo y numero de identificacion'}, status=404)
-                        if usuario.user.is_active:
-                            if usuario.tipo_usuario.lower() == "administrador":
-                                return JsonResponse(self.mostrar_admin(usuario), status=200)
-                            elif usuario.tipo_usuario.lower() == "moderador":
-                                return JsonResponse(self.mostrar_moderador(usuario), status=200)
-                            elif usuario.tipo_usuario.lower() == "administrador":
-                                return JsonResponse(self.mostrar_usuario(usuario), status=200)
-                    except Usuario.DoesNotExist:
-                        return JsonResponse({'mensaje': "No se encontro ningun usuario con el tipo y numero de documento proporcionados."}, status=404)
-                else:
-                    return JsonResponse({'mensaje': "Hace falta el numero de identificacion."}, status=400)
+            if username:
+                usuario = self.buscar_por_username(username)
+                if not usuario:
+                    return JsonResponse({'mensaje': 'No hay un usuario con ese nombre de usuario'}, status=404)
+                if usuario.tipo_usuario.lower() == "administrador":
+                    return JsonResponse(self.mostrar_admin(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "moderador":
+                    return JsonResponse(self.mostrar_moderador(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "administrador":
+                    return JsonResponse(self.mostrar_usuario(usuario), status=200)
+            
+            elif tipo_identificacion and identificacion:
+                usuario = self.buscar_por_identificacion(tipo_identificacion, identificacion)
+                if not usuario:
+                    return JsonResponse({'mensaje': 'No hay un usuario con ese nombre de usuario'}, status=404)
+                if usuario.tipo_usuario.lower() == "administrador":
+                    return JsonResponse(self.mostrar_admin(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "moderador":
+                    return JsonResponse(self.mostrar_moderador(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "administrador":
+                    return JsonResponse(self.mostrar_usuario(usuario), status=200)
                 
-            elif identificacion:
-                if tipo_identificacion:
-                    try:
-                        usuario = self.buscar_por_identificacion(tipo_identificacion, identificacion)
-                        if usuario.user.is_active:
-                            if usuario.tipo_usuario.lower() == "administrador":
-                                return JsonResponse(self.mostrar_admin(usuario), status=200)
-                            elif usuario.tipo_usuario.lower() == "moderador":
-                                return JsonResponse(self.mostrar_moderador(usuario), status=200)
-                            elif usuario.tipo_usuario.lower() == "administrador":
-                                return JsonResponse(self.mostrar_usuario(usuario), status=200)
-                    except Usuario.DoesNotExist:
-                        return JsonResponse({'mensaje': "No se encontro ningun usuario con el tipo y numero de documento proporcionados."}, status=404)
-                else:
-                    return JsonResponse({'mensaje': "Hace falta el tipo de identificacion."}, status=400)
-            return JsonResponse({'mensaje': "No hay datos validos de busqueda de usuario dentro de la peticion"}, status=400)
+            return JsonResponse({'mensaje': "No hay datos validos de busqueda de un usuario dentro de la peticion"}, status=400)
         
         usuarios = Usuario.objects.all()
         usuarios_list = []
         
         for usuario in usuarios:
-            if usuario.user.is_active:
-                if usuario.tipo_usuario.lower() == "administrador":
-                    usuario_info = self.mostrar_admin(usuario)
-                elif usuario.tipo_usuario.lower() == "moderador":
-                    usuario_info = self.mostrar_moderador(usuario)
-                elif usuario.tipo_usuario.lower() == "usuario":
-                    usuario_info = self.mostrar_usuario(usuario)
-                usuarios_list.append(usuario_info)
+            if usuario.tipo_usuario.lower() == "administrador":
+                usuario_info = self.mostrar_admin(usuario)
+            elif usuario.tipo_usuario.lower() == "moderador":
+                usuario_info = self.mostrar_moderador(usuario)
+            elif usuario.tipo_usuario.lower() == "usuario":
+                usuario_info = self.mostrar_usuario(usuario)
+            usuarios_list.append(usuario_info)
         
         if not usuarios_list:
             return JsonResponse({'mensaje': 'No hay usuarios en el sistema'})
@@ -168,69 +161,65 @@ class UsuarioView(View):
         try:
             data = json.loads(request.body)
         except json.decoder.JSONDecodeError:
-            return JsonResponse({'mensaje': 'El cuerpo de la solicitud no es JSON válido'}, status=400)
+            return JsonResponse({'mensaje': 'El cuerpo de la solicitud no es JSON valido'}, status=400)
 
         if not isinstance(data, list):
             required_fields = ['tipo_identificacion', 'identificacion', 'nombre', 'apellido', 'correo', 'telefono', 'nombre_usuario', 'clave', 'tipo_usuario']
             for field in required_fields:
                 if field not in data or not data[field]:
                     return JsonResponse({'mensaje': f'El campo {field} es requerido'}, status=400)
+                
+            usuario = Usuario()
 
-            tipo_identificacion = data.get('tipo_identificacion')
-            identificacion = data.get('identificacion')
+            usuario.tipo_identificacion = data.get('tipo_identificacion')
+            usuario.identificacion = data.get('identificacion')
             nombre = data.get('nombre')
             apellido = data.get('apellido')
             correo = data.get('correo')
-            telefono = data.get('telefono')
+            usuario.telefono = data.get('telefono')
             nombre_usuario = data.get('nombre_usuario')
             clave = data.get('clave')
-            fecha_nacimiento = data.get('fecha_nacimiento')
-            tipo_sangre = data.get('tipo_sangre')
-            tipo_usuario = data.get('tipo_usuario')
-            codigo_registro = data.get('codigo_registro')
-            eps = data.get('eps')
+            clave = make_password(clave)
+            tipo_usuario = data.get('tipo_usuario').lower()
+            if User.objects.filter(username=nombre_usuario).exists():
+                return JsonResponse({'mensaje': 'Ya hay un usuario con ese nombre de usuario en la base de datos.'}, status=400)
+            user = User(username=nombre_usuario, email=correo, password=clave, first_name=nombre, last_name=apellido)
+            usuario.user = user
+                
+            if tipo_usuario not in [tipo.lower() for tipo in TIPOS_USUARIO]:
+                return JsonResponse({'mensaje': 'No existe ese tipo de usuario.'}, status=400)
             
-            if tipo_usuario.lower() == "moderador":
-                if codigo_registro:
+            usuario.tipo_usuario = tipo_usuario
+            if tipo_usuario == "moderador":
+                nombre_hospital = data.get('nombre_hospital')
+                if nombre_hospital:
                     try:
-                        hospital = Hospital.objects.get(codigo_registro=codigo_registro)
+                        hospital = Hospital.objects.get(nombre=nombre_hospital)
+                        if hospital:
+                            usuario.hospital = hospital
                     except Hospital.DoesNotExist:
-                        return JsonResponse({'mensaje': 'No existe un hospital con ese codigo de registro.'}, status=400)
+                        return JsonResponse({'mensaje': 'No existe un hospital con ese nombre.'}, status=400)
                 else:
-                    return JsonResponse({'mensaje': 'Para un moderador es necesario un codigo de registro'}, status=400)
-            elif tipo_usuario.lower() == "usuario":
-                required_fields = ['tipo_sangre', 'fecha_nacimiento', 'eps']
+                    return JsonResponse({'mensaje': 'Para un moderador es necesario un id de hospital'}, status=400)
+            elif tipo_usuario == "usuario":
+                fecha_nacimiento = data.get('fecha_nacimiento')
+                tipo_sangre = data.get('tipo_sangre')
+                nombre_eps = data.get('nombre_eps')
+                required_fields = ['tipo_sangre', 'fecha_nacimiento', 'nombre_eps']
                 for field in required_fields:
                     if field not in data or not data[field]:
                         return JsonResponse({'mensaje': f'El campo {field} es requerido para un usuario'}, status=400)
-                try:
-                    eps = EPS.objects.get(nombre=eps)
-                except EPS.DoesNotExist:
-                    return JsonResponse({'mensaje': 'No existe esa EPS en el sistema.'}, status=400)
+                else:
+                    try:
+                        eps = EPS.objects.get(nombre=nombre_eps)
+                        if eps:
+                            usuario.eps = eps
+                    except EPS.DoesNotExist:
+                        return JsonResponse({'mensaje': 'No existe esa EPS en el sistema con ese nombre.'}, status=400)
+                usuario.fecha_nacimiento = fecha_nacimiento
+                usuario.tipo_sangre = tipo_sangre
 
-            if Usuario.objects.filter(tipo_identificacion=tipo_identificacion, identificacion=identificacion).exists():
-                return JsonResponse({'mensaje': 'Ya hay un usuario con este tipo y numero de identificacion en la base de datos'}, status=400)
-
-            if Usuario.objects.filter(user__username=nombre_usuario).exists():
-                return JsonResponse({'mensaje': 'Ya hay un usuario con ese nombre de usuario en la base de datos'}, status=400)
-            
-            if Usuario.objects.filter(telefono=telefono).exists():
-                return JsonResponse({'mensaje': 'Ya hay un usuario con ese telefono en la base de datos'}, status=400)
-            
-            user = User.objects.create_user(username=nombre_usuario, email=correo, password=clave, first_name=nombre, last_name=apellido)
-
-            usuario = Usuario(
-                user=user,
-                tipo_identificacion=tipo_identificacion,
-                identificacion=identificacion,
-                telefono=telefono,
-                fecha_nacimiento=fecha_nacimiento,
-                tipo_sangre=tipo_sangre,
-                tipo_usuario=tipo_usuario,
-                codigo_registro=codigo_registro,
-                eps=eps
-            )
-
+            user.save()
             usuario.save()
 
             return JsonResponse({'mensaje': 'Usuario registrado exitosamente.'}, status=200)
@@ -245,69 +234,64 @@ class UsuarioView(View):
                     users_failed.append({'mensaje': f"El campo '{field}' es requerido en uno de los usuarios."})
                     break
             else:
-                tipo_identificacion = user_data.get('tipo_identificacion')
-                identificacion = user_data.get('identificacion')
+                usuario = Usuario()
+
+                usuario.tipo_identificacion = user_data.get('tipo_identificacion')
+                usuario.identificacion = user_data.get('identificacion')
                 nombre = user_data.get('nombre')
                 apellido = user_data.get('apellido')
                 correo = user_data.get('correo')
-                telefono = user_data.get('telefono')
+                usuario.telefono = user_data.get('telefono')
                 nombre_usuario = user_data.get('nombre_usuario')
                 clave = user_data.get('clave')
-                fecha_nacimiento = user_data.get('fecha_nacimiento')
-                tipo_sangre = user_data.get('tipo_sangre')
-                tipo_usuario = user_data.get('tipo_usuario')
-                codigo_registro = user_data.get('codigo_registro')
-                eps = user_data.get('eps')
+                clave = make_password(clave)
+                tipo_usuario = user_data.get('tipo_usuario').lower()
+                if User.objects.filter(username=nombre_usuario).exists():
+                    users_failed.append({'mensaje': f"Nombre de usuario '{nombre_usuario}' ya existe en la base de datos."})
+                    continue
+                user = User(username=nombre_usuario, email=correo, password=clave, first_name=nombre, last_name=apellido)
+                usuario.user = user
                 
-                if tipo_usuario.lower() == "moderador":
-                    if codigo_registro:
+                if tipo_usuario not in [tipo.lower() for tipo in TIPOS_USUARIO]:
+                    users_failed.append({'mensaje': 'No existe ese tipo de usuario.'})
+                    continue
+                
+                usuario.tipo_usuario = tipo_usuario
+                
+                if tipo_usuario == "moderador":
+                    nombre_hospital = user_data.get('nombre_hospital')
+                    if nombre_hospital:
                         try:
-                            hospital = Hospital.objects.get(codigo_registro=codigo_registro)
+                            hospital = Hospital.objects.get(nombre=nombre_hospital)
+                            if hospital:
+                                usuario.hospital = hospital
                         except Hospital.DoesNotExist:
-                            users_failed.append({'mensaje': 'No existe un hospital con ese código de registro.'})
+                            users_failed.append({'mensaje':  f"No existe un hospital con el nombre '{nombre_hospital}'."})
                             continue
                     else:
-                        users_failed.append({'mensaje': 'Para un moderador es necesario un código de registro.'})
+                        users_failed.append({'mensaje': 'Para un moderador es necesario un id de hospital.'})
                         continue
-                elif tipo_usuario.lower() == "usuario":
-                    required_fields = ['tipo_sangre', 'fecha_nacimiento', 'eps']
+                elif tipo_usuario == "usuario":
+                    fecha_nacimiento = user_data.get('fecha_nacimiento')
+                    tipo_sangre = user_data.get('tipo_sangre')
+                    nombre_eps = user_data.get('nombre_eps')
+                    required_fields = ['tipo_sangre', 'fecha_nacimiento', 'nombre_eps']
                     for field in required_fields:
                         if field not in user_data or not user_data[field]:
                             users_failed.append({'mensaje': f"El campo '{field}' es requerido para un usuario."})
                             break
                     else:
                         try:
-                            eps = EPS.objects.get(nombre=eps)
+                            eps = EPS.objects.get(nombre=nombre_eps)
+                            if eps:
+                                usuario.eps = eps
                         except EPS.DoesNotExist:
-                            users_failed.append({'mensaje': 'No existe esa EPS en el sistema.'})
+                            users_failed.append({'mensaje':  f"No existe una eps con el nombre '{nombre_eps}'."})
                             continue
+                    usuario.fecha_nacimiento = fecha_nacimiento
+                    usuario.tipo_sangre = tipo_sangre
 
-                if Usuario.objects.filter(tipo_identificacion=tipo_identificacion, identificacion=identificacion).exists():
-                    users_failed.append({'mensaje': 'Ya hay un usuario con este tipo y número de identificación en la base de datos.'})
-                    continue
-
-                if Usuario.objects.filter(user__username=nombre_usuario).exists():
-                    users_failed.append({'mensaje': 'Ya hay un usuario con ese nombre de usuario en la base de datos.'})
-                    continue
-                
-                if Usuario.objects.filter(telefono=telefono).exists():
-                    users_failed.append({'mensaje': 'Ya hay un usuario con ese teléfono en la base de datos.'})
-                    continue
-                
-                user = User.objects.create_user(username=nombre_usuario, email=correo, password=clave, first_name=nombre, last_name=apellido)
-
-                usuario = Usuario(
-                    user=user,
-                    tipo_identificacion=tipo_identificacion,
-                    identificacion=identificacion,
-                    telefono=telefono,
-                    fecha_nacimiento=fecha_nacimiento,
-                    tipo_sangre=tipo_sangre,
-                    tipo_usuario=tipo_usuario,
-                    codigo_registro=codigo_registro,
-                    eps=eps
-                )
-
+                user.save()
                 usuario.save()
 
                 users_created.append({'mensaje': f"Usuario '{nombre_usuario}' registrado exitosamente."})
@@ -329,57 +313,59 @@ class UsuarioView(View):
 
         tipo_identificacion = data.get('tipo_identificacion')
         identificacion = data.get('identificacion')
-        usuario = self.buscar_por_identificacion(tipo_identificacion, identificacion)
+        id = data.get('id')
+        
+        if id:
+            usuario = self.buscar_por_id(id)
+        elif tipo_identificacion and identificacion:
+            usuario = self.buscar_por_identificacion(tipo_identificacion, identificacion)
         
         if not usuario:
-            return JsonResponse({'mensaje': 'El usuario no existe en el sistema'}, status=404)
+            return JsonResponse({'mensaje': 'Debe ingresar un id de usuario o un tipo y numero de documento validos'}, status=404)
 
         nombre_usuario = data.get('nombre_usuario')
         clave = data.get('clave')
         nueva_clave = data.get('nueva_clave')
+        nueva_clave = make_password(nueva_clave)
         nombre = data.get('nombre')
         apellido = data.get('apellido')
         correo = data.get('correo')
         telefono = data.get('telefono')
         fecha_nacimiento = data.get('fecha_nacimiento')
         tipo_sangre = data.get('tipo_sangre')
-        tipo_usuario = data.get('tipo_usuario')
-        codigo_registro = data.get('codigo_registro')
-        eps = data.get('eps')
+        hospital_id = data.get('hospital_id')
+        eps_id = data.get('eps_id')
 
-        user = usuario.user
-        if nombre:
-            user.first_name = nombre
+        if nombre and nombre != usuario.user.first_name:
+            usuario.user.first_name = nombre
             cambios = True
-        if apellido:
-            user.last_name = apellido
+        if apellido and apellido != usuario.user.last_name:
+            usuario.user.last_name = apellido
             cambios = True
-        if correo:
+        if correo and correo != usuario.user.email:
             if correo != usuario.user.email:
                 if self.buscar_por_correo(correo):
                     return JsonResponse({'mensaje': 'Ya existe ese correo.'}, status=400)
                 else:
                     cambios=True
-                    user.email = correo
+                    usuario.user.email = correo
         if nombre_usuario:
             if nombre_usuario != usuario.user.username:
                 if self.buscar_por_username(nombre_usuario):
                     return JsonResponse({'mensaje': 'Ya existe ese nombre de usuario.'}, status=400)
                 else:
                     cambios=True
-                    user.username = nombre_usuario
+                    usuario.user.username = nombre_usuario
         
         if clave:            
-            if user.check_password(clave):
+            if usuario.user.check_password(clave):
                 if nueva_clave:
                     cambios = True
-                    user.set_password(nueva_clave)
+                    usuario.user.set_password(nueva_clave)
                 else:
                     return JsonResponse({'mensaje': 'La clave actual del usuario es incorrecta.'}, status=400)
             else:
                 return JsonResponse({'mensaje': 'La clave actual del usuario es incorrecta.'}, status=400)
-            
-        user.save()
 
         if telefono:
             if telefono != usuario.telefono:
@@ -389,25 +375,28 @@ class UsuarioView(View):
                     usuario.telefono = telefono
                     cambios = True
                     
-        if fecha_nacimiento:
+        if fecha_nacimiento and fecha_nacimiento != usuario.fecha_nacimiento:
             usuario.fecha_nacimiento = fecha_nacimiento
             cambios = True
-        if tipo_sangre:
+        if tipo_sangre and tipo_sangre != usuario.tipo_sangre:
             usuario.tipo_sangre = tipo_sangre
             cambios = True
-        if tipo_usuario:
-            usuario.tipo_usuario = tipo_usuario
-            cambios = True
         
-        if codigo_registro:
+        if hospital_id:
             try:
-                hospital = Hospital.objects.get(codigo_registro=codigo_registro)
+                hospital = Hospital.objects.get(id=hospital_id)
+                if hospital != usuario.hospital:
+                    usuario.hospital = hospital
+                    cambios = True
             except Hospital.DoesNotExist:
                 return JsonResponse({'mensaje': 'No existe un hospital con ese codigo de registro.'}, status=400)
         
         if eps:
             try:
-                eps = EPS.objects.get(nombre=eps)
+                eps = EPS.objects.get(id = eps_id)
+                if eps != usuario.eps:
+                    usuario.eps = eps
+                    cambios = True
             except EPS.DoesNotExist:
                 return JsonResponse({'mensaje': 'No existe una EPS con ese codigo de registro.'}, status=400)
 
@@ -423,35 +412,39 @@ class UsuarioView(View):
             data = json.loads(request.body)
         except json.decoder.JSONDecodeError:
             return JsonResponse({'mensaje': 'El cuerpo de la solicitud no es JSON valido'}, status=400)
+        
+        id = data.get('id')
         nombre_usuario = data.get('nombre_usuario')
         tipo_identificacion = data.get('tipo_identificacion')
         identificacion = data.get('identificacion')
 
         usuario = None
-
-        if nombre_usuario:
-            try:
-                usuario = self.buscar_por_username(nombre_usuario)
-            except Usuario.DoesNotExist:
-                return JsonResponse({'mensaje': 'No se encontro ningun usuario por ese nombre de usuario'}, status=404)
-            
-        if tipo_identificacion and identificacion:
-            try:
-                usuario = self.buscar_por_identificacion(tipo_identificacion, identificacion)
-            except Usuario.DoesNotExist:
-                return JsonResponse({'mensaje': 'No se encontro ningun usuario con ese tipo y numero de identificiacion'}, status=404)
         
+        if id:
+            usuario = self.buscar_por_id(id)
+        elif nombre_usuario:
+            usuario = self.buscar_por_username(nombre_usuario)   
+        elif tipo_identificacion and identificacion:
+            usuario = self.buscar_por_identificacion(tipo_identificacion, identificacion)
+            
         if usuario:
-            if usuario.user.is_active:
-                usuario.user.is_active = False
-                usuario.user.save()
-                return JsonResponse({'mensaje': 'Usuario inactivado exitosamente.'}, status=200)
-            else:
-                return JsonResponse({'mensaje': 'Usuario ya se encontraba inactivo.'}, status=400)
+            with transaction.atomic():
+                usuario.user.delete()
+            return JsonResponse({'mensaje': 'Usuario eliminado exitosamente de la base de datos.'}, status=200)
         else:
-            return JsonResponse({'mensaje': 'No se especifico un nombre de usuario o documento valido para inactivar.'}, status=400)
+            return JsonResponse({'mensaje': 'No se especifico un nombre de usuario, documento valido o id para eliminar un usuario.'}, status=400)
         
 class UsuarioLoginView(View):
+    
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def buscar_por_id(self, usuario_id):
+        try:
+            return Usuario.objects.get(user__id=usuario_id)
+        except Usuario.DoesNotExist:
+            return None
     
     def buscar_por_username(self, nombre_usuario):
         try:
@@ -478,58 +471,30 @@ class UsuarioLoginView(View):
         except json.decoder.JSONDecodeError:
             return JsonResponse({'mensaje': 'El cuerpo de la solicitud no es JSON valido'}, status=400)
         
-        tipo_usuario = data.get('tipo_usuario')
+        acceso = data.get('acceso')
+        clave = data.get('clave')
+        usuario = None
         
-        if tipo_usuario and tipo_usuario.lower() in TIPOS_USUARIO:
-            username = data.get('username')
-            telefono = data.get('telefono')
-            email = data.get('email')
-            clave = data.get('clave')
-            usuario = None
-            
-            if not clave:
-                return JsonResponse({'mensaje': 'Falta la clave'}, status=400)
-            
-            if username:
-                usuario = self.buscar_por_username(username)
-                if usuario is None:
-                    return JsonResponse({'mensaje': 'No hay un usuario con ese nombre de usuario'}, status=400)                             
-            elif email:
-                usuario = self.buscar_por_correo(email)
-                if usuario is None:
-                    return JsonResponse({'mensaje': 'No hay un usuario con ese correo'}, status=400)
-            elif telefono:
-                usuario = self.buscar_por_telefono(telefono)
-                if usuario is None:
-                    return JsonResponse({'mensaje': 'No hay un usuario con ese telefono'}, status=400)
-            else:
-                return JsonResponse({'mensaje': 'Debe proporcionar un telefono, nombre de usuario o un correo electronico'}, status=400)
-            
-            if usuario.tipo_usuario.lower() != tipo_usuario.lower():
-                return JsonResponse({'mensaje': 'El tipo de usuario para ese usuario es incorrecto'}, status=400)
-            
-            if not usuario.user.is_active:
-                return JsonResponse({'mensaje': 'El usuario se encuentra inactivo'}, status=401)
-            
-            if tipo_usuario.lower() == "moderador":
-                codigo_registro = data.get('codigo_registro')
-                if not codigo_registro:
-                    return JsonResponse({'mensaje': 'Hace falta un codigo de registro para el acceso de un moderador'}, status=400)
-                
-                try:
-                    hospital = Hospital.objects.get(codigo_registro=codigo_registro)
-                except Hospital.DoesNotExist:
-                    return JsonResponse({'mensaje': 'No existe un hospital con ese codigo de registro.'}, status=400)
-                
-                if usuario.codigo_registro != codigo_registro:
-                    return JsonResponse({'mensaje': 'El codigo de registro del usuario es incorrecto'}, status=400)
-            
-            if not usuario.user.check_password(clave):
-                return JsonResponse({'mensaje': 'Acceso incorrecto, clave erronea.'}, status=400)
-            
-            # Aqui el resto
-            response = JsonResponse({"mensaje": "Si"})
-            
-            return response
-        else:
-            return JsonResponse({'mensaje': 'No hay un tipo de usuario o el tipo de usuario es incorrecto'}, status=400)
+        usuario = self.buscar_por_correo(acceso)
+        if usuario is None:
+            usuario = self.buscar_por_username(acceso)
+                    
+        if usuario is None:
+            return JsonResponse({'mensaje': 'Debe proporcionar un nombre de usuario o un correo electrónico que se encuentre en la base de datos'}, status=400)
+        
+        if not clave:
+            return JsonResponse({'mensaje': 'Falta la clave'}, status=400)
+        
+        if not usuario.user.check_password(clave):
+            return JsonResponse({'mensaje': 'Acceso incorrecto, clave incorrecta.'}, status=400)
+        
+        if not usuario.user.is_active:
+            return JsonResponse({'mensaje': 'El usuario se encuentra inactivo'}, status=401)
+        
+        tipo_usuario = usuario.tipo_usuario.lower()
+        response = {'mensaje': 'Acceso exitoso, contraseña correcta.', 'tipo_usuario': tipo_usuario}
+        
+        if tipo_usuario == 'moderador':
+            response['nombre_hospital'] = usuario.hospital.nombre
+        
+        return JsonResponse(response)

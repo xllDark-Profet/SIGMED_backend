@@ -3,7 +3,8 @@
 		"_postman_id": "ca89e45a-5b83-414c-a810-f23c01322088",
 		"name": "django_mysql_sigmed",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "29993678"
+		"_exporter_id": "29993678",
+		"_collection_link": "https://interstellar-shuttle-694175.postman.co/workspace/My-Workspace~4c2d308b-8336-4105-8b0c-d5a30a4c6ef6/collection/29993678-ca89e45a-5b83-414c-a810-f23c01322088?action=share&source=collection_link&creator=29993678"
 	},
 	"item": [
 		{
@@ -97,10 +98,10 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"tipo_identificacion\": \"CC\",\r\n    \"identificacion\": \"12345\",\r\n    \"nombre\": \"Perfil de\",\r\n    \"apellido\": \"Pruebas 3\",\r\n    \"correo\": \"pruebas3@example.com\",\r\n    \"telefono\": \"1234567890\",\r\n    \"nombre_usuario\": \"prueba3\",\r\n    \"clave\": \"clave123\",\r\n    \"tipo_usuario\": \"Usuario\",\r\n    \"fecha_nacimiento\": \"1999-05-15\",\r\n    \"tipo_sangre\": \"B+\",\r\n    \"eps\": \"Famisanar\"\r\n}",
+							"raw": "[\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 1010248768,\r\n        \"nombre\": \"Sebastian\",\r\n        \"apellido\": \"Sandoval\",\r\n        \"correo\": \"sebas@example.com\",\r\n        \"telefono\": 3043392632,\r\n        \"nombre_usuario\": \"sebas\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Administrador\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 123,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas\",\r\n        \"correo\": \"pruebas@example.com\",\r\n        \"telefono\": 123456789,\r\n        \"nombre_usuario\": \"prueba\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Moderador\",\r\n        \"nombre_hospital\": \"Hospital Infantil Universitario San Jose\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 1234,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas 2\",\r\n        \"correo\": \"pruebas2@example.com\",\r\n        \"telefono\": 12345678,\r\n        \"nombre_usuario\": \"prueba2\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Usuario\",\r\n        \"fecha_nacimiento\": \"1999-05-15\",\r\n        \"tipo_sangre\": \"B+\",\r\n        \"nombre_eps\": \"Famisanar\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 12345,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas 3\",\r\n        \"correo\": \"pruebas3@example.com\",\r\n        \"telefono\": 1234567899,\r\n        \"nombre_usuario\": \"prueba3\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Usuario\",\r\n        \"fecha_nacimiento\": \"1999-05-15\",\r\n        \"tipo_sangre\": \"A+\",\r\n        \"nombre_eps\": \"Emermedica\"\r\n    }\r\n]",
 							"options": {
 								"raw": {
-									"language": "text"
+									"language": "json"
 								}
 							}
 						},
@@ -209,8 +210,17 @@
 				{
 					"name": "login",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"acceso\": \"prueba\",\r\n    \"clave\": \"clave123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:8000/usuarios/login/",
 							"host": [
@@ -220,6 +230,35 @@
 							"path": [
 								"usuarios",
 								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar usuario por id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/usuarios/eliminar/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"usuarios",
+								"eliminar",
 								""
 							]
 						}
@@ -319,7 +358,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"prueba\"\r\n}",
+							"raw": "[\r\n    {\"nombre\": \"Pediatria\"},\r\n    {\"nombre\": \"Neurologia\"},\r\n    {\"nombre\": \"Oncologia\"},\r\n    {\"nombre\": \"Ginecologia\"},\r\n    {\"nombre\": \"Cardiologia\"},\r\n    {\"nombre\": \"Psicologia\"}\r\n]",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -348,7 +387,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"7\",\r\n    \"nombre_nuevo\": \"Pruebas\"\r\n}",
+							"raw": "{\r\n    \"id\": \"6\",\r\n    \"nombre_nuevo\": \"Psicologia\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -550,7 +589,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"prueba\"\r\n}",
+							"raw": "[\r\n    {\"nombre\": \"Compensar\"},\r\n    {\"nombre\": \"Famisanar\"},\r\n    {\"nombre\": \"Nueva eps\"},\r\n    {\"nombre\": \"Sura\"}\r\n]",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -812,7 +851,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"nombre\": \"Hospital Infantil Universitario San Jose\",\r\n        \"codigo_registro\": \"HC123\",\r\n        \"latitud\": \"4.665224548607437\",\r\n        \"longitud\": \"-74.07896502839728\",\r\n        \"especialidades\": [\r\n            \"Oncologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital de Engativa\",\r\n        \"codigo_registro\": \"HN456\",\r\n        \"latitud\": \"4.711001914622836\",\r\n        \"longitud\": \"-74.1097278695707\",\r\n        \"especialidades\": [\r\n            \"Neurologia\",\r\n            \"Ginecologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Simon Bolivar\",\r\n        \"codigo_registro\": \"IN789\",\r\n        \"latitud\": \"4.742781005353155\",\r\n        \"longitud\": \"-74.02301609413335\",\r\n        \"especialidades\": [\r\n            \"Oncologia\",\r\n            \"Cardiologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital Universitario Nacional de Colombia\",\r\n        \"codigo_registro\": \"HUNC01\",\r\n        \"latitud\": \"4.648789324522056\",\r\n        \"longitud\": \"-74.09552777693953\",\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Ginecologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital de Kennedy\",\r\n        \"codigo_registro\": \"HK01\",\r\n        \"latitud\": \"4.61657176477835\",\r\n        \"longitud\": \"-74.15332014004682\",\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Neurologia\",\r\n            \"Oncologia\",\r\n            \"Ginecologia\",\r\n            \"Cardiologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital ABC\",\r\n        \"codigo_registro\": \"HK02\",\r\n        \"latitud\": \"123.456\",\r\n        \"longitud\": \"789.012\",\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Neurologia\",\r\n            \"Oncologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"nombre\": \"Hospital Infantil Universitario San Jose\",\r\n        \"latitud\": 4.665224548607437,\r\n        \"longitud\": -74.07896502839728,\r\n        \"especialidades\": [\r\n            \"Oncologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital de Engativa\",\r\n        \"latitud\": 4.711001914622836,\r\n        \"longitud\": -74.1097278695707,\r\n        \"especialidades\": [\r\n            \"Neurologia\",\r\n            \"Ginecologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Simon Bolivar\",\r\n        \"latitud\": 4.742781005353155,\r\n        \"longitud\": -74.02301609413335,\r\n        \"especialidades\": [\r\n            \"Oncologia\",\r\n            \"Cardiologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital Universitario Nacional de Colombia\",\r\n        \"latitud\": 4.648789324522056,\r\n        \"longitud\": -74.09552777693953,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Ginecologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital de Kennedy\",\r\n        \"latitud\": 4.61657176477835,\r\n        \"longitud\": -74.15332014004682,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Neurologia\",\r\n            \"Oncologia\",\r\n            \"Ginecologia\",\r\n            \"Cardiologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital ABC\",\r\n        \"latitud\": 123.456,\r\n        \"longitud\": 789.012,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Neurologia\",\r\n            \"Oncologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -835,42 +874,13 @@
 					"response": []
 				},
 				{
-					"name": "modificar hospital por nombre",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Hospital ABC\",\r\n    \"codigo_registro\": \"HK02\",\r\n    \"latitud\": \"123.456\",\r\n    \"longitud\": \"789.012\",\r\n    \"especialidades\": [\r\n        \"Neurologia\",\r\n        \"Pediatria\"\r\n    ],\r\n    \"listaeps\": [\r\n        \"Compensar\"\r\n    ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8000/hospitales/modificar/",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"hospitales",
-								"modificar",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "modificar hospital por id",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"7\",\r\n    \"nombre_nuevo\": \"Hospital Universitario Nacional de Colombia\"\r\n}",
+							"raw": "{\r\n    \"id\": \"6\",\r\n    \"nombre\": \"Hospital ABCD\",\r\n    \"latitud\": 123.456,\r\n    \"longitud\": 789.012,\r\n    \"especialidades\": [\r\n    ],\r\n    \"listaeps\": [\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -899,7 +909,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"6\"\r\n}",
+							"raw": "{\r\n    \"id\": \"3\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -944,6 +954,232 @@
 							"path": [
 								"hospitales",
 								"eliminar",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "solicitudes",
+			"item": [
+				{
+					"name": "listar solicitudes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/solicitudes/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"solicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar solicitud por id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/solicitudes/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"solicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar solicitud por numero de emergencia",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emergencia\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/solicitudes/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"solicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agregar solicitud",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"latitud\": 10.1234,\r\n    \"longitud\": -75.4567,\r\n    \"usuario\": 3,\r\n    \"emergencia\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/solicitudes/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"solicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar solicitud por id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"latitud\": 10.1234,\r\n    \"longitud\": -75.4567,\r\n    \"usuario\": 1,\r\n    \"id\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/solicitudes/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"solicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar solicitud por numero de emergencia",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"latitud\": 10.1234,\r\n    \"longitud\": -75.4567,\r\n    \"usuario\": 1,\r\n    \"emergencia\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/solicitudes/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"solicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar solicitud por id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/solicitudes/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"solicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar solicitud por numero de emergencia",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emergencia\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/solicitudes/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"solicitudes",
 								""
 							]
 						}
