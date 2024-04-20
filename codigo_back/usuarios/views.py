@@ -475,6 +475,9 @@ class UsuarioLoginView(View):
         clave = data.get('clave')
         usuario = None
         
+        if not acceso or not clave or acceso is "" or clave is "":
+            return JsonResponse({'mensaje': 'Error con el envio de parametros, debe enviarse un acceso (correo o username) y una clave'}, status=400)
+        
         usuario = self.buscar_por_correo(acceso)
         if usuario is None:
             usuario = self.buscar_por_username(acceso)
