@@ -4,7 +4,8 @@ from django.views import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-from emergencia.models import Solicitud
+from .models import Solicitud, Emergencia, Sintoma, Recomendacion
+from .dtos import SolicitudDTO
 from usuarios.models import Usuario
 
 class SolicitudesView(View):
@@ -176,3 +177,168 @@ class SolicitudesView(View):
                 return JsonResponse({'mensaje': 'No se encontro una solicitud con el parametro de busqueda enviado.'}, status=400)
         else:
             return JsonResponse({'mensaje': 'Debe proporcionar un id o un numero de emergencia para detectar la solicitud a eliminar.'}, status=400)
+        
+class EmergenciasListView(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request):
+        emergencias = Emergencia.objects.all()
+        emergencias_list = []
+        
+        if not emergencias:
+            return JsonResponse({'mensaje': 'No hay emergencias en la base de datos'}, status=404)
+        for e in emergencias:
+            emergencia = {
+                'id': e.id,
+                'nombre': e.nombre,
+                'triage': e.triage
+            }
+            emergencias_list.append(emergencia)
+
+        return JsonResponse(emergencias_list, safe=False)
+
+class EmergenciaDetailView(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request):
+        data = {}
+        try:
+            data = json.loads(request.body)
+        except json.decoder.JSONDecodeError:
+            return JsonResponse({'mensaje': 'El cuerpo de la solicitud no es JSON valido'}, status=400)
+        
+        id = data.get('id')
+        
+        if id == "":
+            return JsonResponse({'mensaje': 'Id se recibio vacio'}, status=400)
+        elif not id:
+            return JsonResponse({'mensaje': 'Debe ingresar un id'}, status=400)
+        
+        try:
+            emergencia = Emergencia.objects.get(id=id)
+
+            emergencia = {
+                'id': emergencia.id,
+                'nombre': emergencia.nombre,
+                'triage': emergencia.triage,
+            }
+
+            return JsonResponse(emergencia, status=200)
+        except Emergencia.DoesNotExist:
+            return JsonResponse({'mensaje': 'La emergencia con ese id no existe'}, status=404)
+        
+def cargar_base_conocimiento(archivo):
+    with open(archivo) as f:
+        return json.load(f)['emergencias']
+
+def generar_pregunta(sintoma):
+    return f"¿Tienes {sintoma}? (sí/no): "
+
+def obtener_respuesta(sintoma):
+    return input(generar_pregunta(sintoma['sintoma'])).lower()
+
+def mostrar_emergencia_identificada(emergencia_identificada):
+    if emergencia_identificada:
+        print("\nLa emergencia identificada es:", emergencia_identificada['nombre'])
+    else:
+        print("No se pudo identificar la emergencia.")
+
+def mostrar_puntaje(emergencia, sintomas_acertados):
+    puntaje = sum(sintoma['valor'] for sintoma in emergencia['sintomas'] if sintoma['sintoma'] in sintomas_acertados)
+    print("Puntaje de la emergencia", emergencia['nombre'], ":", puntaje)
+
+def mostrar_sintomas_acertados(sintomas_acertados):
+    print("Síntomas Identificados:", sintomas_acertados)
+
+def mostrar_recomendaciones(emergencia):
+    if 'recomendaciones' in emergencia:
+        print("Recomendaciones para la emergencia:", emergencia['nombre'])
+        recomendaciones = emergencia['recomendaciones']
+        for key, value in recomendaciones.items():
+            print(f"- {key.capitalize()}: {value}")
+    else:
+        print("No hay recomendaciones disponibles para esta emergencia.")
+
+def identificar_emergencia(emergencias, respuestas_usuario):
+    emergencia_identificada = None
+    puntaje_maximo = 0
+    sintomas_acertados = []
+
+    for emergencia in emergencias:
+        sintomas_presentes = []
+        continuar = True
+        for sintoma in emergencia['sintomas']:
+            respuesta = respuestas_usuario.get(sintoma['sintoma'], None)
+
+            if respuesta is None:
+                continuar = False
+                break
+
+            if respuesta == 'no' and sintoma['severidad'] == 'alta':
+                puntaje = sum(sintoma['valor'] for sintoma in emergencia['sintomas'] if sintoma['sintoma'] in sintomas_presentes)
+                continuar = False
+                break
+
+            if respuesta == 'si':
+                sintomas_presentes.append(sintoma['sintoma'])
+
+        if continuar:
+            puntaje = sum(sintoma['valor'] for sintoma in emergencia['sintomas'] if sintoma['sintoma'] in sintomas_presentes)
+            if puntaje > puntaje_maximo:
+                puntaje_maximo = puntaje
+                emergencia_identificada = emergencia
+                sintomas_acertados = sintomas_presentes
+
+    return emergencia_identificada, sintomas_acertados
+
+
+class EnviarRespuestasView(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def post(self, request):
+        try:
+            data = json.loads(request.body)
+        except json.decoder.JSONDecodeError:
+            return JsonResponse({'mensaje': 'El cuerpo de la solicitud no es JSON válido'}, status=400)
+        
+        solicitud_dto = SolicitudDTO(**data)
+
+        if not solicitud_dto.usuario or not solicitud_dto.sintomas_respuestas:
+            return JsonResponse({'mensaje': 'Se requieren el usuario y las respuestas'}, status=400)
+
+        solicitud = Solicitud.objects.create(
+            latitud=solicitud_dto.latitud,
+            longitud=solicitud_dto.longitud,
+            usuario=solicitud_dto.usuario,
+            sintomas_respuestas=solicitud_dto.sintomas_respuestas
+        )
+
+        emergencia_identificada = None
+        sintomas_acertados = []
+
+        for emergencia in Emergencia.objects.all():
+            sintomas_emergencia = emergencia.sintomas.values_list('nombre', flat=True)
+            respuestas_usuario = solicitud_dto.sintomas_respuestas.keys()
+            
+            if set(sintomas_emergencia).issubset(set(respuestas_usuario)):
+                emergencia_identificada = emergencia
+                sintomas_acertados = list(sintomas_emergencia)
+                break
+        
+        if emergencia_identificada:
+            return JsonResponse({
+                'mensaje': 'Respuestas procesadas exitosamente',
+                'emergencia_identificada': {
+                    'nombre': emergencia_identificada.nombre,
+                    'triage': emergencia_identificada.triage,
+                    'sintomas_acertados': sintomas_acertados
+                }
+            }, status=200)
+        else:
+            return JsonResponse({'mensaje': 'No se identificó ninguna emergencia'}, status=404)
