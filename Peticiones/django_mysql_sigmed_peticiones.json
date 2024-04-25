@@ -98,7 +98,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 1010248768,\r\n        \"nombre\": \"Sebastian\",\r\n        \"apellido\": \"Sandoval\",\r\n        \"correo\": \"sebas@example.com\",\r\n        \"telefono\": 3043392632,\r\n        \"nombre_usuario\": \"sebas\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Administrador\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 123,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas\",\r\n        \"correo\": \"pruebas@example.com\",\r\n        \"telefono\": 123456789,\r\n        \"nombre_usuario\": \"prueba\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Moderador\",\r\n        \"nombre_hospital\": \"Hospital Infantil Universitario San Jose\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 1234,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas 2\",\r\n        \"correo\": \"pruebas2@example.com\",\r\n        \"telefono\": 12345678,\r\n        \"nombre_usuario\": \"prueba2\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Usuario\",\r\n        \"fecha_nacimiento\": \"1999-05-15\",\r\n        \"tipo_sangre\": \"B+\",\r\n        \"nombre_eps\": \"Famisanar\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 12345,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas 3\",\r\n        \"correo\": \"pruebas3@example.com\",\r\n        \"telefono\": 1234567899,\r\n        \"nombre_usuario\": \"prueba3\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Usuario\",\r\n        \"fecha_nacimiento\": \"1999-05-15\",\r\n        \"tipo_sangre\": \"A+\",\r\n        \"nombre_eps\": \"Emermedica\"\r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 1010248768,\r\n        \"nombre\": \"Sebastian\",\r\n        \"apellido\": \"Sandoval\",\r\n        \"correo\": \"sebas@example.com\",\r\n        \"telefono\": 3043392632,\r\n        \"nombre_usuario\": \"sebas\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Administrador\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 123,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas\",\r\n        \"correo\": \"pruebas@example.com\",\r\n        \"telefono\": 123456789,\r\n        \"nombre_usuario\": \"prueba\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Moderador\",\r\n        \"nombre_hospital\": \"Hospital Infantil Universitario San Jose\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 1234,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas 2\",\r\n        \"correo\": \"pruebas2@example.com\",\r\n        \"telefono\": 12345678,\r\n        \"nombre_usuario\": \"prueba2\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Usuario\",\r\n        \"fecha_nacimiento\": \"1999-05-15\",\r\n        \"tipo_sangre\": \"B+\",\r\n        \"nombre_eps\": \"Famisanar\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 12345,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas 3\",\r\n        \"correo\": \"pruebas3@example.com\",\r\n        \"telefono\": 1234567899,\r\n        \"nombre_usuario\": \"prueba3\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Usuario\",\r\n        \"fecha_nacimiento\": \"1999-05-15\",\r\n        \"tipo_sangre\": \"A+\",\r\n        \"nombre_eps\": \"Sura\"\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -358,7 +358,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\"nombre\": \"Pediatria\"},\r\n    {\"nombre\": \"Neurologia\"},\r\n    {\"nombre\": \"Oncologia\"},\r\n    {\"nombre\": \"Ginecologia\"},\r\n    {\"nombre\": \"Cardiologia\"},\r\n    {\"nombre\": \"Psicologia\"}\r\n]",
+							"raw": "[\r\n    {\"nombre\": \"Pediatria\"},\r\n    {\"nombre\": \"Neurologia\"},\r\n    {\"nombre\": \"Oncologia\"},\r\n    {\"nombre\": \"Ginecologia\"},\r\n    {\"nombre\": \"Cardiologia\"},\r\n    {\"nombre\": \"Psicologia\"},\r\n    {\"nombre\": \"Gastroenterologia\"},\r\n    {\"nombre\": \"Ortopedia y Traumatologia\"},\r\n    {\"nombre\": \"Otorrinolaringologia\"}\r\n]",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -851,7 +851,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"nombre\": \"Hospital Infantil Universitario San Jose\",\r\n        \"latitud\": 4.665224548607437,\r\n        \"longitud\": -74.07896502839728,\r\n        \"especialidades\": [\r\n            \"Oncologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital de Engativa\",\r\n        \"latitud\": 4.711001914622836,\r\n        \"longitud\": -74.1097278695707,\r\n        \"especialidades\": [\r\n            \"Neurologia\",\r\n            \"Ginecologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Simon Bolivar\",\r\n        \"latitud\": 4.742781005353155,\r\n        \"longitud\": -74.02301609413335,\r\n        \"especialidades\": [\r\n            \"Oncologia\",\r\n            \"Cardiologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital Universitario Nacional de Colombia\",\r\n        \"latitud\": 4.648789324522056,\r\n        \"longitud\": -74.09552777693953,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Ginecologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital de Kennedy\",\r\n        \"latitud\": 4.61657176477835,\r\n        \"longitud\": -74.15332014004682,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Neurologia\",\r\n            \"Oncologia\",\r\n            \"Ginecologia\",\r\n            \"Cardiologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital ABC\",\r\n        \"latitud\": 123.456,\r\n        \"longitud\": 789.012,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Neurologia\",\r\n            \"Oncologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"nombre\": \"Hospital Infantil Universitario San Jose\",\r\n        \"latitud\": 4.665224548607437,\r\n        \"longitud\": -74.07896502839728,\r\n        \"especialidades\": [\r\n            \"Oncologia\",\r\n            \"Otorrinolaringologia\",\r\n            \"Ortopedia y Traumatologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital de Engativa\",\r\n        \"latitud\": 4.711001914622836,\r\n        \"longitud\": -74.1097278695707,\r\n        \"especialidades\": [\r\n            \"Neurologia\",\r\n            \"Ginecologia\",\r\n            \"Otorrinolaringologia\",\r\n            \"Ortopedia y Traumatologia\",\r\n            \"Gastroenterologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Simon Bolivar\",\r\n        \"latitud\": 4.742781005353155,\r\n        \"longitud\": -74.02301609413335,\r\n        \"especialidades\": [\r\n            \"Oncologia\",\r\n            \"Cardiologia\",\r\n            \"Otorrinolaringologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital Universitario Nacional de Colombia\",\r\n        \"latitud\": 4.648789324522056,\r\n        \"longitud\": -74.09552777693953,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Ginecologia\",\r\n            \"Otorrinolaringologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital de Kennedy\",\r\n        \"latitud\": 4.61657176477835,\r\n        \"longitud\": -74.15332014004682,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Neurologia\",\r\n            \"Oncologia\",\r\n            \"Ginecologia\",\r\n            \"Cardiologia\",\r\n            \"Gastroenterologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital ABC\",\r\n        \"latitud\": 123.456,\r\n        \"longitud\": 789.012,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Neurologia\",\r\n            \"Oncologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1053,7 +1053,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"latitud\": 10.1234,\r\n    \"longitud\": -75.4567,\r\n    \"usuario\": 3,\r\n    \"emergencia\": \"123456789\"\r\n}",
+							"raw": "{\r\n    \"latitud\": 10.1234,\r\n    \"longitud\": -75.4567,\r\n    \"id_usuario\": 3,\r\n    \"id_hospital\": 1,\r\n    \"emergencia_detectada\": \"Faringitis y amigdalitis\",\r\n    \"sintomas_presentes\": [\r\n        \"Nauseas\",\r\n        \"Dolor de garganta\"\r\n    ],\r\n    \"triage\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -1187,6 +1187,34 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "identificador",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sintomas_presentes\":{\r\n        \"Nauseas\": \"si\",\r\n        \"Vomitos\": \"si\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/identificador/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"identificador",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
