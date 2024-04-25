@@ -2,6 +2,7 @@
   "emergencias": [
     {
       "nombre": "Diarrea y gastroenteritis",
+      "especialidad": "Gastroenterologia",
       "sintomas": [
         {
           "sintoma": "Nauseas",
@@ -42,6 +43,7 @@
     },
     {
       "nombre": "Dolor abdominal agudo",
+      "especialidad": "Gastroenterologia",
       "sintomas": [
         {
           "sintoma": "Nauseas",
@@ -87,6 +89,7 @@
     },
     {
       "nombre": "Migrana",
+      "especialidad": "Neurologia",
       "sintomas": [
         {
           "sintoma": "Nauseas",
@@ -127,6 +130,7 @@
     },
     {
       "nombre": "Fractura grave sin exposicion de hueso",
+      "especialidad": "Ortopedia y Traumatologia",
       "sintomas": [
         {
           "sintoma": "Dolor intenso en el area afectada",
@@ -157,6 +161,7 @@
     },
     {
       "nombre": "Faringitis y amigdalitis",
+      "especialidad": "Otorrinolaringologia ",
       "sintomas": [
         {
           "sintoma": "Amigdalas inflamadas",

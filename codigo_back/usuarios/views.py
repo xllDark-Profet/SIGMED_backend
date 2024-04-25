@@ -112,7 +112,7 @@ class UsuarioView(View):
                     return JsonResponse(self.mostrar_admin(usuario), status=200)
                 elif usuario.tipo_usuario.lower() == "moderador":
                     return JsonResponse(self.mostrar_moderador(usuario), status=200)
-                elif usuario.tipo_usuario.lower() == "administrador":
+                elif usuario.tipo_usuario.lower() == "usuario":
                     return JsonResponse(self.mostrar_usuario(usuario), status=200)
             
             if username:
@@ -123,7 +123,7 @@ class UsuarioView(View):
                     return JsonResponse(self.mostrar_admin(usuario), status=200)
                 elif usuario.tipo_usuario.lower() == "moderador":
                     return JsonResponse(self.mostrar_moderador(usuario), status=200)
-                elif usuario.tipo_usuario.lower() == "administrador":
+                elif usuario.tipo_usuario.lower() == "usuario":
                     return JsonResponse(self.mostrar_usuario(usuario), status=200)
             
             elif tipo_identificacion and identificacion:
@@ -134,7 +134,7 @@ class UsuarioView(View):
                     return JsonResponse(self.mostrar_admin(usuario), status=200)
                 elif usuario.tipo_usuario.lower() == "moderador":
                     return JsonResponse(self.mostrar_moderador(usuario), status=200)
-                elif usuario.tipo_usuario.lower() == "administrador":
+                elif usuario.tipo_usuario.lower() == "usuario":
                     return JsonResponse(self.mostrar_usuario(usuario), status=200)
                 
             return JsonResponse({'mensaje': "No hay datos validos de busqueda de un usuario dentro de la peticion"}, status=400)
