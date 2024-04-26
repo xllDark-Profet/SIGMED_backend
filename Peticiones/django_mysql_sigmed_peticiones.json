@@ -31,11 +31,8 @@
 				},
 				{
 					"name": "buscar usuario por username",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -47,13 +44,43 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/usuarios/",
+							"raw": "localhost:8000/usuarios/buscar/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
 								"usuarios",
+								"buscar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar usuario por id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/usuarios/buscar/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"usuarios",
+								"buscar",
 								""
 							]
 						}
@@ -62,11 +89,8 @@
 				},
 				{
 					"name": "buscar usuario por documento",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -78,13 +102,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/usuarios/",
+							"raw": "localhost:8000/usuarios/buscar/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
 								"usuarios",
+								"buscar",
 								""
 							]
 						}
@@ -1195,7 +1220,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"sintomas_presentes\":{\r\n        \"Nauseas\": \"si\",\r\n        \"Vomitos\": \"si\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"sintomas_presentes\":{\r\n        \"Nauseas\": \"si\",\r\n        \"Vomitos\": \"si\",\r\n        \"Fiebre moderada\": \"si\",\r\n        \"Diarrea acuosa\": \"si\",\r\n        \"Dolor abdominal\": \"si\",\r\n        \"Deshidratacion leve\": \"si\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "text"
