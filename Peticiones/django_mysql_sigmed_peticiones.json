@@ -117,13 +117,42 @@
 					"response": []
 				},
 				{
-					"name": "agregar usuario",
+					"name": "agregar usuarios",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "[\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 1010248768,\r\n        \"nombre\": \"Sebastian\",\r\n        \"apellido\": \"Sandoval\",\r\n        \"correo\": \"sebas@example.com\",\r\n        \"telefono\": 3043392632,\r\n        \"nombre_usuario\": \"sebas\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Administrador\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 123,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas\",\r\n        \"correo\": \"pruebas@example.com\",\r\n        \"telefono\": 123456789,\r\n        \"nombre_usuario\": \"prueba\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Moderador\",\r\n        \"nombre_hospital\": \"Hospital Infantil Universitario San Jose\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 1234,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas 2\",\r\n        \"correo\": \"pruebas2@example.com\",\r\n        \"telefono\": 12345678,\r\n        \"nombre_usuario\": \"prueba2\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Usuario\",\r\n        \"fecha_nacimiento\": \"1999-05-15\",\r\n        \"tipo_sangre\": \"B+\",\r\n        \"nombre_eps\": \"Famisanar\"\r\n    },\r\n    {\r\n        \"tipo_identificacion\": \"CC\",\r\n        \"identificacion\": 12345,\r\n        \"nombre\": \"Perfil de\",\r\n        \"apellido\": \"Pruebas 3\",\r\n        \"correo\": \"pruebas3@example.com\",\r\n        \"telefono\": 1234567899,\r\n        \"nombre_usuario\": \"prueba3\",\r\n        \"clave\": \"clave123\",\r\n        \"tipo_usuario\": \"Usuario\",\r\n        \"fecha_nacimiento\": \"1999-05-15\",\r\n        \"tipo_sangre\": \"A+\",\r\n        \"nombre_eps\": \"Sura\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/usuarios/agregar/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"usuarios",
+								"agregar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agregar usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo_identificacion\": \"CC\",\r\n    \"identificacion\": 1234566,\r\n    \"nombre\": \"Perfil de\",\r\n    \"apellido\": \"Pruebas 4\",\r\n    \"correo\": \"pruebas4@example.com\",\r\n    \"telefono\": 1234,\r\n    \"nombre_usuario\": \"prueba4\",\r\n    \"clave\": \"clave123\",\r\n    \"tipo_usuario\": \"Usuario\",\r\n    \"fecha_nacimiento\": \"1999-05-15\",\r\n    \"tipo_sangre\": \"A+\",\r\n    \"nombre_eps\": \"Sura\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -153,6 +182,35 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"tipo_identificacion\": \"CC\",\r\n    \"identificacion\": \"123\",\r\n    \"nombre\": \"pepe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/usuarios/modificar/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"usuarios",
+								"modificar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar usuario por id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"tipo_identificacion\": \"CC\",\r\n    \"identificacion\": 1010248768,\r\n    \"nombre\": \"Sebastian\",\r\n    \"apellido\": \"Sandoval\",\r\n    \"correo\": \"sebas@example.com\",\r\n    \"telefono\": 3043392632,\r\n    \"nombre_usuario\": \"sebas\",\r\n    \"clave\": \"\",\r\n    \"tipo_usuario\": \"Administrador\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -412,36 +470,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"6\",\r\n    \"nombre_nuevo\": \"Psicologia\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "text"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8000/especialidades/modificar/",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"especialidades",
-								"modificar",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "modificar especialidad por nombre",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Prueba\",\r\n    \"nombre_nuevo\": \"Especialidad\"\r\n}",
+							"raw": "{\r\n    \"id\": \"6\",\r\n    \"nombre\": \"Psicologia\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -637,13 +666,13 @@
 					"response": []
 				},
 				{
-					"name": "modificar eps por id",
+					"name": "agregar una eps",
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"7\",\r\n    \"nombre_nuevo\": \"Pruebas\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Prueba\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -651,14 +680,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/eps/modificar/",
+							"raw": "localhost:8000/eps/agregar/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
 								"eps",
-								"modificar",
+								"agregar",
 								""
 							]
 						}
@@ -666,13 +695,13 @@
 					"response": []
 				},
 				{
-					"name": "modificar eps por nombre",
+					"name": "modificar eps por id",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Prueba\",\r\n    \"nombre_nuevo\": \"EPS\"\r\n}",
+							"raw": "{\r\n    \"id\": \"5\",\r\n    \"nombre\": \"Prueba\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -1010,6 +1039,37 @@
 					"response": []
 				},
 				{
+					"name": "listar solicitudes simple",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"simplificada\": \"si\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/solicitudes/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"solicitudes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "buscar solicitud por id",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -1041,44 +1101,13 @@
 					"response": []
 				},
 				{
-					"name": "buscar solicitud por numero de emergencia",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"emergencia\": \"123\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "text"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8000/solicitudes/",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"solicitudes",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "agregar solicitud",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"latitud\": 10.1234,\r\n    \"longitud\": -75.4567,\r\n    \"id_usuario\": 3,\r\n    \"id_hospital\": 1,\r\n    \"emergencia_detectada\": \"Faringitis y amigdalitis\",\r\n    \"sintomas_presentes\": [\r\n        \"Nauseas\",\r\n        \"Dolor de garganta\"\r\n    ],\r\n    \"triage\": 1\r\n}",
+							"raw": "{\r\n    \"direccion\": \"Carrera 7 # 40 b - 5\",\r\n    \"id_usuario\": 3,\r\n    \"id_hospital\": 1,\r\n    \"emergencia_detectada\": \"Faringitis y amigdalitis\",\r\n    \"sintomas_presentes\": \"Nauseas, Dolor de gargantaid\",\r\n    \"triage\": 5\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -1106,35 +1135,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"latitud\": 10.1234,\r\n    \"longitud\": -75.4567,\r\n    \"usuario\": 1,\r\n    \"id\": \"1\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "text"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8000/solicitudes/",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"solicitudes",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "modificar solicitud por numero de emergencia",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"latitud\": 10.1234,\r\n    \"longitud\": -75.4567,\r\n    \"usuario\": 1,\r\n    \"emergencia\": \"123456789\"\r\n}",
+							"raw": "{\r\n    \"id_usuario\": 4,\r\n    \"id\": \"1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -1182,15 +1183,20 @@
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "emergencias",
+			"item": [
 				{
-					"name": "eliminar solicitud por numero de emergencia",
+					"name": "identificador",
 					"request": {
-						"method": "DELETE",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"emergencia\": \"123456789\"\r\n}",
+							"raw": "{\r\n    \"sintomas_presentes\":{\r\n        \"Nauseas\": \"si\",\r\n        \"Vomitos\": \"si\",\r\n        \"Fiebre moderada\": \"si\",\r\n        \"Diarrea acuosa\": \"si\",\r\n        \"Dolor abdominal\": \"si\",\r\n        \"Deshidratacion leve\": \"si\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -1198,13 +1204,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/solicitudes/",
+							"raw": "localhost:8000/identificador/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"solicitudes",
+								"identificador",
 								""
 							]
 						}
@@ -1212,34 +1218,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "identificador",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"sintomas_presentes\":{\r\n        \"Nauseas\": \"si\",\r\n        \"Vomitos\": \"si\",\r\n        \"Fiebre moderada\": \"si\",\r\n        \"Diarrea acuosa\": \"si\",\r\n        \"Dolor abdominal\": \"si\",\r\n        \"Deshidratacion leve\": \"si\"\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "text"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8000/identificador/",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"identificador",
-						""
-					]
-				}
-			},
-			"response": []
 		}
 	]
 }
