@@ -1039,47 +1039,13 @@
 					"response": []
 				},
 				{
-					"name": "listar solicitudes simple",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"simplificada\": \"si\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "text"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8000/solicitudes/",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"solicitudes",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "buscar solicitud por id",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"1\"\r\n}",
+							"raw": "{\r\n    \"id\": \"3\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -1087,13 +1053,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/solicitudes/",
+							"raw": "localhost:8000/solicitud/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"solicitudes",
+								"solicitud",
 								""
 							]
 						}
@@ -1107,7 +1073,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"direccion\": \"Carrera 7 # 40 b - 5\",\r\n    \"id_usuario\": 3,\r\n    \"id_hospital\": 1,\r\n    \"emergencia_detectada\": \"Faringitis y amigdalitis\",\r\n    \"sintomas_presentes\": \"Nauseas, Dolor de gargantaid\",\r\n    \"triage\": 5\r\n}",
+							"raw": "{\r\n    \"direccion\": \"Carrera 7 # 40 b - 5\",\r\n    \"id_usuario\": 3,\r\n    \"id_hospital\": 1,\r\n    \"emergencia_detectada\": \"Faringitis y amigdalitis\",\r\n    \"sintomas_presentes\": \"Nauseas, Dolor de garganta\",\r\n    \"triage\": 5\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -1211,6 +1177,35 @@
 							"port": "8000",
 							"path": [
 								"identificador",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener hospitales ideales",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"triage\": 1,\r\n    \"especialidad\": \"Neurologia\",\r\n    \"id_eps\": 1,\r\n    \"latitud\":  4.742781005353155,\r\n    \"longitud\": -74.0543\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/hospitales/identificar/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"hospitales",
+								"identificar",
 								""
 							]
 						}
