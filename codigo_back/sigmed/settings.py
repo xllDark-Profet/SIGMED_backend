@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-t1mr*=)sk4)uwe%h)n0(nic$9wm$8)5i=0m1r&r0t7sze*0xq+
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
@@ -21,18 +21,23 @@ INSTALLED_APPS = [
     'rest_framework',
     'hospitales',
     'usuarios',
-    'emergencia'
+    'emergencia',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'sigmed.urls'
 
@@ -63,7 +68,7 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'sigmed',
             'USER': 'root',
-            'PASSWORD': 'PassWord123',
+            'PASSWORD': '12345',
             'HOST': 'localhost',
             'PORT': '3306',
         }
