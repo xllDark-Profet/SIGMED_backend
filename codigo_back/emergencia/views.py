@@ -34,7 +34,7 @@ class SolicitudesView(View):
             data = json.loads(request.body)
             solicitud_dto = SolicitudDTO(**data)
 
-            if not all([solicitud_dto.direccion, solicitud_dto.id_usuario, solicitud_dto.emergencia_detectada, solicitud_dto.sintomas_presentes, solicitud_dto.id_hospital, solicitud_dto.triage]):
+            if not all([solicitud_dto.direccion, solicitud_dto.id_usuario, solicitud_dto.emergencia_detectada, solicitud_dto.sintomas_presentes, solicitud_dto.nombre_hospital, solicitud_dto.triage]):
                 parametros_faltantes = []
                 if not solicitud_dto.direccion:
                     parametros_faltantes.append('direccion')
@@ -44,8 +44,8 @@ class SolicitudesView(View):
                     parametros_faltantes.append('emergencia_detectada')
                 if not solicitud_dto.sintomas_presentes:
                     parametros_faltantes.append('sintomas_presentes')
-                if not solicitud_dto.id_hospital:
-                    parametros_faltantes.append('id_hospital')
+                if not solicitud_dto.nombre_hospital:
+                    parametros_faltantes.append('nombre_hospital')
                 if not solicitud_dto.triage:
                     parametros_faltantes.append('triage')
                     
@@ -64,9 +64,9 @@ class SolicitudesView(View):
                 return JsonResponse({'mensaje': "Nivel de triage invalido"}, status=400)
             
             try:
-                hospital = Hospital.objects.get(id=solicitud_dto.id_hospital)
+                hospital = Hospital.objects.get(nombre=solicitud_dto.nombre_hospital)
             except Hospital.DoesNotExist:
-                return JsonResponse({'mensaje': 'No existe un hospital con ese id.'}, status=404)
+                return JsonResponse({'mensaje': 'No existe un hospital con ese nombre.'}, status=404)
             
             fecha_hora = datetime.now()
 

@@ -1073,7 +1073,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"direccion\": \"Carrera 7 # 40 b - 5\",\r\n    \"id_usuario\": 3,\r\n    \"id_hospital\": 1,\r\n    \"emergencia_detectada\": \"Faringitis y amigdalitis\",\r\n    \"sintomas_presentes\": \"Nauseas, Dolor de garganta\",\r\n    \"triage\": 5\r\n}",
+							"raw": "{\r\n    \"direccion\": \"Carrera 7 # 40 b - 5\",\r\n    \"id_usuario\": 3,\r\n    \"nombre_hospital\": \"Hospital Infantil Universitario San Jose\",\r\n    \"emergencia_detectada\": \"Faringitis y amigdalitis\",\r\n    \"sintomas_presentes\": \"Nauseas, Dolor de garganta\",\r\n    \"triage\": 5\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"

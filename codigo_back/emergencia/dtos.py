@@ -1,10 +1,10 @@
 class SolicitudDTO:
-    def __init__(self, id_usuario, direccion, sintomas_presentes, emergencia_detectada, id_hospital, triage):
+    def __init__(self, id_usuario, direccion, sintomas_presentes, emergencia_detectada, nombre_hospital, triage):
         self.id_usuario = id_usuario
         self.direccion = direccion
         self.sintomas_presentes = sintomas_presentes
         self.emergencia_detectada = emergencia_detectada
-        self.id_hospital = id_hospital
+        self.nombre_hospital = nombre_hospital
         self.triage = triage
         
 class RespuestasDTO:
