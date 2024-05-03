@@ -1,5 +1,5 @@
 from functools import wraps
-import json
+import json, re
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -91,53 +91,6 @@ class UsuarioView(View):
         }
     
     def get(self, request):
-        data = {}
-        especifica = True
-        try:
-            data = json.loads(request.body)
-        except json.decoder.JSONDecodeError:
-            especifica = False
-        
-        if especifica:
-            tipo_identificacion = data.get('tipo_identificacion')
-            identificacion = data.get('identificacion')
-            username = data.get('username')
-            id = data.get('id')
-
-            if id:
-                usuario = self.buscar_por_id(id)
-                if not usuario:
-                    return JsonResponse({'mensaje': 'No hay un usuario con ese id en el sistema'}, status=404)
-                if usuario.tipo_usuario.lower() == "administrador":
-                    return JsonResponse(self.mostrar_admin(usuario), status=200)
-                elif usuario.tipo_usuario.lower() == "moderador":
-                    return JsonResponse(self.mostrar_moderador(usuario), status=200)
-                elif usuario.tipo_usuario.lower() == "usuario":
-                    return JsonResponse(self.mostrar_usuario(usuario), status=200)
-            
-            if username:
-                usuario = self.buscar_por_username(username)
-                if not usuario:
-                    return JsonResponse({'mensaje': 'No hay un usuario con ese nombre de usuario'}, status=404)
-                if usuario.tipo_usuario.lower() == "administrador":
-                    return JsonResponse(self.mostrar_admin(usuario), status=200)
-                elif usuario.tipo_usuario.lower() == "moderador":
-                    return JsonResponse(self.mostrar_moderador(usuario), status=200)
-                elif usuario.tipo_usuario.lower() == "usuario":
-                    return JsonResponse(self.mostrar_usuario(usuario), status=200)
-            
-            elif tipo_identificacion and identificacion:
-                usuario = self.buscar_por_identificacion(tipo_identificacion, identificacion)
-                if not usuario:
-                    return JsonResponse({'mensaje': 'No hay un usuario con ese nombre de usuario'}, status=404)
-                if usuario.tipo_usuario.lower() == "administrador":
-                    return JsonResponse(self.mostrar_admin(usuario), status=200)
-                elif usuario.tipo_usuario.lower() == "moderador":
-                    return JsonResponse(self.mostrar_moderador(usuario), status=200)
-                elif usuario.tipo_usuario.lower() == "usuario":
-                    return JsonResponse(self.mostrar_usuario(usuario), status=200)
-                
-            return JsonResponse({'mensaje': "No hay datos validos de busqueda de un usuario dentro de la peticion"}, status=400)
         
         usuarios = Usuario.objects.all()
         usuarios_list = []
@@ -181,8 +134,14 @@ class UsuarioView(View):
             clave = data.get('clave')
             clave = make_password(clave)
             tipo_usuario = data.get('tipo_usuario').lower()
+            
             if User.objects.filter(username=nombre_usuario).exists():
                 return JsonResponse({'mensaje': 'Ya hay un usuario con ese nombre de usuario en la base de datos.'}, status=400)
+            
+            patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+            if not re.match(patron, correo):
+                return JsonResponse({'mensaje': 'El formato del correo electronico no es válido'}, status=400)
+            
             user = User(username=nombre_usuario, email=correo, password=clave, first_name=nombre, last_name=apellido)
             usuario.user = user
                 
@@ -249,6 +208,12 @@ class UsuarioView(View):
                 if User.objects.filter(username=nombre_usuario).exists():
                     users_failed.append({'mensaje': f"Nombre de usuario '{nombre_usuario}' ya existe en la base de datos."})
                     continue
+                
+                patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                if not re.match(patron, correo):
+                    users_failed.append({'mensaje': 'El formato del correo electronico no es valido'})
+                    continue
+                
                 user = User(username=nombre_usuario, email=correo, password=clave, first_name=nombre, last_name=apellido)
                 usuario.user = user
                 
@@ -347,6 +312,10 @@ class UsuarioView(View):
                 if self.buscar_por_correo(correo):
                     return JsonResponse({'mensaje': 'Ya existe ese correo.'}, status=400)
                 else:
+                    patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                    if not re.match(patron, correo):
+                        return JsonResponse({'mensaje': 'El formato del correo electronico no es válido'}, status=400)
+                    
                     cambios=True
                     usuario.user.email = correo
         if nombre_usuario:
@@ -434,6 +403,133 @@ class UsuarioView(View):
         else:
             return JsonResponse({'mensaje': 'No se especifico un nombre de usuario, documento valido o id para eliminar un usuario.'}, status=400)
         
+class BuscarUsuarioView(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def buscar_por_id(self, id_usuario):
+        try:
+            return Usuario.objects.get(user__id=id_usuario)
+        except Usuario.DoesNotExist:
+            return None
+    
+    def buscar_por_username(self, nombre_usuario):
+        try:
+            return Usuario.objects.get(user__username=nombre_usuario)
+        except Usuario.DoesNotExist:
+            return None
+        
+    def buscar_por_correo(self, correo):
+        try:
+            return Usuario.objects.get(user__email=correo)
+        except Usuario.DoesNotExist:
+            return None
+        
+    def buscar_por_telefono(self, telefono):
+        try:
+            return Usuario.objects.get(telefono=telefono)
+        except Usuario.DoesNotExist:
+            return None
+
+    def buscar_por_identificacion(self, tipo_identificacion, identificacion):
+        try:
+            return Usuario.objects.get(tipo_identificacion=tipo_identificacion, identificacion=identificacion)
+        except Usuario.DoesNotExist:
+            return None
+    
+    def mostrar_admin(self, u):
+        return {
+            'id': u.id,
+            'tipo_identificacion': u.tipo_identificacion,
+            'identificacion': u.identificacion,
+            'nombre': u.user.first_name,
+            'apellido': u.user.last_name,
+            'correo': u.user.email,
+            'telefono': u.telefono,
+            'nombre_usuario': u.user.username,
+            'tipo_usuario': u.tipo_usuario
+        }
+        
+    def mostrar_moderador(self, u):
+        return {
+            'id': u.id,
+            'tipo_identificacion': u.tipo_identificacion,
+            'identificacion': u.identificacion,
+            'nombre': u.user.first_name,
+            'apellido': u.user.last_name,
+            'correo': u.user.email,
+            'telefono': u.telefono,
+            'nombre_usuario': u.user.username,
+            'tipo_usuario': u.tipo_usuario,
+            'hospital': u.hospital.id
+        }
+    
+    def mostrar_usuario(self, u):
+        return {
+            'id': u.id,
+            'tipo_identificacion': u.tipo_identificacion,
+            'identificacion': u.identificacion,
+            'nombre': u.user.first_name,
+            'apellido': u.user.last_name,
+            'correo': u.user.email,
+            'telefono': u.telefono,
+            'nombre_usuario': u.user.username,
+            'tipo_usuario': u.tipo_usuario,
+            'tipo_sangre': u.tipo_sangre,
+            'fecha_nacimiento': u.fecha_nacimiento,
+            'eps': u.eps.id
+        }
+        
+    def post(self, request):
+        data = {}
+        especifica = True
+        try:
+            data = json.loads(request.body)
+        except json.decoder.JSONDecodeError:
+            especifica = False
+        
+        if especifica:
+            tipo_identificacion = data.get('tipo_identificacion')
+            identificacion = data.get('identificacion')
+            username = data.get('username')
+            id = data.get('id')
+
+            if id:
+                usuario = self.buscar_por_id(id)
+                if not usuario:
+                    return JsonResponse({'mensaje': 'No hay un usuario con ese id en el sistema'}, status=404)
+                if usuario.tipo_usuario.lower() == "administrador":
+                    return JsonResponse(self.mostrar_admin(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "moderador":
+                    return JsonResponse(self.mostrar_moderador(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "usuario":
+                    return JsonResponse(self.mostrar_usuario(usuario), status=200)
+            
+            if username:
+                usuario = self.buscar_por_username(username)
+                if not usuario:
+                    return JsonResponse({'mensaje': 'No hay un usuario con ese nombre de usuario'}, status=404)
+                if usuario.tipo_usuario.lower() == "administrador":
+                    return JsonResponse(self.mostrar_admin(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "moderador":
+                    return JsonResponse(self.mostrar_moderador(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "usuario":
+                    return JsonResponse(self.mostrar_usuario(usuario), status=200)
+            
+            elif tipo_identificacion and identificacion:
+                usuario = self.buscar_por_identificacion(tipo_identificacion, identificacion)
+                if not usuario:
+                    return JsonResponse({'mensaje': 'No hay un usuario con ese nombre de usuario'}, status=404)
+                if usuario.tipo_usuario.lower() == "administrador":
+                    return JsonResponse(self.mostrar_admin(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "moderador":
+                    return JsonResponse(self.mostrar_moderador(usuario), status=200)
+                elif usuario.tipo_usuario.lower() == "usuario":
+                    return JsonResponse(self.mostrar_usuario(usuario), status=200)
+                
+            return JsonResponse({'mensaje': "No hay datos validos de busqueda de un usuario dentro de la peticion"}, status=400)
+        
 class UsuarioLoginView(View):
     
     @method_decorator(csrf_exempt)
@@ -475,24 +571,21 @@ class UsuarioLoginView(View):
         clave = data.get('clave')
         usuario = None
         
-        if not acceso or not clave or acceso == "" or clave == "":
-            return JsonResponse({'mensaje': 'Error con el envio de parametros, debe enviarse un acceso (correo o username) y una clave'}, status=400)
+        if not acceso or acceso == "":
+            return JsonResponse({'mensaje': 'Debe ingresar un usuario o correo.'}, status=400)
+        
+        if not clave or clave == "":
+            return JsonResponse({'mensaje': 'Debe ingresar una clave'}, status=400)
         
         usuario = self.buscar_por_correo(acceso)
         if usuario is None:
             usuario = self.buscar_por_username(acceso)
                     
         if usuario is None:
-            return JsonResponse({'mensaje': 'Debe proporcionar un nombre de usuario o un correo electrónico que se encuentre en la base de datos'}, status=400)
-        
-        if not clave:
-            return JsonResponse({'mensaje': 'Falta la clave'}, status=400)
+            return JsonResponse({'mensaje': 'Usuario o correo incorrecto'}, status=400)
         
         if not usuario.user.check_password(clave):
             return JsonResponse({'mensaje': 'Acceso incorrecto, clave incorrecta.'}, status=400)
-        
-        if not usuario.user.is_active:
-            return JsonResponse({'mensaje': 'El usuario se encuentra inactivo'}, status=401)
         
         tipo_usuario = usuario.tipo_usuario.lower()
         response = {'mensaje': 'Acceso exitoso, contraseña correcta.', 'tipo_usuario': tipo_usuario}

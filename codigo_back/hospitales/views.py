@@ -100,7 +100,7 @@ class HospitalView(View):
             return JsonResponse({'mensaje': 'El cuerpo de la solicitud no es JSON válido'}, status=400)
 
         if not isinstance(data, list):
-            required_fields = ['codigo_registro', 'nombre', 'latitud', 'longitud', 'especialidades', 'listaeps']
+            required_fields = ['nombre', 'latitud', 'longitud', 'especialidades', 'listaeps']
     
             for field in required_fields:
                 if field not in data:

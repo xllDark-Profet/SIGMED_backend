@@ -9,7 +9,7 @@ class Usuario(models.Model):
     tipo_sangre = models.CharField(max_length=10, null=True, blank=True)
     telefono = models.BigIntegerField(null=True, blank=True)
     tipo_identificacion = models.CharField(max_length=5, null=True, blank=True)
-    identificacion = models.IntegerField(null=True, blank=True)
+    identificacion = models.BigIntegerField(null=True, blank=True)
     tipo_usuario = models.CharField(max_length=15, null=True, blank=True)
     eps = models.ForeignKey(EPS, on_delete=models.SET_NULL, null=True, blank=True)
     hospital = models.ForeignKey(Hospital, on_delete=models.SET_NULL, null=True, blank=True)
