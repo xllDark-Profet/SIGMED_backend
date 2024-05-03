@@ -1,5 +1,5 @@
 from functools import wraps
-import json
+import json, re
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -134,8 +134,14 @@ class UsuarioView(View):
             clave = data.get('clave')
             clave = make_password(clave)
             tipo_usuario = data.get('tipo_usuario').lower()
+            
             if User.objects.filter(username=nombre_usuario).exists():
                 return JsonResponse({'mensaje': 'Ya hay un usuario con ese nombre de usuario en la base de datos.'}, status=400)
+            
+            patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+            if not re.match(patron, correo):
+                return JsonResponse({'mensaje': 'El formato del correo electronico no es válido'}, status=400)
+            
             user = User(username=nombre_usuario, email=correo, password=clave, first_name=nombre, last_name=apellido)
             usuario.user = user
                 
@@ -202,6 +208,12 @@ class UsuarioView(View):
                 if User.objects.filter(username=nombre_usuario).exists():
                     users_failed.append({'mensaje': f"Nombre de usuario '{nombre_usuario}' ya existe en la base de datos."})
                     continue
+                
+                patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                if not re.match(patron, correo):
+                    users_failed.append({'mensaje': 'El formato del correo electronico no es valido'})
+                    continue
+                
                 user = User(username=nombre_usuario, email=correo, password=clave, first_name=nombre, last_name=apellido)
                 usuario.user = user
                 
@@ -300,6 +312,10 @@ class UsuarioView(View):
                 if self.buscar_por_correo(correo):
                     return JsonResponse({'mensaje': 'Ya existe ese correo.'}, status=400)
                 else:
+                    patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                    if not re.match(patron, correo):
+                        return JsonResponse({'mensaje': 'El formato del correo electronico no es válido'}, status=400)
+                    
                     cambios=True
                     usuario.user.email = correo
         if nombre_usuario:
