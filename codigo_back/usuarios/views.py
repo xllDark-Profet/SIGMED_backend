@@ -290,8 +290,6 @@ class UsuarioView(View):
 
         nombre_usuario = data.get('nombre_usuario')
         clave = data.get('clave')
-        nueva_clave = data.get('nueva_clave')
-        nueva_clave = make_password(nueva_clave)
         nombre = data.get('nombre')
         apellido = data.get('apellido')
         correo = data.get('correo')
@@ -307,7 +305,7 @@ class UsuarioView(View):
         if apellido and apellido != usuario.user.last_name:
             usuario.user.last_name = apellido
             cambios = True
-        if correo and correo != usuario.user.email:
+        if correo:
             if correo != usuario.user.email:
                 if self.buscar_por_correo(correo):
                     return JsonResponse({'mensaje': 'Ya existe ese correo.'}, status=400)
@@ -315,9 +313,10 @@ class UsuarioView(View):
                     patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
                     if not re.match(patron, correo):
                         return JsonResponse({'mensaje': 'El formato del correo electronico no es válido'}, status=400)
-                    
-                    cambios=True
-                    usuario.user.email = correo
+                    else:
+                        cambios=True
+                        usuario.user.email = correo
+                        
         if nombre_usuario:
             if nombre_usuario != usuario.user.username:
                 if self.buscar_por_username(nombre_usuario):
@@ -326,23 +325,16 @@ class UsuarioView(View):
                     cambios=True
                     usuario.user.username = nombre_usuario
         
-        if clave:            
-            if usuario.user.check_password(clave):
-                if nueva_clave:
-                    cambios = True
-                    usuario.user.set_password(nueva_clave)
-                else:
-                    return JsonResponse({'mensaje': 'La clave actual del usuario es incorrecta.'}, status=400)
-            else:
-                return JsonResponse({'mensaje': 'La clave actual del usuario es incorrecta.'}, status=400)
+        if clave:
+            if not usuario.user.check_password(clave):
+                clave = make_password(clave)        
+                cambios = True
+                usuario.user.password=clave
 
         if telefono:
             if telefono != usuario.telefono:
-                if self.buscar_por_username(nombre_usuario):
-                    return JsonResponse({'mensaje': 'Ya existe ese nombre de usuario.'}, status=400)
-                else:
-                    usuario.telefono = telefono
-                    cambios = True
+                usuario.telefono = telefono
+                cambios = True
                     
         if fecha_nacimiento and fecha_nacimiento != usuario.fecha_nacimiento:
             usuario.fecha_nacimiento = fecha_nacimiento
@@ -360,7 +352,7 @@ class UsuarioView(View):
             except Hospital.DoesNotExist:
                 return JsonResponse({'mensaje': 'No existe un hospital con ese codigo de registro.'}, status=400)
         
-        if eps:
+        if eps_id:
             try:
                 eps = EPS.objects.get(id = eps_id)
                 if eps != usuario.eps:
@@ -371,6 +363,7 @@ class UsuarioView(View):
 
         if cambios:
             usuario.save()
+            usuario.user.save()
             return JsonResponse({'mensaje': 'Usuario actualizado exitosamente.'}, status=200)
         else:
             return JsonResponse({'mensaje': 'No se realizaron cambios en el usuario.'}, status=400)

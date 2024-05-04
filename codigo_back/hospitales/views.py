@@ -391,18 +391,6 @@ class EpsView(View):
                     return JsonResponse({'mensaje': "El nuevo nombre ya esta en uso por otra EPS."}, status=400)
                 eps.nombre = nombre
                 cambios = True
-            
-        elif nombre:
-            eps = self.buscar_eps_por_nombre(nombre)
-            if eps is None:
-                return JsonResponse({'mensaje': "La eps con ese nombre no existe."}, status=404)
-            
-            if nombre and nombre != eps.nombre:
-                if EPS.objects.filter(nombre=nombre).exists():
-                    return JsonResponse({'mensaje': "El nombre ya esta en uso por otra eps."}, status=400)
-                eps.nombre = nombre
-                cambios = True
-
         if cambios:
             eps.save()
             return JsonResponse({'mensaje': "Eps actualizada de manera exitosa!"})
@@ -529,7 +517,6 @@ class EspecialidadView(View):
             return JsonResponse({'mensaje': 'El cuerpo de la solicitud no es JSON valido'}, status=400)
         id = data.get('id')
         nombre = data.get('nombre')
-        nombre_nuevo = data.get('nombre_nuevo')
         cambios = False
 
         if id:
@@ -537,23 +524,13 @@ class EspecialidadView(View):
                 especialidad = self.buscar_especialidad_por_id(id)
             except Especialidad.DoesNotExist:
                 return JsonResponse({'mensaje': "La especialidad con ese ID no existe."}, status=404)
-            if nombre_nuevo and nombre_nuevo != especialidad.nombre:
-                if Especialidad.objects.filter(nombre=nombre_nuevo).exists():
-                    return JsonResponse({'mensaje': "El nuevo nombre ya esta en uso por otra especialidad."}, status=400)
-                especialidad.nombre = nombre_nuevo
-                cambios = True
             
-        elif nombre:
-            try:
-                especialidad = self.buscar_especialidad_por_nombre(nombre)
-            except Especialidad.DoesNotExist:
-                return JsonResponse({'mensaje': "La especialidad con ese nombre no existe."}, status=404)
-            
-            if nombre_nuevo and nombre_nuevo != especialidad.nombre:
-                if Especialidad.objects.filter(nombre=nombre_nuevo).exists():
-                    return JsonResponse({'mensaje': "El nuevo nombre ya esta en uso por otra especialidad."}, status=400)
-                especialidad.nombre = nombre_nuevo
-                cambios = True
+            if nombre:
+                if nombre != especialidad.nombre:
+                    if Especialidad.objects.filter(nombre=nombre).exists():
+                        return JsonResponse({'mensaje': "El nuevo nombre ya esta en uso por otra especialidad."}, status=400)
+                    especialidad.nombre = nombre
+                    cambios = True
 
         if cambios:
             especialidad.save()
@@ -579,8 +556,7 @@ class EspecialidadView(View):
                 return JsonResponse({'mensaje': "Especialidad eliminada correctamente."})
             except Especialidad.DoesNotExist:
                 return JsonResponse({'mensaje': "La especialidad con la ID proporcionada no existe."}, status=404)
-        
-        if nombre:
+        elif nombre:
             try:
                 especialidad = self.buscar_especialidad_por_nombre(nombre)
                 especialidad.delete()

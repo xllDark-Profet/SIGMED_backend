@@ -68,7 +68,7 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'sigmed',
             'USER': 'root',
-            'PASSWORD': '12345',
+            'PASSWORD': 'PassWord123',
             'HOST': 'localhost',
             'PORT': '3306',
         }
