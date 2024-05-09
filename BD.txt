@@ -1,0 +1,951 @@
+ESPECIALIDADES
+=====================================================
+Cirugía General
+Pediatría
+Ginecobstetricia
+Medicina Interna
+Ortopedia y Traumatología
+Oftalmología
+Otorrinolaringología
+Dermatología
+Urología
+Endocrinología
+Nutrición y Dietética
+Anestesia
+Cardiología
+Cirugía Maxilofacial
+Cirugía de Tórax
+Estomatología
+Gastroenterología
+Neumología
+Psiquiatría
+Electrofisiología
+Genética
+Hematología
+Infectología
+Otología
+Reumatología
+Toxicología
+Terapia de Lenguaje
+Fisioterapia
+Radioterapia
+Cirugía de Cabeza y Cuello
+Neurocirugía
+Cirugía Cardiovascular
+Nefrología
+Oncología Pediátrica
+Traumatología
+Cirugía de Mano
+Cirugía Vascular Periférica
+Cirugía Pediátrica
+Cirugía Plástica y Reconstructiva
+Gastrocirugía
+Oncología Médica
+Urgencias
+Reproducción Asistida
+Farmacología
+Cirugía Bariátrica
+Cuidados Paliativos
+Cuidados Intensivos
+Ecografía
+Endoscopia
+Ecocardiografía
+Radiología
+Medicina del Deporte
+Medicina Hiperbárica
+Medicina Tropical
+Medicina del Dolor
+Medicina Estética
+Medicina Forense
+Medicina del Sueño
+Medicina Regenerativa
+Medicina Integrativa
+Odontología Especializada
+Ortodoncia
+Periodoncia
+Implantología Dental
+Endodoncia
+Cirugía Oral y Maxilofacial
+Estética Dental
+Ortopedia Maxilar
+Patología Oral y Maxilofacial
+Ortodoncia y Ortopedia Dento Facial
+Ortopedia Funcional de los Maxilares
+Fonoaudiología
+Oftalmología Pediátrica
+Optometría
+Ortopedia Infantil
+Psicopedagogía
+Terapia Ocupacional
+Medicina Geriátrica
+Podología
+Psicoterapia
+Cirugía Experimental
+Neurofisiología Clínica
+Cirugía Robótica
+Cirugía Mínimamente Invasiva
+Telemedicina
+Inmunología
+Cirugía Dentomaxilar
+Ortopedia Dentofacial
+Cirugía Periodontal
+Cirugía Endodóntica
+Cirugía Prostodóntica
+Cirugía Implantológica
+Cirugía Reconstruciva Facial
+Cirugía Estética Facial
+Cirugía Ortognática
+Oncología
+Ginecología
+[
+    {"nombre": "Cirugía General"},
+    {"nombre": "Pediatría"},
+    {"nombre": "Ginecobstetricia"},
+    {"nombre": "Medicina Interna"},
+    {"nombre": "Ortopedia y Traumatología"},
+    {"nombre": "Oftalmología"},
+    {"nombre": "Otorrinolaringología"},
+    {"nombre": "Dermatología"},
+    {"nombre": "Urología"},
+    {"nombre": "Endocrinología"},
+    {"nombre": "Nutrición y Dietética"},
+    {"nombre": "Anestesia"},
+    {"nombre": "Cardiología"},
+    {"nombre": "Cirugía Maxilofacial"},
+    {"nombre": "Cirugía de Tórax"},
+    {"nombre": "Estomatología"},
+    {"nombre": "Gastroenterología"},
+    {"nombre": "Neumología"},
+    {"nombre": "Psiquiatría"},
+    {"nombre": "Electrofisiología"},
+    {"nombre": "Genética"},
+    {"nombre": "Hematología"},
+    {"nombre": "Infectología"},
+    {"nombre": "Otología"},
+    {"nombre": "Reumatología"},
+    {"nombre": "Toxicología"},
+    {"nombre": "Terapia de Lenguaje"},
+    {"nombre": "Fisioterapia"},
+    {"nombre": "Radioterapia"},
+    {"nombre": "Cirugía de Cabeza y Cuello"},
+    {"nombre": "Neurocirugía"},
+    {"nombre": "Cirugía Cardiovascular"},
+    {"nombre": "Nefrología"},
+    {"nombre": "Oncología Pediátrica"},
+    {"nombre": "Traumatología"},
+    {"nombre": "Cirugía de Mano"},
+    {"nombre": "Cirugía Vascular Periférica"},
+    {"nombre": "Cirugía Pediátrica"},
+    {"nombre": "Cirugía Plástica y Reconstructiva"},
+    {"nombre": "Gastrocirugía"},
+    {"nombre": "Oncología Médica"},
+    {"nombre": "Urgencias"},
+    {"nombre": "Reproducción Asistida"},
+    {"nombre": "Farmacología"},
+    {"nombre": "Cirugía Bariátrica"},
+    {"nombre": "Cuidados Paliativos"},
+    {"nombre": "Cuidados Intensivos"},
+    {"nombre": "Ecografía"},
+    {"nombre": "Endoscopia"},
+    {"nombre": "Ecocardiografía"},
+    {"nombre": "Radiología"},
+    {"nombre": "Medicina del Deporte"},
+    {"nombre": "Medicina Hiperbárica"},
+    {"nombre": "Medicina Tropical"},
+    {"nombre": "Medicina del Dolor"},
+    {"nombre": "Medicina Estética"},
+    {"nombre": "Medicina Forense"},
+    {"nombre": "Medicina del Sueño"},
+    {"nombre": "Medicina Regenerativa"},
+    {"nombre": "Medicina Integrativa"},
+    {"nombre": "Odontología Especializada"},
+    {"nombre": "Ortodoncia"},
+    {"nombre": "Periodoncia"},
+    {"nombre": "Implantología Dental"},
+    {"nombre": "Endodoncia"},
+    {"nombre": "Cirugía Oral y Maxilofacial"},
+    {"nombre": "Estética Dental"},
+    {"nombre": "Ortopedia Maxilar"},
+    {"nombre": "Patología Oral y Maxilofacial"},
+    {"nombre": "Ortodoncia y Ortopedia Dento Facial"},
+    {"nombre": "Ortopedia Funcional de los Maxilares"},
+    {"nombre": "Fonoaudiología"},
+    {"nombre": "Oftalmología Pediátrica"},
+    {"nombre": "Optometría"},
+    {"nombre": "Ortopedia Infantil"},
+    {"nombre": "Psicopedagogía"},
+    {"nombre": "Terapia Ocupacional"},
+    {"nombre": "Medicina Geriátrica"},
+    {"nombre": "Podología"},
+    {"nombre": "Psicoterapia"},
+    {"nombre": "Cirugía Experimental"},
+    {"nombre": "Neurofisiología Clínica"},
+    {"nombre": "Cirugía Robótica"},
+    {"nombre": "Cirugía Mínimamente Invasiva"},
+    {"nombre": "Telemedicina"},
+    {"nombre": "Inmunología"},
+    {"nombre": "Cirugía Dentomaxilar"},
+    {"nombre": "Ortopedia Dentofacial"},
+    {"nombre": "Cirugía Periodontal"},
+    {"nombre": "Cirugía Endodóntica"},
+    {"nombre": "Cirugía Prostodóntica"},
+    {"nombre": "Cirugía Implantológica"},
+    {"nombre": "Cirugía Reconstruciva Facial"},
+    {"nombre": "Cirugía Estética Facial"},
+    {"nombre": "Cirugía Ortognática"},
+    {"nombre": "Oncología"},
+    {"nombre": "Ginecología"},
+    {"nombre": "Medicina Familiar"},
+    {"nombre": "Odontología General"},
+    {"nombre": "Psicología"},
+    {"nombre": "Neurología"},
+    {"nombre": "Cirugía Ginecológica"},
+    {"nombre": "Hospitalización"},
+    {"nombre": "Promoción de la Salud"},
+    {"nombre": "Atención Primaria"},
+    {"nombre": "Consulta Externa"},
+    {"nombre": "Vacunación"},
+    {"nombre": "Medicina General"},
+    {"nombre": "Enfermería"},
+    {"nombre": "Atención Prenatal"},
+    {"nombre": "Atención del Recién Nacido"},
+    {"nombre": "Infectología pediátrica"},
+    {"nombre": "Medicina Física y Rehabilitación"},
+    {"nombre": "Fisiatría"},
+    {"nombre": "Medicina Nuclear"},
+    {"nombre": "Genética Médica"}
+]
+===============================================
+EPS
+Compensar
+Famisanar
+Sura
+Nueva
+Sanitas
+Salud Total
+Coomeva
+Aliansalud
+Cajacopi
+Saludcoop
+Cruz Blanca
+Colmédica
+Comfenalco
+Saludvida
+Sánitas
+Medimás
+Sanitas
+Coomeva
+Capital Salud
+[
+    {"nombre": "Compensar"},
+    {"nombre": "Famisanar"},
+    {"nombre": "Sura"},
+    {"nombre": "Nueva EPS"},
+    {"nombre": "Sanitas"},
+    {"nombre": "Salud Total"},
+    {"nombre": "Coomeva"},
+    {"nombre": "Aliansalud"},
+    {"nombre": "Cajacopi"},
+    {"nombre": "Saludcoop"},
+    {"nombre": "Cruz Blanca"},
+    {"nombre": "Colmédica"},
+    {"nombre": "Comfenalco"},
+    {"nombre": "Saludvida"},
+    {"nombre": "Medimás"},
+    {"nombre": "Capital Salud"}
+]
+=================================================
+HOSPITALES
+Unidad de Servicios de Salud Centro Oriente
+Unidad de Servicios de Salud La Victoria
+Unidad de Servicios de Salud Rafael Uribe Uribe
+Unidad de Servicios de Salud San Blas
+Unidad de Servicios de Salud San Cristóbal
+Unidad de Servicios de Salud Santa Clara
+Hospital materno infantil
+Unidad de Servicios de Salud Chapinero
+Unidad de Servicios de Salud Engativá
+Unidad de Servicios de Salud Simón Bolívar
+Unidad de Servicios de Salud Suba
+Unidad de Servicios de Salud Usaquén
+Unidad de Servicios de Salud Bosa
+Unidad de Servicios de Salud Fontibón
+Unidad de Servicios de Salud Occidente de Kennedy
+Unidad de Servicios de Salud Pablo VI Bosa
+Unidad de Servicios de Salud El Tunal
+Unidad de Servicios de Salud Meissen
+Unidad de Servicios de Salud Tunjuelito
+Unidad de Servicios de Salud Usme
+Unidad de Servicios de Salud Vista Hermosa
+[
+    {
+        "nombre": "Unidad de Servicios de Salud Centro Oriente",
+        "latitud": 4.620002202119339,
+        "longitud": -74.0653422112491,
+        "especialidades": [
+            "Medicina Familiar",
+            "Odontología General",
+            "Nutrición y Dietética",
+            "Psicología",
+            "Estomatología",
+            "Cirugía General",
+            "Pediatría",
+            "Ginecobstetricia",
+            "Endocrinología",
+            "Neurología"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Salud Total",
+            "Coomeva",
+            "Aliansalud",
+            "Cajacopi",
+            "Saludcoop"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud La Victoria",
+        "latitud": 4.552435006076596,
+        "longitud": -74.09431342730869,
+        "especialidades": [
+            "Anestesia",
+            "Cirugía General",
+            "Cirugía Ginecológica",
+            "Cirugía de Mano",
+            "Cirugía Maxilofacial",
+            "Estomatología",
+            "Ginecobstetricia",
+            "Genética",
+            "Medicina Interna",
+            "Ortopedia y Traumatología",
+            "Pediatría",
+            "Psiquiatría"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Famisanar",
+            "Sura",
+            "Nueva EPS",
+            "Sanitas",
+            "Salud Total",
+            "Coomeva",
+            "Aliansalud",
+            "Cajacopi",
+            "Saludcoop",
+            "Cruz Blanca",
+            "Colmédica",
+            "Comfenalco",
+            "Saludvida",
+            "Medimás",
+            "Capital Salud"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Rafael Uribe Uribe",
+        "latitud": 4.576327385070469,
+        "longitud": -74.09135765389819,
+        "especialidades": [
+            "Hospitalización",
+            "Atención Primaria",
+            "Consulta Externa",
+            "Vacunación",
+            "Promoción de la Salud"
+        ],
+        "listaeps": [
+            "Sura",
+            "Saludcoop",
+            "Colmédica",
+            "Comfenalco",
+            "Saludvida",
+            "Aliansalud"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud San Blas",
+        "latitud": 4.57026154261447,
+        "longitud": -74.08265123225401,
+        "especialidades": [
+            "Enfermería",
+            "Medicina General",
+            "Nutrición y Dietética",
+            "Odontología General",
+            "Psicología",
+            "Anestesia",
+            "Cirugía General",
+            "Cirugía Maxilofacial",
+            "Endocrinología",
+            "Medicina Interna",
+            "Oftalmología",
+            "Ortopedia y Traumatología",
+            "Psiquiatría",
+            "Urología"
+        ],
+        "listaeps": [
+            "Sanitas",
+            "Medimás",
+            "Capital Salud",
+            "Compensar",
+            "Salud Total",
+            "Nueva EPS"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud San Cristóbal",
+        "latitud": 4.575304910136817,
+        "longitud": -74.09367546045057,
+        "especialidades": [
+            "Medicina Familiar",
+            "Odontología General",
+            "Nutrición y Dietética",
+            "Psicología",
+            "Estomatología",
+            "Atención Prenatal",
+            "Atención del Recién Nacido",
+            "Medicina General",
+            "Vacunación",
+            "Promoción de la Salud"
+        ],
+        "listaeps": [
+            "Coomeva",
+            "Saludvida",
+            "Sanitas",
+            "Salud Total",
+            "Aliansalud",
+            "Famisanar"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Santa Clara",
+        "latitud": 4.591502975074587,
+        "longitud": -74.09232763106954,
+        "especialidades": [
+            "Anestesia",
+            "Cardiología",
+            "Cirugía Maxilofacial",
+            "Cirugía de Tórax",
+            "Cirugía General",
+            "Cirugía Vascular Periférica",
+            "Cirugía Pediátrica",
+            "Cirugía Plástica y Reconstructiva",
+            "Dermatología",
+            "Endocrinología",
+            "Electrofisiología",
+            "Medicina Física y Rehabilitación",
+            "Gastroenterología",
+            "Hematología",
+            "Infectología pediátrica",
+            "Medicina Interna",
+            "Medicina Familiar",
+            "Nefrología",
+            "Neumología",
+            "Neurocirugía",
+            "Neurología",
+            "Ortopedia y Traumatología",
+            "Otología",
+            "Otorrinolaringología",
+            "Psiquiatría",
+            "Reumatología",
+            "Toxicología",
+            "Urología"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Famisanar",
+            "Sura",
+            "Nueva EPS",
+            "Sanitas",
+            "Salud Total",
+            "Coomeva",
+            "Aliansalud",
+            "Cajacopi",
+            "Saludcoop",
+            "Cruz Blanca",
+            "Colmédica",
+            "Comfenalco",
+            "Saludvida",
+            "Medimás",
+            "Capital Salud"
+        ]
+    },
+    {
+        "nombre": "Hospital materno infantil",
+        "latitud": 4.588228036394092,
+        "longitud": -74.08539356593157,
+        "especialidades": [
+            "Ginecobstetricia",
+            "Medicina General",
+            "Pediatría",
+            "Psicología"
+        ],
+        "listaeps": [
+            "Famisanar",
+            "Cruz Blanca",
+            "Comfenalco",
+            "Saludvida",
+            "Nueva EPS",
+            "Sanitas"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Chapinero",
+        "latitud": 4.653984590706374,
+        "longitud": -74.06562968992625,
+        "especialidades": [
+            "Atención Primaria",
+            "Medicina Familiar",
+            "Odontología General",
+            "Nutrición y Dietética",
+            "Psicología",
+            "Estomatología",
+            "Atención Prenatal",
+            "Atención del Recién Nacido",
+            "Medicina General",
+            "Vacunación",
+            "Promoción de la Salud"
+        ],
+        "listaeps": [
+            "Nueva EPS",
+            "Colmédica",
+            "Medimás",
+            "Capital Salud",
+            "Famisanar",
+            "Sanitas"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Engativá",
+        "latitud": 4.711118976675335,
+        "longitud": -74.10973943225342,
+        "especialidades": [
+            "Cirugía General",
+            "Pediatría",
+            "Ginecobstetricia",
+            "Medicina Interna",
+            "Ortopedia y Traumatología",
+            "Oftalmología",
+            "Neumología",
+            "Endocrinología",
+            "Urología",
+            "Otorrinolaringología",
+            "Dermatología",
+            "Medicina Física y Rehabilitación"
+        ],
+        "listaeps": [
+            "Sanitas",
+            "Saludcoop",
+            "Coomeva",
+            "Compensar",
+            "Aliansalud",
+            "Sura"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Simón Bolívar",
+        "latitud": 4.742694422880204,
+        "longitud": -74.02303862517243,
+        "especialidades": [
+            "Neurocirugía",
+            "Cirugía Cardiovascular",
+            "Oncología",
+            "Cirugía Plástica y Reconstructiva",
+            "Neurología",
+            "Gastroenterología",
+            "Nefrología",
+            "Hematología",
+            "Cardiología",
+            "Endocrinología",
+            "Cirugía Maxilofacial",
+            "Radioterapia"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Famisanar",
+            "Sura",
+            "Nueva EPS",
+            "Sanitas",
+            "Salud Total",
+            "Coomeva",
+            "Aliansalud",
+            "Cajacopi",
+            "Saludcoop",
+            "Cruz Blanca",
+            "Colmédica",
+            "Comfenalco",
+            "Saludvida",
+            "Medimás",
+            "Capital Salud"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Suba",
+        "latitud": 4.753597614528948,
+        "longitud": -74.09171267458048,
+        "especialidades": [
+            "Cirugía General",
+            "Pediatría",
+            "Ginecobstetricia",
+            "Medicina Interna",
+            "Ortopedia y Traumatología",
+            "Oftalmología",
+            "Neurología",
+            "Otorrinolaringología",
+            "Dermatología",
+            "Urología",
+            "Endocrinología",
+            "Nutrición y Dietética"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Famisanar",
+            "Sura",
+            "Nueva EPS",
+            "Sanitas",
+            "Salud Total",
+            "Coomeva",
+            "Aliansalud",
+            "Cajacopi",
+            "Saludcoop"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Usaquén",
+        "latitud": 4.696370231560091,
+        "longitud": -74.03061763234311,
+        "especialidades": [
+            "Hospitalización",
+            "Atención Primaria",
+            "Consulta Externa",
+            "Vacunación",
+            "Promoción de la Salud",
+            "Atención Prenatal",
+            "Atención del Recién Nacido",
+            "Medicina General",
+            "Odontología General",
+            "Nutrición y Dietética",
+            "Psicología",
+            "Estomatología"
+        ],
+        "listaeps": [
+            "Capital Salud",
+            "Saludvida",
+            "Colmédica",
+            "Cruz Blanca",
+            "Compensar",
+            "Aliansalud",
+            "Saludcoop",
+            "Sanitas"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Bosa",
+        "latitud": 4.606934131621181,
+        "longitud": -74.18559343707544,
+        "especialidades": [
+            "Cirugía General",
+            "Pediatría",
+            "Ginecobstetricia",
+            "Medicina Interna",
+            "Ortopedia y Traumatología",
+            "Oftalmología",
+            "Neurología",
+            "Otorrinolaringología",
+            "Dermatología",
+            "Urología",
+            "Endocrinología",
+            "Nutrición y Dietética"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Famisanar",
+            "Sura",
+            "Nueva EPS",
+            "Cajacopi",
+            "Saludcoop",
+            "Aliansalud",
+            "Saludvida"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Fontibón",
+        "latitud": 4.671765799971355,
+        "longitud": -74.14618657458104,
+        "especialidades": [
+            "Atención Primaria",
+            "Medicina Familiar",
+            "Odontología General",
+            "Nutrición y Dietética",
+            "Psicología",
+            "Estomatología",
+            "Consulta Externa",
+            "Vacunación",
+            "Promoción de la Salud",
+            "Atención Prenatal",
+            "Atención del Recién Nacido",
+            "Medicina General",
+            "Cirugía General",
+            "Pediatría",
+            "Ginecobstetricia",
+            "Medicina Interna",
+            "Ortopedia y Traumatología",
+            "Oftalmología",
+            "Neurología",
+            "Otorrinolaringología",
+            "Dermatología",
+            "Urología",
+            "Endocrinología"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Famisanar",
+            "Sura",
+            "Nueva EPS",
+            "Sanitas",
+            "Salud Total",
+            "Coomeva",
+            "Aliansalud",
+            "Cajacopi",
+            "Saludcoop",
+            "Cruz Blanca",
+            "Colmédica",
+            "Comfenalco",
+            "Saludvida",
+            "Medimás",
+            "Capital Salud"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Occidente de Kennedy",
+        "latitud": 4.61653646764722,
+        "longitud": -74.15331588603686,
+        "especialidades": [
+            "Neurocirugía",
+            "Cirugía Cardiovascular",
+            "Oncología",
+            "Cirugía Plástica y Reconstructiva",
+            "Neurología",
+            "Gastroenterología",
+            "Nefrología",
+            "Hematología",
+            "Cardiología",
+            "Endocrinología",
+            "Cirugía Maxilofacial",
+            "Radioterapia"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Famisanar",
+            "Sura",
+            "Nueva EPS",
+            "Sanitas",
+            "Salud Total",
+            "Coomeva",
+            "Aliansalud",
+            "Cajacopi",
+            "Saludcoop",
+            "Cruz Blanca",
+            "Colmédica",
+            "Comfenalco",
+            "Saludvida",
+            "Medimás",
+            "Capital Salud"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Pablo VI Bosa",
+        "latitud": 4.598949922668886,
+        "longitud": -74.19175449539493,
+        "especialidades": [
+            "Hospitalización",
+            "Atención Primaria",
+            "Consulta Externa",
+            "Vacunación",
+            "Promoción de la Salud",
+            "Atención Prenatal",
+            "Atención del Recién Nacido",
+            "Medicina General",
+            "Odontología General",
+            "Nutrición y Dietética",
+            "Psicología",
+            "Estomatología",
+            "Fisioterapia"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Sura",
+            "Sanitas",
+            "Saludcoop",
+            "Famisanar",
+            "Aliansalud",
+            "Nueva EPS",
+            "Coomeva"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud El Tunal",
+        "latitud": 4.571543266684539,
+        "longitud": -74.12826745204696,
+        "especialidades": [
+            "Cirugía Cardiovascular",
+            "Neurocirugía",
+            "Oncología",
+            "Cirugía Plástica y Reconstructiva",
+            "Neumología",
+            "Gastroenterología",
+            "Nefrología",
+            "Hematología",
+            "Cardiología",
+            "Endocrinología",
+            "Urología",
+            "Radioterapia",
+            "Oftalmología",
+            "Dermatología",
+            "Medicina Interna",
+            "Cirugía Maxilofacial",
+            "Cirugía de Tórax",
+            "Oncología Pediátrica",
+            "Reumatología",
+            "Psiquiatría",
+            "Psicología",
+            "Terapia de Lenguaje",
+            "Fisiatría",
+            "Infectología",
+            "Medicina Nuclear",
+            "Genética Médica",
+            "Cirugía de Cabeza y Cuello"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Famisanar",
+            "Sura",
+            "Nueva EPS",
+            "Sanitas",
+            "Salud Total",
+            "Coomeva",
+            "Aliansalud",
+            "Cajacopi",
+            "Saludcoop",
+            "Cruz Blanca",
+            "Colmédica",
+            "Comfenalco",
+            "Saludvida",
+            "Medimás",
+            "Capital Salud"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Meissen",
+        "latitud": 4.559507416747081,
+        "longitud": -74.13829394059626,
+        "especialidades": [
+            "Cirugía General",
+            "Pediatría",
+            "Ginecobstetricia",
+            "Medicina Interna",
+            "Ortopedia y Traumatología",
+            "Oftalmología",
+            "Neurología",
+            "Otorrinolaringología",
+            "Dermatología",
+            "Urología",
+            "Endocrinología",
+            "Nutrición y Dietética"
+        ],
+        "listaeps": [
+            "Famisanar",
+            "Nueva EPS",
+            "Cajacopi",
+            "Saludcoop",
+            "Aliansalud",
+            "Sanitas",
+            "Coomeva",
+            "Capital Salud"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Tunjuelito",
+        "latitud": 4.562861702271498,
+        "longitud": -74.12521663120366,
+        "especialidades": [
+            "Cirugía General",
+            "Pediatría",
+            "Ginecobstetricia",
+            "Medicina Interna",
+            "Ortopedia y Traumatología",
+            "Oftalmología",
+            "Neurología",
+            "Otorrinolaringología",
+            "Dermatología",
+            "Urología",
+            "Endocrinología",
+            "Nutrición y Dietética"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Sanitas",
+            "Capital Salud",
+            "Aliansalud",
+            "Saludvida",
+            "Coomeva",
+            "Famisanar",
+            "Saludcoop"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Usme",
+        "latitud": 4.473395641627587,
+        "longitud": -74.12183308807326,
+        "especialidades": [
+            "Hospitalización",
+            "Atención Primaria",
+            "Consulta Externa",
+            "Vacunación",
+            "Promoción de la Salud",
+            "Atención Prenatal",
+            "Atención del Recién Nacido",
+            "Medicina General",
+            "Odontología General",
+            "Nutrición y Dietética",
+            "Psicología",
+            "Estomatología"
+        ],
+        "listaeps": [
+            "Sura",
+            "Coomeva",
+            "Salud Total",
+            "Medimás",
+            "Aliansalud",
+            "Nueva EPS",
+            "Sanitas",
+            "Saludcoop"
+        ]
+    },
+    {
+        "nombre": "Unidad de Servicios de Salud Vista Hermosa",
+        "latitud": 4.552479508257704,
+        "longitud": -74.14464608813738,
+        "especialidades": [
+            "Hospitalización",
+            "Atención Primaria",
+            "Consulta Externa",
+            "Vacunación",
+            "Promoción de la Salud",
+            "Atención Prenatal",
+            "Atención del Recién Nacido",
+            "Medicina General",
+            "Odontología General",
+            "Nutrición y Dietética",
+            "Psicología",
+            "Estomatología"
+        ],
+        "listaeps": [
+            "Compensar",
+            "Famisanar",
+            "Sura",
+            "Nueva EPS",
+            "Sanitas",
+            "Salud Total",
+            "Coomeva",
+            "Capital Salud"
+        ]
+    }
+]

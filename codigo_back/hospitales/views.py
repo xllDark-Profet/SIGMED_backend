@@ -155,17 +155,17 @@ class HospitalView(View):
                 listaeps = hospital_data['listaeps']
                 
                 if Hospital.objects.filter(Q(latitud=latitud) & Q(longitud=longitud)).exists():
-                    hospitals_failed.append({'mensaje': "Ya existe un hospital con la misma latitud y longitud."})
+                    hospitals_failed.append({'mensaje': f"Ya existe otro hospital con esa misma latitud y longitud que se ingreso del hospital '{nombre}'."})
                     continue
 
                 especialidades_existentes = Especialidad.objects.filter(nombre__in=especialidades)
                 if len(especialidades_existentes) != len(especialidades):
-                    hospitals_failed.append({'mensaje': "Los nombres de las especialidades no coinciden con la base de datos."})
+                    hospitals_failed.append({'mensaje': f"Los nombres de las especialidades del hospital '{nombre}' no coinciden con la base de datos."})
                     continue
                 
                 eps_existentes = EPS.objects.filter(nombre__in=listaeps)
                 if len(eps_existentes) != len(listaeps):
-                    hospitals_failed.append({'mensaje': "Los nombres de las EPS no coinciden con la base de datos."})
+                    hospitals_failed.append({'mensaje': f"Los nombres de las EPS del hospital '{nombre}' no coinciden con la base de datos."})
                     continue
 
                 nuevo_hospital = Hospital.objects.create(

@@ -2,56 +2,71 @@
   "emergencias": [
     {
       "nombre": "Diarrea y gastroenteritis",
-      "especialidad": "Gastroenterologia",
+      "especialidad": "Gastroenterología",
       "sintomas": [
         {
-          "sintoma": "Nauseas",
+          "sintoma": "Náuseas",
           "severidad": "normal",
           "valor": 1
         },
         {
-          "sintoma": "Vomitos",
+          "sintoma": "Vómitos",
           "severidad": "normal",
           "valor": 1
         },
         {
           "sintoma": "Fiebre moderada",
           "severidad": "normal",
-          "valor": 2
+          "valor": 1
         },
         {
           "sintoma": "Diarrea acuosa",
           "severidad": "alta",
-          "valor": 3
+          "valor": 1
         },
         {
           "sintoma": "Dolor abdominal",
           "severidad": "normal",
+          "valor": 1
+        },
+        {
+          "sintoma": "Deshidratación leve",
+          "severidad": "normal",
           "valor": 2
         },
         {
-          "sintoma": "Deshidratacion leve",
-          "severidad": "normal",
-          "valor": 2
-        }
-      ],
-      "recomendaciones": {
-        "recomendacion1": "Hidratacion: Beber liquidos claros y electrolitos.",
-        "recomendacion2": "Descanso: Reposo para evitar el reflujo gastrico.",
-        "recomendacion3": "Alimentacion: Dieta leve y facil de digerir, evitando alimentos grasos y lacteos."
-      }
-    },
-    {
-      "nombre": "Dolor abdominal agudo",
-      "especialidad": "Gastroenterologia",
-      "sintomas": [
-        {
-          "sintoma": "Nauseas",
+          "sintoma": "Sensación de malestar general",
           "severidad": "normal",
           "valor": 1
         },
         {
-          "sintoma": "Vomitos",
+          "sintoma": "Calambres abdominales",
+          "severidad": "normal",
+          "valor": 1
+        },
+        {
+          "sintoma": "Inapetencia",
+          "severidad": "normal",
+          "valor": 1
+        }
+      ],
+      "recomendaciones": {
+        "recomendacion1": "Hidratación: Beber líquidos claros y electrolitos.",
+        "recomendacion2": "Descanso: Reposo para evitar el esfuerzo abdominal.",
+        "recomendacion3": "Alimentación: Dieta suave y fácil de digerir, evitando alimentos grasos y lácteos."
+      }
+    },
+    {
+      "nombre": "Dolor abdominal agudo",
+      "especialidad": "Gastroenterología",
+      "sintomas": [
+        {
+          "sintoma": "Náuseas",
+          "severidad": "normal",
+          "valor": 1
+        },
+        {
+          "sintoma": "Vómitos",
           "severidad": "normal",
           "valor": 1
         },
@@ -61,9 +76,9 @@
           "valor": 2
         },
         {
-          "sintoma": "Distension abdominal",
+          "sintoma": "Distensión abdominal",
           "severidad": "alta",
-          "valor": 2
+          "valor": 3
         },
         {
           "sintoma": "Diarrea leve",
@@ -71,40 +86,50 @@
           "valor": 3
         },
         {
-          "sintoma": "Constipacion",
+          "sintoma": "Estreñimiento",
           "severidad": "normal",
           "valor": 2
         },
         {
           "sintoma": "Sangre en las heces",
-          "severidad": "normal",
-          "valor": 2
+          "severidad": "alta",
+          "valor": 4
+        },
+        {
+          "sintoma": "Dolor abdominal punzante",
+          "severidad": "alta",
+          "valor": 4
+        },
+        {
+          "sintoma": "Dolor al moverse",
+          "severidad": "alta",
+          "valor": 3
         }
       ],
       "recomendaciones": {
         "recomendacion1": "Reposo: Evitar movimientos bruscos o esfuerzos que puedan agravar el dolor.",
-        "recomendacion2": "Aplicacion de calor: Colocar una bolsa de agua caliente o una compresa caliente en el area del dolor.",
+        "recomendacion2": "Aplicación de calor: Colocar una bolsa de agua caliente o una compresa caliente en el área del dolor.",
         "recomendacion3": "Medicamentos: Tomar analgésicos de venta libre, como ibuprofeno o paracetamol, para aliviar el dolor."
       }
     },
     {
-      "nombre": "Migrana",
-      "especialidad": "Neurologia",
+      "nombre": "Migraña",
+      "especialidad": "Neurología",
       "sintomas": [
         {
-          "sintoma": "Nauseas",
+          "sintoma": "Náuseas",
           "severidad": "normal",
           "valor": 1
         },
         {
-          "sintoma": "Vomitos",
+          "sintoma": "Vómitos",
           "severidad": "normal",
           "valor": 1
         },
         {
           "sintoma": "Dolor de cabeza intenso",
           "severidad": "alta",
-          "valor": 3
+          "valor": 4
         },
         {
           "sintoma": "Sensibilidad a la luz",
@@ -112,66 +137,86 @@
           "valor": 2
         },
         {
-          "sintoma": "Vision borrosa",
+          "sintoma": "Sensibilidad al ruido",
           "severidad": "normal",
           "valor": 2
         },
         {
-          "sintoma": "Sensibilidad al ruido",
+          "sintoma": "Auras visuales",
+          "severidad": "alta",
+          "valor": 3
+        },
+        {
+          "sintoma": "Sensación de pulsación o latido en la cabeza",
+          "severidad": "normal",
+          "valor": 3
+        },
+        {
+          "sintoma": "Fatiga extrema",
           "severidad": "normal",
           "valor": 2
         }
       ],
       "recomendaciones": {
         "recomendacion1": "Descanso: Buscar un lugar tranquilo y oscuro para descansar.",
-        "recomendacion2": "Hidratacion: Beber liquidos para evitar la deshidratación.",
-        "recomendacion3": "Compresas frias: Aplicar compresas frías sobre la frente."
+        "recomendacion2": "Hidratación: Beber líquidos para evitar la deshidratación.",
+        "recomendacion3": "Compresas frías: Aplicar compresas frías sobre la frente."
       }
     },
     {
-      "nombre": "Fractura grave sin exposicion de hueso",
-      "especialidad": "Ortopedia y Traumatologia",
+      "nombre": "Fractura grave sin exposición de hueso",
+      "especialidad": "Ortopedia y Traumatología",
       "sintomas": [
         {
-          "sintoma": "Dolor intenso en el area afectada",
+          "sintoma": "Dolor intenso en el área afectada",
           "severidad": "alta",
           "valor": 5
         },
         {
-          "sintoma": "Hinchazon",
+          "sintoma": "Hinchazón",
           "severidad": "normal",
-          "valor": 2
+          "valor": 3
         },
         {
           "sintoma": "Deformidad",
           "severidad": "normal",
-          "valor": 3
+          "valor": 4
         },
         {
           "sintoma": "Incapacidad para mover la extremidad",
           "severidad": "normal",
-          "valor": 3
+          "valor": 4
+        },
+        {
+          "sintoma": "Dolor al palpar la zona",
+          "severidad": "alta",
+          "valor": 5
+        },
+        {
+          "sintoma": "Pérdida de la sensibilidad",
+          "severidad": "alta",
+          "valor": 4
         }
       ],
       "recomendaciones": {
-        "recomendacion1": "No enderezar a la persona y tratar de moverla lo menos posible ya que puede causar una lesion peor o afectar otras partes del cuerpo.",
+        "recomendacion1": "No enderezar a la persona y tratar de moverla lo menos posible ya que puede causar una lesión peor o afectar otras partes del cuerpo.",
         "recomendacion2": "Inmovilizar las extremidades afectadas con materiales firmes.",
-        "recomendacion3": "Cubrir las heridas con materiales esteriles para reducir el riesgo de infeccion."
+        "recomendacion3": "Cubrir las heridas con materiales estériles para reducir el riesgo de infección."
       }
     },
     {
       "nombre": "Faringitis y amigdalitis",
-      "especialidad": "Otorrinolaringologia ",
+      "especialidad": "Otorrinolaringología",
       "sintomas": [
         {
-          "sintoma": "Amigdalas inflamadas",
+          "sintoma": "Amígdalas inflamadas",
           "severidad": "normal",
           "valor": 3
         },
         {
           "sintoma": "Dolor de garganta",
           "severidad": "alta",
-          "valor": 2
+          "valor": 4
         },
         {
           "sintoma": "Enrojecimiento de la garganta",
@@ -179,7 +224,7 @@
           "valor": 2
         },
         {
-          "sintoma": "Amigdalas con exudado",
+          "sintoma": "Amígdalas con exudado",
           "severidad": "normal",
           "valor": 2
         },
@@ -187,15 +232,208 @@
           "sintoma": "Dificultad para tragar",
           "severidad": "normal",
           "valor": 2
+        },
+        {
+          "sintoma": "Fiebre moderada",
+          "severidad": "normal",
+          "valor": 3
+        },
+        {
+          "sintoma": "Malestar general",
+          "severidad": "normal",
+          "valor": 2
         }
       ],
       "recomendaciones": {
         "recomendacion1": "Evitar hablar y gritar para evitar el dolor.",
         "recomendacion2": "Colocar una bolsa de agua caliente o una compresa caliente en el cuello.",
-        "recomendacion3": "Tomar analgesicos de venta libre, como ibuprofeno o paracetamol, para aliviar el dolor y la fiebre.",
-        "recomendacion4": "Hacer gargaras con agua tibia con sal para ayudar a aliviar la irritacion de la garganta."
+        "recomendacion3": "Tomar analgésicos de venta libre, como ibuprofeno o paracetamol, para aliviar el dolor y la fiebre.",
+        "recomendacion4": "Hacer gárgaras con agua tibia con sal para ayudar a aliviar la irritación de la garganta."
+      }
+    },
+    {
+      "nombre": "Apendicitis aguda",
+      "especialidad": "Cirugía General",
+      "sintomas": [
+        {
+          "sintoma": "Dolor abdominal localizado",
+          "severidad": "alta",
+          "valor": 4
+        },
+        {
+          "sintoma": "Fiebre moderada a alta",
+          "severidad": "normal",
+          "valor": 3
+        },
+        {
+          "sintoma": "Náuseas",
+          "severidad": "normal",
+          "valor": 2
+        },
+        {
+          "sintoma": "Vómitos",
+          "severidad": "normal",
+          "valor": 2
+        },
+        {
+          "sintoma": "Inapetencia",
+          "severidad": "normal",
+          "valor": 1
+        },
+        {
+          "sintoma": "Malestar general",
+          "severidad": "normal",
+          "valor": 2
+        },
+        {
+          "sintoma": "Dolor al toser o estornudar",
+          "severidad": "alta",
+          "valor": 4
+        }
+      ],
+      "recomendaciones": {
+        "recomendacion1": "Buscar atención médica de inmediato.",
+        "recomendacion2": "No aplicar calor o frío sobre el abdomen.",
+        "recomendacion3": "No ingerir alimentos ni líquidos, especialmente analgésicos, hasta ser evaluado por un médico."
+      }
+    },
+    {
+      "nombre": "Ataque al corazón (Infarto de miocardio)",
+      "especialidad": "Cardiología",
+      "sintomas": [
+        {
+          "sintoma": "Dolor opresivo en el pecho",
+          "severidad": "alta",
+          "valor": 5
+        },
+        {
+          "sintoma": "Sensación de falta de aire",
+          "severidad": "alta",
+          "valor": 4
+        },
+        {
+          "sintoma": "Sudoración fría",
+          "severidad": "alta",
+          "valor": 4
+        },
+        {
+          "sintoma": "Mareos o desmayo",
+          "severidad": "alta",
+          "valor": 5
+        },
+        {
+          "sintoma": "Náuseas o vómitos",
+          "severidad": "normal",
+          "valor": 3
+        },
+        {
+          "sintoma": "Dolor que se irradia al brazo izquierdo o la mandíbula",
+          "severidad": "alta",
+          "valor": 5
+        },
+        {
+          "sintoma": "Palidez",
+          "severidad": "alta",
+          "valor": 4
+        }
+      ],
+      "recomendaciones": {
+        "recomendacion1": "Llamar a emergencias o dirigirse a un centro médico de inmediato.",
+        "recomendacion2": "No ingerir ningún medicamento sin previa consulta médica.",
+        "recomendacion3": "Mantener la calma y no realizar esfuerzos físicos."
+      }
+    },
+    {
+      "nombre": "Crisis asmática",
+      "especialidad": "Neumología",
+      "sintomas": [
+        {
+          "sintoma": "Dificultad para respirar",
+          "severidad": "alta",
+          "valor": 5
+        },
+        {
+          "sintoma": "Sibilancias",
+          "severidad": "alta",
+          "valor": 4
+        },
+        {
+          "sintoma": "Tos seca y persistente",
+          "severidad": "alta",
+          "valor": 4
+        },
+        {
+          "sintoma": "Sensación de opresión en el pecho",
+          "severidad": "alta",
+          "valor": 5
+        },
+        {
+          "sintoma": "Fatiga",
+          "severidad": "normal",
+          "valor": 3
+        },
+        {
+          "sintoma": "Ansiedad",
+          "severidad": "normal",
+          "valor": 3
+        },
+        {
+          "sintoma": "Piel pálida y sudorosa",
+          "severidad": "alta",
+          "valor": 4
+        }
+      ],
+      "recomendaciones": {
+        "recomendacion1": "Administrar medicamentos broncodilatadores según las indicaciones médicas.",
+        "recomendacion2": "Buscar asistencia médica de inmediato.",
+        "recomendacion3": "Permanecer en una posición cómoda y tratar de mantener la calma."
+      }
+    },
+    {
+      "nombre": "Crisis de ansiedad",
+      "especialidad": "Psicología",
+      "sintomas": [
+        {
+          "sintoma": "Dificultad para respirar",
+          "severidad": "alta",
+          "valor": 4
+        },
+        {
+          "sintoma": "Palpitaciones",
+          "severidad": "alta",
+          "valor": 4
+        },
+        {
+          "sintoma": "Sudoración excesiva",
+          "severidad": "alta",
+          "valor": 3
+        },
+        {
+          "sintoma": "Temblor o sacudidas",
+          "severidad": "alta",
+          "valor": 3
+        },
+        {
+          "sintoma": "Sensación de ahogo",
+          "severidad": "alta",
+          "valor": 4
+        },
+        {
+          "sintoma": "Miedo intenso a perder el control o a morir",
+          "severidad": "alta",
+          "valor": 5
+        },
+        {
+          "sintoma": "Sensación de mareo o desmayo inminente",
+          "severidad": "alta",
+          "valor": 5
+        }
+      ],
+      "recomendaciones": {
+        "recomendacion1": "Practicar técnicas de respiración profunda y relajación muscular.",
+        "recomendacion2": "Intentar identificar y controlar los pensamientos negativos.",
+        "recomendacion3": "Buscar apoyo emocional y psicológico de un profesional de la salud mental."
       }
     }
   ]
 }
-  

@@ -229,16 +229,18 @@ class IdentificadorView(View):
             sintomas = [sintoma for sintoma, respuesta in respuestasDTO.sintomas_presentes.items() if respuesta == "si"]
             puntaje = sum(sintoma['valor'] for sintoma in emergencia_identificada['sintomas'] if sintoma['sintoma'] in sintomas)
             triage = 0
-            if puntaje <= 3:
+            
+            if puntaje <= 4:
                 triage = 5
-            elif puntaje <= 5:
+            elif puntaje <= 8:
                 triage = 4
-            elif puntaje <=7:
+            elif puntaje <= 12:
                 triage = 3
-            elif puntaje < 10:
+            elif puntaje <= 16:
                 triage = 2
             else:
                 triage = 1
+                
             return JsonResponse({'emergencia_detectada': emergencia_identificada['nombre'], 'especialidad': emergencia_identificada['especialidad'], 'sintomas_presentes':sintomas, 'recomendaciones': emergencia_identificada['recomendaciones'], 'triage': triage}, status=200)
         else:
             return JsonResponse({'mensaje': 'No se pudo detectar la emergencia'}, status=200)
@@ -286,16 +288,14 @@ class ObtenerHospitalesView(View):
             pass
         elif triage in [2, 3]:
             aux = hospitales_cercanos.filter(especialidades__nombre=especialidad)
-        elif triage in [4, 5]:
+        elif triage == 4:
+            aux = hospitales_cercanos.filter(especialidades__nombre=especialidad, listaeps__id=id_eps)
+            if len(aux) < 4:
+                aux = hospitales_cercanos.filter(especialidades__nombre=especialidad)
+        elif triage == 5:
             aux = hospitales_cercanos.filter(especialidades__nombre=especialidad, listaeps__id=id_eps)
         else:
             return JsonResponse({'mensaje': 'Nivel de triage invalido'}, status=400)
-        
-        if not aux or len(aux) < 4:
-            aux = hospitales_cercanos.filter(especialidades__nombre=especialidad)
-        
-        if not aux or len(aux) < 4:
-            aux = hospitales_cercanos
     
         distancias_hospitales = []
         for hospital in aux:

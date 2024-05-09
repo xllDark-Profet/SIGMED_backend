@@ -152,7 +152,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"tipo_identificacion\": \"CC\",\r\n    \"identificacion\": 1234566,\r\n    \"nombre\": \"Perfil de\",\r\n    \"apellido\": \"Pruebas 4\",\r\n    \"correo\": \"pruebas4@example.com\",\r\n    \"telefono\": 1234,\r\n    \"nombre_usuario\": \"prueba4\",\r\n    \"clave\": \"clave123\",\r\n    \"tipo_usuario\": \"Usuario\",\r\n    \"fecha_nacimiento\": \"1999-05-15\",\r\n    \"tipo_sangre\": \"A+\",\r\n    \"nombre_eps\": \"Sura\"\r\n}",
+							"raw": "{\r\n    \"tipo_identificacion\": \"CC\",\r\n    \"identificacion\": 10302488,\r\n    \"nombre\": \"Daniel\",\r\n    \"apellido\": \"Millan\",\r\n    \"correo\": \"daniel@example.com\",\r\n    \"telefono\": 3012224455,\r\n    \"nombre_usuario\": \"daniel\",\r\n    \"tipo_usuario\": \"administrador\",\r\n    \"clave\": \"clave123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -210,7 +210,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"tipo_identificacion\": \"CC\",\r\n    \"identificacion\": 1010248768,\r\n    \"nombre\": \"Sebastian\",\r\n    \"apellido\": \"Sandoval\",\r\n    \"correo\": \"sebas@example.com\",\r\n    \"telefono\": 3043392632,\r\n    \"nombre_usuario\": \"sebas\",\r\n    \"clave\": \"\",\r\n    \"tipo_usuario\": \"Administrador\"\r\n}",
+							"raw": "{\r\n    \"id\": 9,\r\n    \"nombre_usuario\": \"sebas\" \r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -239,7 +239,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre_usuario\": \"prueba3\"\r\n}",
+							"raw": "{\r\n    \"nombre_usuario\": \"daniel\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -297,7 +297,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"acceso\": \"prueba\",\r\n    \"clave\": \"clave123\"\r\n}",
+							"raw": "{\r\n    \"acceso\": \"daniel\",\r\n    \"clave\": \"holas\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -373,37 +373,6 @@
 					"response": []
 				},
 				{
-					"name": "buscar especialidad por nombre",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Pediatria\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "text"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8000/especialidades/",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"especialidades",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "buscar especialidad por id",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -435,13 +404,42 @@
 					"response": []
 				},
 				{
+					"name": "agregar especialidades",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\"nombre\": \"Cirugía General\"},\r\n    {\"nombre\": \"Pediatría\"},\r\n    {\"nombre\": \"Ginecobstetricia\"},\r\n    {\"nombre\": \"Medicina Interna\"},\r\n    {\"nombre\": \"Ortopedia y Traumatología\"},\r\n    {\"nombre\": \"Oftalmología\"},\r\n    {\"nombre\": \"Otorrinolaringología\"},\r\n    {\"nombre\": \"Dermatología\"},\r\n    {\"nombre\": \"Urología\"},\r\n    {\"nombre\": \"Endocrinología\"},\r\n    {\"nombre\": \"Nutrición y Dietética\"},\r\n    {\"nombre\": \"Anestesia\"},\r\n    {\"nombre\": \"Cardiología\"},\r\n    {\"nombre\": \"Cirugía Maxilofacial\"},\r\n    {\"nombre\": \"Cirugía de Tórax\"},\r\n    {\"nombre\": \"Estomatología\"},\r\n    {\"nombre\": \"Gastroenterología\"},\r\n    {\"nombre\": \"Neumología\"},\r\n    {\"nombre\": \"Psiquiatría\"},\r\n    {\"nombre\": \"Electrofisiología\"},\r\n    {\"nombre\": \"Genética\"},\r\n    {\"nombre\": \"Hematología\"},\r\n    {\"nombre\": \"Infectología\"},\r\n    {\"nombre\": \"Otología\"},\r\n    {\"nombre\": \"Reumatología\"},\r\n    {\"nombre\": \"Toxicología\"},\r\n    {\"nombre\": \"Terapia de Lenguaje\"},\r\n    {\"nombre\": \"Fisioterapia\"},\r\n    {\"nombre\": \"Radioterapia\"},\r\n    {\"nombre\": \"Cirugía de Cabeza y Cuello\"},\r\n    {\"nombre\": \"Neurocirugía\"},\r\n    {\"nombre\": \"Cirugía Cardiovascular\"},\r\n    {\"nombre\": \"Nefrología\"},\r\n    {\"nombre\": \"Oncología Pediátrica\"},\r\n    {\"nombre\": \"Traumatología\"},\r\n    {\"nombre\": \"Cirugía de Mano\"},\r\n    {\"nombre\": \"Cirugía Vascular Periférica\"},\r\n    {\"nombre\": \"Cirugía Pediátrica\"},\r\n    {\"nombre\": \"Cirugía Plástica y Reconstructiva\"},\r\n    {\"nombre\": \"Gastrocirugía\"},\r\n    {\"nombre\": \"Oncología Médica\"},\r\n    {\"nombre\": \"Urgencias\"},\r\n    {\"nombre\": \"Reproducción Asistida\"},\r\n    {\"nombre\": \"Farmacología\"},\r\n    {\"nombre\": \"Cirugía Bariátrica\"},\r\n    {\"nombre\": \"Cuidados Paliativos\"},\r\n    {\"nombre\": \"Cuidados Intensivos\"},\r\n    {\"nombre\": \"Ecografía\"},\r\n    {\"nombre\": \"Endoscopia\"},\r\n    {\"nombre\": \"Ecocardiografía\"},\r\n    {\"nombre\": \"Radiología\"},\r\n    {\"nombre\": \"Medicina del Deporte\"},\r\n    {\"nombre\": \"Medicina Hiperbárica\"},\r\n    {\"nombre\": \"Medicina Tropical\"},\r\n    {\"nombre\": \"Medicina del Dolor\"},\r\n    {\"nombre\": \"Medicina Estética\"},\r\n    {\"nombre\": \"Medicina Forense\"},\r\n    {\"nombre\": \"Medicina del Sueño\"},\r\n    {\"nombre\": \"Medicina Regenerativa\"},\r\n    {\"nombre\": \"Medicina Integrativa\"},\r\n    {\"nombre\": \"Odontología Especializada\"},\r\n    {\"nombre\": \"Ortodoncia\"},\r\n    {\"nombre\": \"Periodoncia\"},\r\n    {\"nombre\": \"Implantología Dental\"},\r\n    {\"nombre\": \"Endodoncia\"},\r\n    {\"nombre\": \"Cirugía Oral y Maxilofacial\"},\r\n    {\"nombre\": \"Estética Dental\"},\r\n    {\"nombre\": \"Ortopedia Maxilar\"},\r\n    {\"nombre\": \"Patología Oral y Maxilofacial\"},\r\n    {\"nombre\": \"Ortodoncia y Ortopedia Dento Facial\"},\r\n    {\"nombre\": \"Ortopedia Funcional de los Maxilares\"},\r\n    {\"nombre\": \"Fonoaudiología\"},\r\n    {\"nombre\": \"Oftalmología Pediátrica\"},\r\n    {\"nombre\": \"Optometría\"},\r\n    {\"nombre\": \"Ortopedia Infantil\"},\r\n    {\"nombre\": \"Psicopedagogía\"},\r\n    {\"nombre\": \"Terapia Ocupacional\"},\r\n    {\"nombre\": \"Medicina Geriátrica\"},\r\n    {\"nombre\": \"Podología\"},\r\n    {\"nombre\": \"Psicoterapia\"},\r\n    {\"nombre\": \"Cirugía Experimental\"},\r\n    {\"nombre\": \"Neurofisiología Clínica\"},\r\n    {\"nombre\": \"Cirugía Robótica\"},\r\n    {\"nombre\": \"Cirugía Mínimamente Invasiva\"},\r\n    {\"nombre\": \"Telemedicina\"},\r\n    {\"nombre\": \"Inmunología\"},\r\n    {\"nombre\": \"Cirugía Dentomaxilar\"},\r\n    {\"nombre\": \"Ortopedia Dentofacial\"},\r\n    {\"nombre\": \"Cirugía Periodontal\"},\r\n    {\"nombre\": \"Cirugía Endodóntica\"},\r\n    {\"nombre\": \"Cirugía Prostodóntica\"},\r\n    {\"nombre\": \"Cirugía Implantológica\"},\r\n    {\"nombre\": \"Cirugía Reconstruciva Facial\"},\r\n    {\"nombre\": \"Cirugía Estética Facial\"},\r\n    {\"nombre\": \"Cirugía Ortognática\"},\r\n    {\"nombre\": \"Oncología\"},\r\n    {\"nombre\": \"Ginecología\"},\r\n    {\"nombre\": \"Medicina Familiar\"},\r\n    {\"nombre\": \"Odontología General\"},\r\n    {\"nombre\": \"Psicología\"},\r\n    {\"nombre\": \"Neurología\"},\r\n    {\"nombre\": \"Cirugía Ginecológica\"},\r\n    {\"nombre\": \"Hospitalización\"},\r\n    {\"nombre\": \"Promoción de la Salud\"},\r\n    {\"nombre\": \"Atención Primaria\"},\r\n    {\"nombre\": \"Consulta Externa\"},\r\n    {\"nombre\": \"Vacunación\"},\r\n    {\"nombre\": \"Medicina General\"},\r\n    {\"nombre\": \"Enfermería\"},\r\n    {\"nombre\": \"Atención Prenatal\"},\r\n    {\"nombre\": \"Atención del Recién Nacido\"},\r\n    {\"nombre\": \"Infectología pediátrica\"},\r\n    {\"nombre\": \"Medicina Física y Rehabilitación\"},\r\n    {\"nombre\": \"Fisiatría\"},\r\n    {\"nombre\": \"Medicina Nuclear\"},\r\n    {\"nombre\": \"Genética Médica\"}\r\n]",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/especialidades/agregar/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"especialidades",
+								"agregar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "agregar especialidad",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\"nombre\": \"Pediatria\"},\r\n    {\"nombre\": \"Neurologia\"},\r\n    {\"nombre\": \"Oncologia\"},\r\n    {\"nombre\": \"Ginecologia\"},\r\n    {\"nombre\": \"Cardiologia\"},\r\n    {\"nombre\": \"Psicologia\"},\r\n    {\"nombre\": \"Gastroenterologia\"},\r\n    {\"nombre\": \"Ortopedia y Traumatologia\"},\r\n    {\"nombre\": \"Otorrinolaringologia\"}\r\n]",
+							"raw": "{\r\n    \"nombre\": \"prueba\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -470,7 +468,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"6\",\r\n    \"nombre\": \"Psicologia\"\r\n}",
+							"raw": "{\r\n    \"id\": \"6\",\r\n    \"nombre\": \"Psicologia Avanzada\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -643,7 +641,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\"nombre\": \"Compensar\"},\r\n    {\"nombre\": \"Famisanar\"},\r\n    {\"nombre\": \"Nueva eps\"},\r\n    {\"nombre\": \"Sura\"}\r\n]",
+							"raw": "[\r\n    {\"nombre\": \"Compensar\"},\r\n    {\"nombre\": \"Famisanar\"},\r\n    {\"nombre\": \"Sura\"},\r\n    {\"nombre\": \"Nueva EPS\"},\r\n    {\"nombre\": \"Sanitas\"},\r\n    {\"nombre\": \"Salud Total\"},\r\n    {\"nombre\": \"Coomeva\"},\r\n    {\"nombre\": \"Aliansalud\"},\r\n    {\"nombre\": \"Cajacopi\"},\r\n    {\"nombre\": \"Saludcoop\"},\r\n    {\"nombre\": \"Cruz Blanca\"},\r\n    {\"nombre\": \"Colmédica\"},\r\n    {\"nombre\": \"Comfenalco\"},\r\n    {\"nombre\": \"Saludvida\"},\r\n    {\"nombre\": \"Medimás\"},\r\n    {\"nombre\": \"Capital Salud\"}\r\n]",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -899,13 +897,42 @@
 					"response": []
 				},
 				{
+					"name": "agregar hospitales",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Centro Oriente\",\r\n        \"latitud\": 4.620002202119339,\r\n        \"longitud\": -74.0653422112491,\r\n        \"especialidades\": [\r\n            \"Medicina Familiar\",\r\n            \"Odontología General\",\r\n            \"Nutrición y Dietética\",\r\n            \"Psicología\",\r\n            \"Estomatología\",\r\n            \"Cirugía General\",\r\n            \"Pediatría\",\r\n            \"Ginecobstetricia\",\r\n            \"Endocrinología\",\r\n            \"Neurología\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Salud Total\",\r\n            \"Coomeva\",\r\n            \"Aliansalud\",\r\n            \"Cajacopi\",\r\n            \"Saludcoop\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud La Victoria\",\r\n        \"latitud\": 4.552435006076596,\r\n        \"longitud\": -74.09431342730869,\r\n        \"especialidades\": [\r\n            \"Anestesia\",\r\n            \"Cirugía General\",\r\n            \"Cirugía Ginecológica\",\r\n            \"Cirugía de Mano\",\r\n            \"Cirugía Maxilofacial\",\r\n            \"Estomatología\",\r\n            \"Ginecobstetricia\",\r\n            \"Genética\",\r\n            \"Medicina Interna\",\r\n            \"Ortopedia y Traumatología\",\r\n            \"Pediatría\",\r\n            \"Psiquiatría\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Famisanar\",\r\n            \"Sura\",\r\n            \"Nueva EPS\",\r\n            \"Sanitas\",\r\n            \"Salud Total\",\r\n            \"Coomeva\",\r\n            \"Aliansalud\",\r\n            \"Cajacopi\",\r\n            \"Saludcoop\",\r\n            \"Cruz Blanca\",\r\n            \"Colmédica\",\r\n            \"Comfenalco\",\r\n            \"Saludvida\",\r\n            \"Medimás\",\r\n            \"Capital Salud\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Rafael Uribe Uribe\",\r\n        \"latitud\": 4.576327385070469,\r\n        \"longitud\": -74.09135765389819,\r\n        \"especialidades\": [\r\n            \"Hospitalización\",\r\n            \"Atención Primaria\",\r\n            \"Consulta Externa\",\r\n            \"Vacunación\",\r\n            \"Promoción de la Salud\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Sura\",\r\n            \"Saludcoop\",\r\n            \"Colmédica\",\r\n            \"Comfenalco\",\r\n            \"Saludvida\",\r\n            \"Aliansalud\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud San Blas\",\r\n        \"latitud\": 4.57026154261447,\r\n        \"longitud\": -74.08265123225401,\r\n        \"especialidades\": [\r\n            \"Enfermería\",\r\n            \"Medicina General\",\r\n            \"Nutrición y Dietética\",\r\n            \"Odontología General\",\r\n            \"Psicología\",\r\n            \"Anestesia\",\r\n            \"Cirugía General\",\r\n            \"Cirugía Maxilofacial\",\r\n            \"Endocrinología\",\r\n            \"Medicina Interna\",\r\n            \"Oftalmología\",\r\n            \"Ortopedia y Traumatología\",\r\n            \"Psiquiatría\",\r\n            \"Urología\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Sanitas\",\r\n            \"Medimás\",\r\n            \"Capital Salud\",\r\n            \"Compensar\",\r\n            \"Salud Total\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud San Cristóbal\",\r\n        \"latitud\": 4.575304910136817,\r\n        \"longitud\": -74.09367546045057,\r\n        \"especialidades\": [\r\n            \"Medicina Familiar\",\r\n            \"Odontología General\",\r\n            \"Nutrición y Dietética\",\r\n            \"Psicología\",\r\n            \"Estomatología\",\r\n            \"Atención Prenatal\",\r\n            \"Atención del Recién Nacido\",\r\n            \"Medicina General\",\r\n            \"Vacunación\",\r\n            \"Promoción de la Salud\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Coomeva\",\r\n            \"Saludvida\",\r\n            \"Sanitas\",\r\n            \"Salud Total\",\r\n            \"Aliansalud\",\r\n            \"Famisanar\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Santa Clara\",\r\n        \"latitud\": 4.591502975074587,\r\n        \"longitud\": -74.09232763106954,\r\n        \"especialidades\": [\r\n            \"Anestesia\",\r\n            \"Cardiología\",\r\n            \"Cirugía Maxilofacial\",\r\n            \"Cirugía de Tórax\",\r\n            \"Cirugía General\",\r\n            \"Cirugía Vascular Periférica\",\r\n            \"Cirugía Pediátrica\",\r\n            \"Cirugía Plástica y Reconstructiva\",\r\n            \"Dermatología\",\r\n            \"Endocrinología\",\r\n            \"Electrofisiología\",\r\n            \"Medicina Física y Rehabilitación\",\r\n            \"Gastroenterología\",\r\n            \"Hematología\",\r\n            \"Infectología pediátrica\",\r\n            \"Medicina Interna\",\r\n            \"Medicina Familiar\",\r\n            \"Nefrología\",\r\n            \"Neumología\",\r\n            \"Neurocirugía\",\r\n            \"Neurología\",\r\n            \"Ortopedia y Traumatología\",\r\n            \"Otología\",\r\n            \"Otorrinolaringología\",\r\n            \"Psiquiatría\",\r\n            \"Reumatología\",\r\n            \"Toxicología\",\r\n            \"Urología\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Famisanar\",\r\n            \"Sura\",\r\n            \"Nueva EPS\",\r\n            \"Sanitas\",\r\n            \"Salud Total\",\r\n            \"Coomeva\",\r\n            \"Aliansalud\",\r\n            \"Cajacopi\",\r\n            \"Saludcoop\",\r\n            \"Cruz Blanca\",\r\n            \"Colmédica\",\r\n            \"Comfenalco\",\r\n            \"Saludvida\",\r\n            \"Medimás\",\r\n            \"Capital Salud\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital materno infantil\",\r\n        \"latitud\": 4.588228036394092,\r\n        \"longitud\": -74.08539356593157,\r\n        \"especialidades\": [\r\n            \"Ginecobstetricia\",\r\n            \"Medicina General\",\r\n            \"Pediatría\",\r\n            \"Psicología\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Cruz Blanca\",\r\n            \"Comfenalco\",\r\n            \"Saludvida\",\r\n            \"Nueva EPS\",\r\n            \"Sanitas\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Chapinero\",\r\n        \"latitud\": 4.653984590706374,\r\n        \"longitud\": -74.06562968992625,\r\n        \"especialidades\": [\r\n            \"Atención Primaria\",\r\n            \"Medicina Familiar\",\r\n            \"Odontología General\",\r\n            \"Nutrición y Dietética\",\r\n            \"Psicología\",\r\n            \"Estomatología\",\r\n            \"Atención Prenatal\",\r\n            \"Atención del Recién Nacido\",\r\n            \"Medicina General\",\r\n            \"Vacunación\",\r\n            \"Promoción de la Salud\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Nueva EPS\",\r\n            \"Colmédica\",\r\n            \"Medimás\",\r\n            \"Capital Salud\",\r\n            \"Famisanar\",\r\n            \"Sanitas\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Engativá\",\r\n        \"latitud\": 4.711118976675335,\r\n        \"longitud\": -74.10973943225342,\r\n        \"especialidades\": [\r\n            \"Cirugía General\",\r\n            \"Pediatría\",\r\n            \"Ginecobstetricia\",\r\n            \"Medicina Interna\",\r\n            \"Ortopedia y Traumatología\",\r\n            \"Oftalmología\",\r\n            \"Neumología\",\r\n            \"Endocrinología\",\r\n            \"Urología\",\r\n            \"Otorrinolaringología\",\r\n            \"Dermatología\",\r\n            \"Medicina Física y Rehabilitación\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Sanitas\",\r\n            \"Saludcoop\",\r\n            \"Coomeva\",\r\n            \"Compensar\",\r\n            \"Aliansalud\",\r\n            \"Sura\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Simón Bolívar\",\r\n        \"latitud\": 4.742694422880204,\r\n        \"longitud\": -74.02303862517243,\r\n        \"especialidades\": [\r\n            \"Neurocirugía\",\r\n            \"Cirugía Cardiovascular\",\r\n            \"Oncología\",\r\n            \"Cirugía Plástica y Reconstructiva\",\r\n            \"Neurología\",\r\n            \"Gastroenterología\",\r\n            \"Nefrología\",\r\n            \"Hematología\",\r\n            \"Cardiología\",\r\n            \"Endocrinología\",\r\n            \"Cirugía Maxilofacial\",\r\n            \"Radioterapia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Famisanar\",\r\n            \"Sura\",\r\n            \"Nueva EPS\",\r\n            \"Sanitas\",\r\n            \"Salud Total\",\r\n            \"Coomeva\",\r\n            \"Aliansalud\",\r\n            \"Cajacopi\",\r\n            \"Saludcoop\",\r\n            \"Cruz Blanca\",\r\n            \"Colmédica\",\r\n            \"Comfenalco\",\r\n            \"Saludvida\",\r\n            \"Medimás\",\r\n            \"Capital Salud\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Suba\",\r\n        \"latitud\": 4.753597614528948,\r\n        \"longitud\": -74.09171267458048,\r\n        \"especialidades\": [\r\n            \"Cirugía General\",\r\n            \"Pediatría\",\r\n            \"Ginecobstetricia\",\r\n            \"Medicina Interna\",\r\n            \"Ortopedia y Traumatología\",\r\n            \"Oftalmología\",\r\n            \"Neurología\",\r\n            \"Otorrinolaringología\",\r\n            \"Dermatología\",\r\n            \"Urología\",\r\n            \"Endocrinología\",\r\n            \"Nutrición y Dietética\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Famisanar\",\r\n            \"Sura\",\r\n            \"Nueva EPS\",\r\n            \"Sanitas\",\r\n            \"Salud Total\",\r\n            \"Coomeva\",\r\n            \"Aliansalud\",\r\n            \"Cajacopi\",\r\n            \"Saludcoop\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Usaquén\",\r\n        \"latitud\": 4.696370231560091,\r\n        \"longitud\": -74.03061763234311,\r\n        \"especialidades\": [\r\n            \"Hospitalización\",\r\n            \"Atención Primaria\",\r\n            \"Consulta Externa\",\r\n            \"Vacunación\",\r\n            \"Promoción de la Salud\",\r\n            \"Atención Prenatal\",\r\n            \"Atención del Recién Nacido\",\r\n            \"Medicina General\",\r\n            \"Odontología General\",\r\n            \"Nutrición y Dietética\",\r\n            \"Psicología\",\r\n            \"Estomatología\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Capital Salud\",\r\n            \"Saludvida\",\r\n            \"Colmédica\",\r\n            \"Cruz Blanca\",\r\n            \"Compensar\",\r\n            \"Aliansalud\",\r\n            \"Saludcoop\",\r\n            \"Sanitas\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Bosa\",\r\n        \"latitud\": 4.606934131621181,\r\n        \"longitud\": -74.18559343707544,\r\n        \"especialidades\": [\r\n            \"Cirugía General\",\r\n            \"Pediatría\",\r\n            \"Ginecobstetricia\",\r\n            \"Medicina Interna\",\r\n            \"Ortopedia y Traumatología\",\r\n            \"Oftalmología\",\r\n            \"Neurología\",\r\n            \"Otorrinolaringología\",\r\n            \"Dermatología\",\r\n            \"Urología\",\r\n            \"Endocrinología\",\r\n            \"Nutrición y Dietética\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Famisanar\",\r\n            \"Sura\",\r\n            \"Nueva EPS\",\r\n            \"Cajacopi\",\r\n            \"Saludcoop\",\r\n            \"Aliansalud\",\r\n            \"Saludvida\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Fontibón\",\r\n        \"latitud\": 4.671765799971355,\r\n        \"longitud\": -74.14618657458104,\r\n        \"especialidades\": [\r\n            \"Atención Primaria\",\r\n            \"Medicina Familiar\",\r\n            \"Odontología General\",\r\n            \"Nutrición y Dietética\",\r\n            \"Psicología\",\r\n            \"Estomatología\",\r\n            \"Consulta Externa\",\r\n            \"Vacunación\",\r\n            \"Promoción de la Salud\",\r\n            \"Atención Prenatal\",\r\n            \"Atención del Recién Nacido\",\r\n            \"Medicina General\",\r\n            \"Cirugía General\",\r\n            \"Pediatría\",\r\n            \"Ginecobstetricia\",\r\n            \"Medicina Interna\",\r\n            \"Ortopedia y Traumatología\",\r\n            \"Oftalmología\",\r\n            \"Neurología\",\r\n            \"Otorrinolaringología\",\r\n            \"Dermatología\",\r\n            \"Urología\",\r\n            \"Endocrinología\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Famisanar\",\r\n            \"Sura\",\r\n            \"Nueva EPS\",\r\n            \"Sanitas\",\r\n            \"Salud Total\",\r\n            \"Coomeva\",\r\n            \"Aliansalud\",\r\n            \"Cajacopi\",\r\n            \"Saludcoop\",\r\n            \"Cruz Blanca\",\r\n            \"Colmédica\",\r\n            \"Comfenalco\",\r\n            \"Saludvida\",\r\n            \"Medimás\",\r\n            \"Capital Salud\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Occidente de Kennedy\",\r\n        \"latitud\": 4.61653646764722,\r\n        \"longitud\": -74.15331588603686,\r\n        \"especialidades\": [\r\n            \"Neurocirugía\",\r\n            \"Cirugía Cardiovascular\",\r\n            \"Oncología\",\r\n            \"Cirugía Plástica y Reconstructiva\",\r\n            \"Neurología\",\r\n            \"Gastroenterología\",\r\n            \"Nefrología\",\r\n            \"Hematología\",\r\n            \"Cardiología\",\r\n            \"Endocrinología\",\r\n            \"Cirugía Maxilofacial\",\r\n            \"Radioterapia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Famisanar\",\r\n            \"Sura\",\r\n            \"Nueva EPS\",\r\n            \"Sanitas\",\r\n            \"Salud Total\",\r\n            \"Coomeva\",\r\n            \"Aliansalud\",\r\n            \"Cajacopi\",\r\n            \"Saludcoop\",\r\n            \"Cruz Blanca\",\r\n            \"Colmédica\",\r\n            \"Comfenalco\",\r\n            \"Saludvida\",\r\n            \"Medimás\",\r\n            \"Capital Salud\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Pablo VI Bosa\",\r\n        \"latitud\": 4.598949922668886,\r\n        \"longitud\": -74.19175449539493,\r\n        \"especialidades\": [\r\n            \"Hospitalización\",\r\n            \"Atención Primaria\",\r\n            \"Consulta Externa\",\r\n            \"Vacunación\",\r\n            \"Promoción de la Salud\",\r\n            \"Atención Prenatal\",\r\n            \"Atención del Recién Nacido\",\r\n            \"Medicina General\",\r\n            \"Odontología General\",\r\n            \"Nutrición y Dietética\",\r\n            \"Psicología\",\r\n            \"Estomatología\",\r\n            \"Fisioterapia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Sura\",\r\n            \"Sanitas\",\r\n            \"Saludcoop\",\r\n            \"Famisanar\",\r\n            \"Aliansalud\",\r\n            \"Nueva EPS\",\r\n            \"Coomeva\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud El Tunal\",\r\n        \"latitud\": 4.571543266684539,\r\n        \"longitud\": -74.12826745204696,\r\n        \"especialidades\": [\r\n            \"Cirugía Cardiovascular\",\r\n            \"Neurocirugía\",\r\n            \"Oncología\",\r\n            \"Cirugía Plástica y Reconstructiva\",\r\n            \"Neumología\",\r\n            \"Gastroenterología\",\r\n            \"Nefrología\",\r\n            \"Hematología\",\r\n            \"Cardiología\",\r\n            \"Endocrinología\",\r\n            \"Urología\",\r\n            \"Radioterapia\",\r\n            \"Oftalmología\",\r\n            \"Dermatología\",\r\n            \"Medicina Interna\",\r\n            \"Cirugía Maxilofacial\",\r\n            \"Cirugía de Tórax\",\r\n            \"Oncología Pediátrica\",\r\n            \"Reumatología\",\r\n            \"Psiquiatría\",\r\n            \"Psicología\",\r\n            \"Terapia de Lenguaje\",\r\n            \"Fisiatría\",\r\n            \"Infectología\",\r\n            \"Medicina Nuclear\",\r\n            \"Genética Médica\",\r\n            \"Cirugía de Cabeza y Cuello\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Famisanar\",\r\n            \"Sura\",\r\n            \"Nueva EPS\",\r\n            \"Sanitas\",\r\n            \"Salud Total\",\r\n            \"Coomeva\",\r\n            \"Aliansalud\",\r\n            \"Cajacopi\",\r\n            \"Saludcoop\",\r\n            \"Cruz Blanca\",\r\n            \"Colmédica\",\r\n            \"Comfenalco\",\r\n            \"Saludvida\",\r\n            \"Medimás\",\r\n            \"Capital Salud\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Meissen\",\r\n        \"latitud\": 4.559507416747081,\r\n        \"longitud\": -74.13829394059626,\r\n        \"especialidades\": [\r\n            \"Cirugía General\",\r\n            \"Pediatría\",\r\n            \"Ginecobstetricia\",\r\n            \"Medicina Interna\",\r\n            \"Ortopedia y Traumatología\",\r\n            \"Oftalmología\",\r\n            \"Neurología\",\r\n            \"Otorrinolaringología\",\r\n            \"Dermatología\",\r\n            \"Urología\",\r\n            \"Endocrinología\",\r\n            \"Nutrición y Dietética\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\",\r\n            \"Cajacopi\",\r\n            \"Saludcoop\",\r\n            \"Aliansalud\",\r\n            \"Sanitas\",\r\n            \"Coomeva\",\r\n            \"Capital Salud\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Tunjuelito\",\r\n        \"latitud\": 4.562861702271498,\r\n        \"longitud\": -74.12521663120366,\r\n        \"especialidades\": [\r\n            \"Cirugía General\",\r\n            \"Pediatría\",\r\n            \"Ginecobstetricia\",\r\n            \"Medicina Interna\",\r\n            \"Ortopedia y Traumatología\",\r\n            \"Oftalmología\",\r\n            \"Neurología\",\r\n            \"Otorrinolaringología\",\r\n            \"Dermatología\",\r\n            \"Urología\",\r\n            \"Endocrinología\",\r\n            \"Nutrición y Dietética\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Sanitas\",\r\n            \"Capital Salud\",\r\n            \"Aliansalud\",\r\n            \"Saludvida\",\r\n            \"Coomeva\",\r\n            \"Famisanar\",\r\n            \"Saludcoop\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Usme\",\r\n        \"latitud\": 4.473395641627587,\r\n        \"longitud\": -74.12183308807326,\r\n        \"especialidades\": [\r\n            \"Hospitalización\",\r\n            \"Atención Primaria\",\r\n            \"Consulta Externa\",\r\n            \"Vacunación\",\r\n            \"Promoción de la Salud\",\r\n            \"Atención Prenatal\",\r\n            \"Atención del Recién Nacido\",\r\n            \"Medicina General\",\r\n            \"Odontología General\",\r\n            \"Nutrición y Dietética\",\r\n            \"Psicología\",\r\n            \"Estomatología\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Sura\",\r\n            \"Coomeva\",\r\n            \"Salud Total\",\r\n            \"Medimás\",\r\n            \"Aliansalud\",\r\n            \"Nueva EPS\",\r\n            \"Sanitas\",\r\n            \"Saludcoop\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Vista Hermosa\",\r\n        \"latitud\": 4.552479508257704,\r\n        \"longitud\": -74.14464608813738,\r\n        \"especialidades\": [\r\n            \"Hospitalización\",\r\n            \"Atención Primaria\",\r\n            \"Consulta Externa\",\r\n            \"Vacunación\",\r\n            \"Promoción de la Salud\",\r\n            \"Atención Prenatal\",\r\n            \"Atención del Recién Nacido\",\r\n            \"Medicina General\",\r\n            \"Odontología General\",\r\n            \"Nutrición y Dietética\",\r\n            \"Psicología\",\r\n            \"Estomatología\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Compensar\",\r\n            \"Famisanar\",\r\n            \"Sura\",\r\n            \"Nueva EPS\",\r\n            \"Sanitas\",\r\n            \"Salud Total\",\r\n            \"Coomeva\",\r\n            \"Capital Salud\"\r\n        ]\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/hospitales/agregar/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"hospitales",
+								"agregar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "agregar hospital",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"nombre\": \"Hospital Infantil Universitario San Jose\",\r\n        \"latitud\": 4.665224548607437,\r\n        \"longitud\": -74.07896502839728,\r\n        \"especialidades\": [\r\n            \"Oncologia\",\r\n            \"Otorrinolaringologia\",\r\n            \"Ortopedia y Traumatologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital de Engativa\",\r\n        \"latitud\": 4.711001914622836,\r\n        \"longitud\": -74.1097278695707,\r\n        \"especialidades\": [\r\n            \"Neurologia\",\r\n            \"Ginecologia\",\r\n            \"Otorrinolaringologia\",\r\n            \"Ortopedia y Traumatologia\",\r\n            \"Gastroenterologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Unidad de Servicios de Salud Simon Bolivar\",\r\n        \"latitud\": 4.742781005353155,\r\n        \"longitud\": -74.02301609413335,\r\n        \"especialidades\": [\r\n            \"Oncologia\",\r\n            \"Cardiologia\",\r\n            \"Otorrinolaringologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital Universitario Nacional de Colombia\",\r\n        \"latitud\": 4.648789324522056,\r\n        \"longitud\": -74.09552777693953,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Ginecologia\",\r\n            \"Otorrinolaringologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital de Kennedy\",\r\n        \"latitud\": 4.61657176477835,\r\n        \"longitud\": -74.15332014004682,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Neurologia\",\r\n            \"Oncologia\",\r\n            \"Ginecologia\",\r\n            \"Cardiologia\",\r\n            \"Gastroenterologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    },\r\n    {\r\n        \"nombre\": \"Hospital ABC\",\r\n        \"latitud\": 123.456,\r\n        \"longitud\": 789.012,\r\n        \"especialidades\": [\r\n            \"Pediatria\",\r\n            \"Neurologia\",\r\n            \"Oncologia\"\r\n        ],\r\n        \"listaeps\": [\r\n            \"Famisanar\",\r\n            \"Nueva EPS\"\r\n        ]\r\n    }\r\n]",
+							"raw": "{\r\n    \"nombre\": \"Hospital de pruebas ABC\",\r\n    \"latitud\": 4.6952324732915,\r\n    \"longitud\": -74.13879334094949,\r\n    \"especialidades\": [\r\n        \"Cirugía General\",\r\n        \"Pediatría\",\r\n        \"Ginecobstetricia\",\r\n        \"Medicina Interna\",\r\n        \"Ortopedia y Traumatología\",\r\n        \"Oftalmología\",\r\n        \"Neurología\",\r\n        \"Otorrinolaringología\",\r\n        \"Dermatología\",\r\n        \"Urología\",\r\n        \"Endocrinología\",\r\n        \"Nutrición y Dietética\",\r\n        \"Psicología\",\r\n        \"Anestesia\",\r\n        \"Cardiología\",\r\n        \"Cirugía Maxilofacial\",\r\n        \"Cirugía de Tórax\",\r\n        \"Cirugía Vascular Periférica\",\r\n        \"Cirugía Pediátrica\",\r\n        \"Cirugía Plástica y Reconstructiva\",\r\n        \"Cirugía de Mano\",\r\n        \"Dermatología\",\r\n        \"Electrofisiología\",\r\n        \"Estomatología\",\r\n        \"Gastroenterología\",\r\n        \"Genética\",\r\n        \"Hematología\",\r\n        \"Infectología\",\r\n        \"Medicina Física y Rehabilitación\",\r\n        \"Neumología\",\r\n        \"Oncología\",\r\n        \"Otología\",\r\n        \"Psiquiatría\",\r\n        \"Reumatología\",\r\n        \"Toxicología\",\r\n        \"Traumatología\",\r\n        \"Terapia de Lenguaje\",\r\n        \"Fisioterapia\",\r\n        \"Radioterapia\",\r\n        \"Oncología Pediátrica\",\r\n        \"Cirugía de Cabeza y Cuello\",\r\n        \"Medicina Nuclear\",\r\n        \"Psicología Clínica\",\r\n        \"Neurocirugía\",\r\n        \"Gastrocirugía\",\r\n        \"Cirugía Cardiovascular\",\r\n        \"Nefrología\",\r\n        \"Oncología Médica\",\r\n        \"Urgencias\",\r\n        \"Reproducción Asistida\",\r\n        \"Farmacología\",\r\n        \"Cirugía Bariátrica\",\r\n        \"Cirugía Oncológica\",\r\n        \"Cuidados Paliativos\",\r\n        \"Cuidados Intensivos\",\r\n        \"Ecografía\",\r\n        \"Endoscopia\",\r\n        \"Ecocardiografía\",\r\n        \"Radiología\",\r\n        \"Medicina del Deporte\",\r\n        \"Medicina Hiperbárica\",\r\n        \"Medicina Tropical\",\r\n        \"Medicina del Dolor\",\r\n        \"Medicina Estética\",\r\n        \"Medicina Forense\",\r\n        \"Medicina del Sueño\",\r\n        \"Medicina Regenerativa\",\r\n        \"Medicina Integrativa\",\r\n        \"Odontología Especializada\",\r\n        \"Ortodoncia\",\r\n        \"Periodoncia\",\r\n        \"Implantología Dental\",\r\n        \"Endodoncia\",\r\n        \"Cirugía Oral y Maxilofacial\",\r\n        \"Estética Dental\",\r\n        \"Ortopedia Maxilar\",\r\n        \"Patología Oral y Maxilofacial\",\r\n        \"Ortodoncia y Ortopedia Dento Facial\",\r\n        \"Ortopedia Funcional de los Maxilares\",\r\n        \"Fonoaudiología\",\r\n        \"Oftalmología Pediátrica\",\r\n        \"Optometría\",\r\n        \"Ortopedia Infantil\",\r\n        \"Psicopedagogía\",\r\n        \"Terapia Ocupacional\",\r\n        \"Medicina Geriátrica\",\r\n        \"Podología\",\r\n        \"Psicoterapia\",\r\n        \"Cirugía Experimental\",\r\n        \"Neurofisiología Clínica\",\r\n        \"Cirugía Robótica\",\r\n        \"Cirugía Mínimamente Invasiva\",\r\n        \"Telemedicina\",\r\n        \"Inmunología\",\r\n        \"Cirugía Dentomaxilar\",\r\n        \"Medicina Hiperbárica\",\r\n        \"Ortopedia Dentofacial\",\r\n        \"Cirugía Periodontal\",\r\n        \"Cirugía Endodóntica\",\r\n        \"Cirugía Prostodóntica\",\r\n        \"Cirugía Implantológica\",\r\n        \"Cirugía Reconstruciva Facial\",\r\n        \"Cirugía Oral y Maxilofacial\",\r\n        \"Cirugía Estética Facial\",\r\n        \"Cirugía Ortognática\"\r\n    ],\r\n    \"listaeps\": [\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1156,13 +1183,13 @@
 			"name": "emergencias",
 			"item": [
 				{
-					"name": "identificador",
+					"name": "identificador de emergencia",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"sintomas_presentes\":{\r\n        \"Nauseas\": \"si\",\r\n        \"Vomitos\": \"si\",\r\n        \"Fiebre moderada\": \"si\",\r\n        \"Diarrea acuosa\": \"si\",\r\n        \"Dolor abdominal\": \"si\",\r\n        \"Deshidratacion leve\": \"si\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"sintomas_presentes\":{\r\n        \"NÃ¡useas\": \"si\",\r\n        \"VÃ³mitos\": \"si\",\r\n        \"Fiebre moderada\": \"si\",\r\n        \"Diarrea acuosa\": \"si\",\r\n        \"Dolor abdominal\": \"si\",\r\n        \"DeshidrataciÃ³n leve\": \"si\",\r\n        \"SensaciÃ³n de malestar general\": \"si\",\r\n        \"Calambres abdominales\": \"si\",\r\n        \"Inapetencia\": \"si\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -1184,13 +1211,13 @@
 					"response": []
 				},
 				{
-					"name": "obtener hospitales ideales",
+					"name": "identificador de hospitales",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"triage\": 1,\r\n    \"especialidad\": \"Neurologia\",\r\n    \"id_eps\": 1,\r\n    \"latitud\":  4.742781005353155,\r\n    \"longitud\": -74.0543\r\n}\r\n",
+							"raw": "{\r\n    \"triage\": 4,\r\n    \"especialidad\": \"Cirugía General\",\r\n    \"id_eps\": 15,\r\n    \"latitud\":  4.704453442083475,\r\n    \"longitud\": -74.111488237189\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "text"
