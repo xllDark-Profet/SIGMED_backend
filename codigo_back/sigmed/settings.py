@@ -68,8 +68,8 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'sigmed',
             'USER': 'root',
-            'PASSWORD': '12345',
-            'HOST': 'localhost',
+            'PASSWORD': 'password',
+            'HOST': 'database-sigmed.czko8wyeyfzb.us-east-2.rds.amazonaws.com',
             'PORT': '3306',
         }
 }
