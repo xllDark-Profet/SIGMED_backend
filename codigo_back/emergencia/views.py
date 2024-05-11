@@ -386,7 +386,7 @@ def buscar_por_id(id):
         return None
     
 def mostrar_solicitud(solicitud):
-    fecha_hora = solicitud.fecha_hora.strftime('%d/%m/%Y %H:%M')
+    fecha_hora = solicitud.fecha_hora.strftime('%d/%m/%Y %H:%M:%S')
     return {
     'id': solicitud.id,
     'emergencia_detectada': solicitud.emergencia_detectada,
