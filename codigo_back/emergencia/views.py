@@ -1,8 +1,7 @@
 import json, os
-from datetime import datetime, date
+from datetime import timezone
 from django.http import JsonResponse
 from django.views import View
-from math import sin, cos, sqrt, atan2, radians
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from googlemaps import Client as GoogleMaps
@@ -68,7 +67,7 @@ class SolicitudesView(View):
             except Hospital.DoesNotExist:
                 return JsonResponse({'mensaje': 'No existe un hospital con ese nombre.'}, status=404)
             
-            fecha_hora = datetime.now()
+            fecha_hora = timezone.now()
 
             solicitud = Solicitud.objects.create(
                 direccion=solicitud_dto.direccion,
@@ -386,7 +385,7 @@ def buscar_por_id(id):
         return None
     
 def mostrar_solicitud(solicitud):
-    fecha_hora = solicitud.fecha_hora.strftime('%d/%m/%Y %H:%M')
+    fecha_hora = solicitud.fecha_hora.strftime('%d/%m/%Y %H:%M:%S')
     return {
     'id': solicitud.id,
     'emergencia_detectada': solicitud.emergencia_detectada,

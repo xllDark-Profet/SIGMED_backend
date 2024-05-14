@@ -1,33 +1,48 @@
 {
   "emergencias": [
     {
-      "nombre": "Diarrea y gastroenteritis",
+      "nombre": "Gastroenteritis",
       "especialidad": "Gastroenterología",
       "sintomas": [
         {
           "sintoma": "Náuseas",
-          "severidad": "normal",
+          "severidad": "baja",
           "valor": 1
         },
         {
           "sintoma": "Vómitos",
-          "severidad": "normal",
+          "severidad": "baja",
           "valor": 1
         },
         {
           "sintoma": "Fiebre moderada",
-          "severidad": "normal",
+          "severidad": "baja",
           "valor": 1
         },
         {
-          "sintoma": "Diarrea acuosa",
-          "severidad": "alta",
+          "sintoma": "Inapetencia",
+          "severidad": "baja",
           "valor": 1
         },
         {
           "sintoma": "Dolor abdominal",
-          "severidad": "normal",
+          "severidad": "baja",
           "valor": 1
+        },
+        {
+          "sintoma": "Malestar general",
+          "severidad": "baja",
+          "valor": 1
+        },
+        {
+          "sintoma": "Sangre en las heces",
+          "severidad": "alta",
+          "valor": 3
+        },
+        {
+          "sintoma": "Diarrea",
+          "severidad": "normal",
+          "valor": 2
         },
         {
           "sintoma": "Deshidratación leve",
@@ -35,19 +50,9 @@
           "valor": 2
         },
         {
-          "sintoma": "Sensación de malestar general",
-          "severidad": "normal",
-          "valor": 1
-        },
-        {
           "sintoma": "Calambres abdominales",
           "severidad": "normal",
-          "valor": 1
-        },
-        {
-          "sintoma": "Inapetencia",
-          "severidad": "normal",
-          "valor": 1
+          "valor": 2
         }
       ],
       "recomendaciones": {
@@ -57,79 +62,28 @@
       }
     },
     {
-      "nombre": "Dolor abdominal agudo",
-      "especialidad": "Gastroenterología",
-      "sintomas": [
-        {
-          "sintoma": "Náuseas",
-          "severidad": "normal",
-          "valor": 1
-        },
-        {
-          "sintoma": "Vómitos",
-          "severidad": "normal",
-          "valor": 1
-        },
-        {
-          "sintoma": "Fiebre moderada",
-          "severidad": "normal",
-          "valor": 2
-        },
-        {
-          "sintoma": "Distensión abdominal",
-          "severidad": "alta",
-          "valor": 3
-        },
-        {
-          "sintoma": "Diarrea leve",
-          "severidad": "normal",
-          "valor": 3
-        },
-        {
-          "sintoma": "Estreñimiento",
-          "severidad": "normal",
-          "valor": 2
-        },
-        {
-          "sintoma": "Sangre en las heces",
-          "severidad": "alta",
-          "valor": 4
-        },
-        {
-          "sintoma": "Dolor abdominal punzante",
-          "severidad": "alta",
-          "valor": 4
-        },
-        {
-          "sintoma": "Dolor al moverse",
-          "severidad": "alta",
-          "valor": 3
-        }
-      ],
-      "recomendaciones": {
-        "recomendacion1": "Reposo: Evitar movimientos bruscos o esfuerzos que puedan agravar el dolor.",
-        "recomendacion2": "Aplicación de calor: Colocar una bolsa de agua caliente o una compresa caliente en el área del dolor.",
-        "recomendacion3": "Medicamentos: Tomar analgésicos de venta libre, como ibuprofeno o paracetamol, para aliviar el dolor."
-      }
-    },
-    {
       "nombre": "Migraña",
       "especialidad": "Neurología",
       "sintomas": [
         {
           "sintoma": "Náuseas",
-          "severidad": "normal",
+          "severidad": "baja",
           "valor": 1
         },
         {
           "sintoma": "Vómitos",
-          "severidad": "normal",
+          "severidad": "baja",
+          "valor": 1
+        },
+        {
+          "sintoma": "Fatiga",
+          "severidad": "baja",
           "valor": 1
         },
         {
           "sintoma": "Dolor de cabeza intenso",
           "severidad": "alta",
-          "valor": 4
+          "valor": 3
         },
         {
           "sintoma": "Sensibilidad a la luz",
@@ -143,16 +97,11 @@
         },
         {
           "sintoma": "Auras visuales",
-          "severidad": "alta",
-          "valor": 3
+          "severidad": "normal",
+          "valor": 2
         },
         {
           "sintoma": "Sensación de pulsación o latido en la cabeza",
-          "severidad": "normal",
-          "valor": 3
-        },
-        {
-          "sintoma": "Fatiga extrema",
           "severidad": "normal",
           "valor": 2
         }
@@ -170,32 +119,27 @@
         {
           "sintoma": "Dolor intenso en el área afectada",
           "severidad": "alta",
-          "valor": 5
+          "valor": 3
         },
         {
           "sintoma": "Hinchazón",
           "severidad": "normal",
-          "valor": 3
+          "valor": 2
+        },
+        {
+          "sintoma": "Moretón en la zona",
+          "severidad": "normal",
+          "valor": 2
         },
         {
           "sintoma": "Deformidad",
           "severidad": "normal",
-          "valor": 4
+          "valor": 2
         },
         {
           "sintoma": "Incapacidad para mover la extremidad",
           "severidad": "normal",
-          "valor": 4
-        },
-        {
-          "sintoma": "Dolor al palpar la zona",
-          "severidad": "alta",
-          "valor": 5
-        },
-        {
-          "sintoma": "Pérdida de la sensibilidad",
-          "severidad": "alta",
-          "valor": 4
+          "valor": 2
         }
       ],
       "recomendaciones": {
@@ -209,14 +153,19 @@
       "especialidad": "Otorrinolaringología",
       "sintomas": [
         {
-          "sintoma": "Amígdalas inflamadas",
-          "severidad": "normal",
-          "valor": 3
+          "sintoma": "Fiebre moderada",
+          "severidad": "baja",
+          "valor": 1
         },
         {
           "sintoma": "Dolor de garganta",
           "severidad": "alta",
           "valor": 4
+        },
+        {
+          "sintoma": "Amígdalas inflamadas",
+          "severidad": "normal",
+          "valor": 2
         },
         {
           "sintoma": "Enrojecimiento de la garganta",
@@ -232,11 +181,6 @@
           "sintoma": "Dificultad para tragar",
           "severidad": "normal",
           "valor": 2
-        },
-        {
-          "sintoma": "Fiebre moderada",
-          "severidad": "normal",
-          "valor": 3
         },
         {
           "sintoma": "Malestar general",
@@ -256,34 +200,34 @@
       "especialidad": "Cirugía General",
       "sintomas": [
         {
-          "sintoma": "Dolor abdominal localizado",
-          "severidad": "alta",
-          "valor": 4
-        },
-        {
-          "sintoma": "Fiebre moderada a alta",
-          "severidad": "normal",
-          "valor": 3
-        },
-        {
           "sintoma": "Náuseas",
-          "severidad": "normal",
-          "valor": 2
+          "severidad": "baja",
+          "valor": 1
         },
         {
           "sintoma": "Vómitos",
-          "severidad": "normal",
-          "valor": 2
+          "severidad": "baja",
+          "valor": 1
+        },
+        {
+          "sintoma": "Fiebre moderada",
+          "severidad": "baja",
+          "valor": 1
         },
         {
           "sintoma": "Inapetencia",
-          "severidad": "normal",
+          "severidad": "baja",
           "valor": 1
         },
         {
           "sintoma": "Malestar general",
-          "severidad": "normal",
-          "valor": 2
+          "severidad": "baja",
+          "valor": 1
+        },
+        {
+          "sintoma": "Dolor abdominal",
+          "severidad": "baja",
+          "valor": 1
         },
         {
           "sintoma": "Dolor al toser o estornudar",
@@ -302,39 +246,44 @@
       "especialidad": "Cardiología",
       "sintomas": [
         {
+          "sintoma": "Náuseas",
+          "severidad": "baja",
+          "valor": 1
+        },
+        {
+          "sintoma": "Vómitos",
+          "severidad": "baja",
+          "valor": 1
+        },
+        {
+          "sintoma": "Mareos o desmayo",
+          "severidad": "baja",
+          "valor": 1
+        },
+        {
           "sintoma": "Dolor opresivo en el pecho",
           "severidad": "alta",
           "valor": 5
         },
         {
           "sintoma": "Sensación de falta de aire",
-          "severidad": "alta",
-          "valor": 4
+          "severidad": "normal",
+          "valor": 2
         },
         {
           "sintoma": "Sudoración fría",
-          "severidad": "alta",
-          "valor": 4
-        },
-        {
-          "sintoma": "Mareos o desmayo",
-          "severidad": "alta",
-          "valor": 5
-        },
-        {
-          "sintoma": "Náuseas o vómitos",
           "severidad": "normal",
-          "valor": 3
+          "valor": 2
         },
         {
           "sintoma": "Dolor que se irradia al brazo izquierdo o la mandíbula",
-          "severidad": "alta",
-          "valor": 5
+          "severidad": "normal",
+          "valor": 2
         },
         {
           "sintoma": "Palidez",
-          "severidad": "alta",
-          "valor": 4
+          "severidad": "normal",
+          "valor": 2
         }
       ],
       "recomendaciones": {
@@ -348,39 +297,34 @@
       "especialidad": "Neumología",
       "sintomas": [
         {
+          "sintoma": "Fatiga",
+          "severidad": "baja",
+          "valor": 1
+        },
+        {
           "sintoma": "Dificultad para respirar",
           "severidad": "alta",
-          "valor": 5
+          "valor": 4
         },
         {
           "sintoma": "Sibilancias",
-          "severidad": "alta",
-          "valor": 4
+          "severidad": "normal",
+          "valor": 2
         },
         {
           "sintoma": "Tos seca y persistente",
-          "severidad": "alta",
-          "valor": 4
+          "severidad": "normal",
+          "valor": 2
         },
         {
           "sintoma": "Sensación de opresión en el pecho",
-          "severidad": "alta",
-          "valor": 5
-        },
-        {
-          "sintoma": "Fatiga",
           "severidad": "normal",
-          "valor": 3
-        },
-        {
-          "sintoma": "Ansiedad",
-          "severidad": "normal",
-          "valor": 3
+          "valor": 2
         },
         {
           "sintoma": "Piel pálida y sudorosa",
-          "severidad": "alta",
-          "valor": 4
+          "severidad": "normal",
+          "valor": 2
         }
       ],
       "recomendaciones": {
@@ -394,29 +338,9 @@
       "especialidad": "Psicología",
       "sintomas": [
         {
-          "sintoma": "Dificultad para respirar",
-          "severidad": "alta",
-          "valor": 4
-        },
-        {
-          "sintoma": "Palpitaciones",
-          "severidad": "alta",
-          "valor": 4
-        },
-        {
-          "sintoma": "Sudoración excesiva",
-          "severidad": "alta",
-          "valor": 3
-        },
-        {
-          "sintoma": "Temblor o sacudidas",
-          "severidad": "alta",
-          "valor": 3
-        },
-        {
-          "sintoma": "Sensación de ahogo",
-          "severidad": "alta",
-          "valor": 4
+          "sintoma": "Mareos o desmayo",
+          "severidad": "baja",
+          "valor": 1
         },
         {
           "sintoma": "Miedo intenso a perder el control o a morir",
@@ -424,9 +348,29 @@
           "valor": 5
         },
         {
-          "sintoma": "Sensación de mareo o desmayo inminente",
-          "severidad": "alta",
-          "valor": 5
+          "sintoma": "Dificultad para respirar",
+          "severidad": "normal",
+          "valor": 2
+        },
+        {
+          "sintoma": "Palpitaciones",
+          "severidad": "normal",
+          "valor": 2
+        },
+        {
+          "sintoma": "Sudoración excesiva",
+          "severidad": "normal",
+          "valor": 2
+        },
+        {
+          "sintoma": "Temblor o sacudidas",
+          "severidad": "normal",
+          "valor": 2
+        },
+        {
+          "sintoma": "Sensación de ahogo",
+          "severidad": "normal",
+          "valor": 2
         }
       ],
       "recomendaciones": {
