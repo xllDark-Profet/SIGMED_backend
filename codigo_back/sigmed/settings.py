@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     'usuarios',
     'emergencia',
     'corsheaders',
-    'django_extensions',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -100,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-co'
 
-TIME_ZONE = 'America/Bogota'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -122,12 +122,3 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3001",
     "http://localhost:3002"
 ]
-
-HOST_SCHEME                     = "http://"
-SECURE_PROXY_SSL_HEADER         = None
-SECURE_SSL_REDIRECT             = True
-SESSION_COOKIE_SECURE           = True
-CSRF_COOKIE_SECURE              = True
-SECURE_HSTS_SECONDS             = None
-SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
-SECURE_FRAME_DENY               = False
