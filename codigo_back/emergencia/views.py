@@ -229,11 +229,11 @@ class IdentificadorView(View):
             puntaje = sum(sintoma['valor'] for sintoma in emergencia_identificada['sintomas'] if sintoma['sintoma'] in sintomas)
             triage = 0
             
-            if puntaje <= 4:
+            if puntaje <= 5:
                 triage = 5
             elif puntaje <= 8:
                 triage = 4
-            elif puntaje <= 12:
+            elif puntaje <= 14:
                 triage = 3
             elif puntaje <= 16:
                 triage = 2

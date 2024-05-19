@@ -27,7 +27,7 @@
         {
           "sintoma": "Dolor abdominal",
           "severidad": "baja",
-          "valor": 1
+          "valor": 2
         },
         {
           "sintoma": "Malestar general",
@@ -47,12 +47,12 @@
         {
           "sintoma": "Deshidratación leve",
           "severidad": "normal",
-          "valor": 2
+          "valor": 1
         },
         {
           "sintoma": "Calambres abdominales",
           "severidad": "normal",
-          "valor": 2
+          "valor": 1
         }
       ],
       "recomendaciones": {
@@ -119,12 +119,12 @@
         {
           "sintoma": "Dolor intenso en el área afectada",
           "severidad": "alta",
-          "valor": 3
+          "valor": 4
         },
         {
-          "sintoma": "Hinchazón",
+          "sintoma": "Hinchazón en la zona",
           "severidad": "normal",
-          "valor": 2
+          "valor": 3
         },
         {
           "sintoma": "Moretón en la zona",
@@ -132,14 +132,14 @@
           "valor": 2
         },
         {
-          "sintoma": "Deformidad",
+          "sintoma": "Deformidad en la zona",
           "severidad": "normal",
           "valor": 2
         },
         {
           "sintoma": "Incapacidad para mover la extremidad",
           "severidad": "normal",
-          "valor": 2
+          "valor": 3
         }
       ],
       "recomendaciones": {
@@ -160,7 +160,7 @@
         {
           "sintoma": "Dolor de garganta",
           "severidad": "alta",
-          "valor": 4
+          "valor": 3
         },
         {
           "sintoma": "Amígdalas inflamadas",
@@ -211,13 +211,13 @@
         },
         {
           "sintoma": "Fiebre moderada",
-          "severidad": "baja",
-          "valor": 1
+          "severidad": "media",
+          "valor": 2
         },
         {
           "sintoma": "Inapetencia",
           "severidad": "baja",
-          "valor": 1
+          "valor": 2
         },
         {
           "sintoma": "Malestar general",
@@ -227,7 +227,7 @@
         {
           "sintoma": "Dolor abdominal",
           "severidad": "baja",
-          "valor": 1
+          "valor": 4
         },
         {
           "sintoma": "Dolor al toser o estornudar",
@@ -263,12 +263,12 @@
         {
           "sintoma": "Dolor opresivo en el pecho",
           "severidad": "alta",
-          "valor": 5
+          "valor": 4
         },
         {
           "sintoma": "Sensación de falta de aire",
           "severidad": "normal",
-          "valor": 2
+          "valor": 3
         },
         {
           "sintoma": "Sudoración fría",
@@ -278,7 +278,7 @@
         {
           "sintoma": "Dolor que se irradia al brazo izquierdo o la mandíbula",
           "severidad": "normal",
-          "valor": 2
+          "valor": 4
         },
         {
           "sintoma": "Palidez",
@@ -299,7 +299,7 @@
         {
           "sintoma": "Fatiga",
           "severidad": "baja",
-          "valor": 1
+          "valor": 2
         },
         {
           "sintoma": "Dificultad para respirar",
@@ -307,9 +307,9 @@
           "valor": 4
         },
         {
-          "sintoma": "Sibilancias",
+          "sintoma": "Silbido o chillido al respirar",
           "severidad": "normal",
-          "valor": 2
+          "valor": 3
         },
         {
           "sintoma": "Tos seca y persistente",
@@ -345,7 +345,7 @@
         {
           "sintoma": "Miedo intenso a perder el control o a morir",
           "severidad": "alta",
-          "valor": 5
+          "valor": 4
         },
         {
           "sintoma": "Dificultad para respirar",
@@ -353,7 +353,7 @@
           "valor": 2
         },
         {
-          "sintoma": "Palpitaciones",
+          "sintoma": "Palpitaciones o arritmias cardíacas",
           "severidad": "normal",
           "valor": 2
         },
@@ -363,14 +363,14 @@
           "valor": 2
         },
         {
-          "sintoma": "Temblor o sacudidas",
+          "sintoma": "Temblor o sacudidas repentinas",
           "severidad": "normal",
-          "valor": 2
+          "valor": 1
         },
         {
           "sintoma": "Sensación de ahogo",
           "severidad": "normal",
-          "valor": 2
+          "valor": 1
         }
       ],
       "recomendaciones": {
