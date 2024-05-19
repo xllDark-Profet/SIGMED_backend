@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'usuarios',
     'emergencia',
     'corsheaders',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
