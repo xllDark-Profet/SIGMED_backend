@@ -1,5 +1,5 @@
 import json, os
-from datetime import datetime
+from django.utils import timezone
 from django.http import JsonResponse
 from django.views import View
 from django.utils.decorators import method_decorator
@@ -67,7 +67,7 @@ class SolicitudesView(View):
             except Hospital.DoesNotExist:
                 return JsonResponse({'mensaje': 'No existe un hospital con ese nombre.'}, status=404)
             
-            fecha_hora = datetime.now()
+            fecha_hora = timezone.now()
 
             solicitud = Solicitud.objects.create(
                 direccion=solicitud_dto.direccion,
